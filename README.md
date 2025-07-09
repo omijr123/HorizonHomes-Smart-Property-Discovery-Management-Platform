@@ -2,9 +2,6 @@
 
 ![Horizon Homes Banner](https://i.postimg.cc/x1xhxrpg/horizonhomes-logo.png)
 
-**Find your dream home today with Horizon Homes!** 🏡  
-[Live Link Click Here](https://horizonhomesrealestate.tiiny.site) | 
-
 **Horizon Homes** is a cutting-edge MERN stack real estate platform revolutionizing property search, listing, and reservation. Designed for both property seekers and professionals, it offers a seamless, secure, and feature-rich experience for all real estate needs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
