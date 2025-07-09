@@ -1,0 +1,627 @@
+/* Rent Property Page Styles */
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.95), rgba(142, 68, 173, 0.95)),
+                url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&h=800&fit=crop') center/cover;
+    color: white;
+    text-align: center;
+    padding: 140px 0 100px;
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center; 
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Service Toggle */
+.service-toggle {
+    padding: 60px 0;
+    background: white;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.toggle-btn {
+    padding: 20px 40px;
+    border: 3px solid #9b59b6;
+    background: transparent;
+    color: #9b59b6;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #9b59b6;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.toggle-btn:hover::before,
+.toggle-btn.active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.toggle-btn:hover,
+.toggle-btn.active {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(155, 89, 182, 0.3);
+}
+
+.toggle-btn i,
+.toggle-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Service Content */
+.service-content {
+    display: none;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.service-content.active {
+    display: block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Rental Search */
+.rental-search {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.search-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.search-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(155, 89, 182, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.search-form:hover::before {
+    left: 100%;
+}
+
+.search-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.price-range {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.search-input {
+    padding: 18px 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #9b59b6;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(155, 89, 182, 0.1);
+    transform: translateY(-2px);
+}
+
+.search-btn {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.search-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.search-btn:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.search-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(155, 89, 182, 0.3);
+}
+
+/* Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 80px 0;
+}
+
+.benefit-card {
+    background: white;
+    padding: 50px 35px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.benefit-card:hover::before {
+    opacity: 0.05;
+}
+
+.benefit-card:hover {
+    transform: translateY(-15px);
+    border-color: #9b59b6;
+    box-shadow: 0 25px 60px rgba(155, 89, 182, 0.2);
+}
+
+.benefit-card i {
+    font-size: 4rem;
+    color: #9b59b6;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover i {
+    transform: scale(1.1) rotateY(360deg);
+    color: #8e44ad;
+}
+
+.benefit-card h3 {
+    margin-bottom: 20px;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.benefit-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.benefit-card .btn {
+    position: relative;
+    z-index: 2;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    border: 2px solid #9b59b6;
+    color: #9b59b6;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.benefit-card .btn:hover {
+    background: #9b59b6;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Property Listing Form */
+.listing-form-container {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.property-listing-form {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 60px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.property-listing-form h3 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.property-listing-form h3::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    border-radius: 2px;
+}
+
+.form-section {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border-left: 5px solid #9b59b6;
+}
+
+.form-section h4 {
+    color: var(--text-color);
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-row:last-child {
+    margin-bottom: 0;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+    padding: 18px 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+    outline: none;
+    border-color: #9b59b6;
+    box-shadow: 0 0 0 4px rgba(155, 89, 182, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-row input:disabled,
+.form-row select:disabled,
+.form-row textarea:disabled {
+    background: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Auth Warning */
+.auth-warning {
+    background: linear-gradient(45deg, rgba(220, 53, 69, 0.1), rgba(255, 193, 7, 0.1));
+    border: 2px solid rgba(220, 53, 69, 0.3);
+    border-radius: 15px;
+    padding: 20px 25px;
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: shake 0.8s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.auth-warning i {
+    color: #dc3545;
+    font-size: 1.3rem;
+    animation: pulse 2s infinite;
+}
+
+.auth-warning span {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.auth-warning a {
+    color: #9b59b6;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.auth-warning a:hover {
+    text-decoration: underline;
+}
+
+/* Management Services */
+.management-services {
+    padding: 80px 0;
+    background: white;
+}
+
+.management-services h3 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.service-item {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(155, 89, 182, 0.1), transparent);
+    transition: transform 0.6s ease;
+    transform: rotate(-45deg) translate(-100%, -100%);
+}
+
+.service-item:hover::before {
+    transform: rotate(-45deg) translate(0%, 0%);
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    border-color: #9b59b6;
+    box-shadow: 0 20px 50px rgba(155, 89, 182, 0.2);
+}
+
+.service-item i {
+    font-size: 3rem;
+    color: #9b59b6;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover i {
+    transform: scale(1.1);
+    color: #8e44ad;
+}
+
+.service-item h4 {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.service-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.service-item .btn {
+    position: relative;
+    z-index: 2;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    border: 2px solid #9b59b6;
+    color: #9b59b6;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.service-item .btn:hover {
+    background: #9b59b6;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Featured Rentals */
+.featured-rentals {
+    padding: 100px 0;
+    background: var(--bg-light);
+}
+
+.rentals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Contact CTA */
+.contact-cta {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    animation: float 25s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .toggle-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .property-listing-form,
+    .search-form {
+        padding: 35px 25px;
+    }
+    
+    .benefits-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-toggle {
+        padding: 40px 0;
+    }
+    
+    .toggle-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .property-listing-form h3 {
+        font-size: 2rem;
+    }
+    
+    .benefit-card,
+    .service-item {
+        padding: 35px 25px;
+    }
+    
+    .form-section {
+        padding: 20px;
+    }
+}

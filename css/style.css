@@ -1,0 +1,22 @@
+/* ...existing code... */
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* ...existing properties... */
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    max-width: 150px; 
+    object-fit: contain;
+}
+
+/* ...existing code... */
