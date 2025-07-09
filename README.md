@@ -138,7 +138,8 @@ Open your browser and visit `http://localhost:3000`
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="https://via.placeholder.com/400x250/3b82f6/ffffff?text=Home+Page" alt="Home Page" width="200">
+  <img src="![horizonhomes-logo](https://github.com/user-attachments/assets/9a9d58b9-3ee4-4490-b3b2-e097f58b3858)
+=Home+Page" alt="Home Page" width="200">
   <img src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Property+Listing" alt="Property Listing" width="200">
   <img src="https://via.placeholder.com/400x250/10b981/ffffff?text=Admin+Dashboard" alt="Admin Dashboard" width="200">
   <img src="https://via.placeholder.com/400x250/ef4444/ffffff?text=Mortgage+Calculator" alt="Mortgage Calculator" width="200">
