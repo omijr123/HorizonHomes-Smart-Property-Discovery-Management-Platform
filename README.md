@@ -1,6 +1,6 @@
 # 🌇 Horizon Homes: Smart Property Discovery & Management Platform
 
-![Horizon Homes Banner](https://i.postimg.cc/GmqqLkkp/Screenshot-2025-07-08-111527.png)
+![Horizon Homes Banner](https://via.placeholder.com/1200x400/1e3a8a/ffffff?text=Horizon+Homes+%E2%80%93+Where+Dream+Homes+Come+True)
 
 **Horizon Homes** is a cutting-edge MERN stack real estate platform revolutionizing property search, listing, and reservation. Designed for both property seekers and professionals, it offers a seamless, secure, and feature-rich experience for all real estate needs.
 
@@ -138,8 +138,8 @@ Open your browser and visit `http://localhost:3000`
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="![horizonhomes-logo](https://github.com/user-attachments/assets/9a9d58b9-3ee4-4490-b3b2-e097f58b3858)
-=Home+Page" alt="Home Page" width="200">
+  
+  <img src="[https://via.placeholder.com/400x250/3b82f6/ffffff?text=Home+Page](https://i.postimg.cc/GmqqLkkp/Screenshot-2025-07-08-111527.png)" alt="Home Page" width="200">
   <img src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Property+Listing" alt="Property Listing" width="200">
   <img src="https://via.placeholder.com/400x250/10b981/ffffff?text=Admin+Dashboard" alt="Admin Dashboard" width="200">
   <img src="https://via.placeholder.com/400x250/ef4444/ffffff?text=Mortgage+Calculator" alt="Mortgage Calculator" width="200">
