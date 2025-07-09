@@ -137,6 +137,8 @@ Open your browser and visit `http://localhost:3000`
 
 ## 📸 Screenshots
 
+Home page
+
 ![pic1](https://i.postimg.cc/GmqqLkkp/Screenshot-2025-07-08-111527.png)
 
 ## 💻 Code Snippets
