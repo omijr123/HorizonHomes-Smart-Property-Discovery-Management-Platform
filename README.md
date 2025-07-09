@@ -173,7 +173,7 @@ Open your browser and visit `http://localhost:3000`
 
 ![pic8](https://i.postimg.cc/wTtwqtw5/Screenshot-2025-07-08-115733.png)
 
--- Review & FeeBack
+-- Review & FeedBack
 
 ![pic9](https://i.postimg.cc/CKvvMjpN/Screenshot-2025-07-08-122304.png)
 
