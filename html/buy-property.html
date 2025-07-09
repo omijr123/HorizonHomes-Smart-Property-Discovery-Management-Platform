@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Property - Horizon Homes</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/buy-property.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body> 
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/horizonhomes-logo.png" alt="Horizon Homes" class="logo-img">
+                <span class="logo-text">Horizon Homes</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="virtual-tours.html" class="nav-link">Virtual Tours</a></li>
+                <li><a href="neighborhoods.html" class="nav-link">Neighborhood</a></li>
+                <li><a href="mortgage.html" class="nav-link">Mortgage</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-auth">
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="register.html" class="btn-outline-small">Register</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <section class="page-header">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <div class="header-content">
+                <h1>Buy Your Dream Property</h1>
+                <p>Find the perfect home with expert guidance and comprehensive support</p>
+                <nav class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span>Buy Property</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h3><i class="fas fa-lock"></i> Authentication Required</h3>
+                <button class="auth-modal-close" id="closeAuthModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="auth-modal-body">
+                <div class="auth-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h4>Please Login or Register</h4>
+                <p>To access our property buying services and exclusive listings, you need to be a registered member of Horizon Homes.</p>
+                <div class="auth-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-star"></i>
+                        <span>Access to exclusive properties</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-heart"></i>
+                        <span>Save favorite properties</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-bell"></i>
+                        <span>Get instant property alerts</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-headset"></i>
+                        <span>Dedicated agent support</span>
+                    </div>
+                </div>
+                <div class="auth-actions">
+                    <a href="login.html" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="register.html" class="btn btn-secondary">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+                <p class="auth-note">Registration is free and takes less than 2 minutes!</p>
+            </div>
+        </div>
+    </div>
+    <section class="buyer-services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Complete Home Buying Journey</h2>
+                <p>We'll guide you through every step of the process</p>
+                <div class="auth-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Please <a href="login.html">login</a> or <a href="register.html">register</a> to access our complete buying services</span>
+                </div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Property Search</h3>
+                    <p>Access our extensive database of premium properties with advanced search filters.</p>
+                    <button class="btn btn-outline auth-required" data-service="search">Start Searching</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Mortgage Pre-approval</h3>
+                    <p>Get pre-approved for your mortgage and know your budget before you start shopping.</p>
+                    <button class="btn btn-outline auth-required" data-service="mortgage">Get Pre-approved</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Expert Negotiation</h3>
+                    <p>Our experienced agents will negotiate the best price and terms for your purchase.</p>
+                    <button class="btn btn-outline auth-required" data-service="agent">Find an Agent</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Closing Support</h3>
+                    <p>We'll handle all the paperwork and guide you through the closing process.</p>
+                    <button class="btn btn-outline auth-required" data-service="support">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="buying-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Home Buying Process</h2>
+                <p>Follow our step-by-step guide to make your home purchase smooth and successful</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Get Pre-approved</h3>
+                        <p>Determine your budget and get pre-approved for a mortgage to strengthen your offers.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Find Your Agent</h3>
+                        <p>Work with one of our experienced buyer's agents to guide you through the process.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Search Properties</h3>
+                        <p>Browse our listings, schedule viewings, and take virtual tours to find your perfect home.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Make an Offer</h3>
+                        <p>Submit competitive offers with your agent's guidance and negotiate the best terms.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Home Inspection</h3>
+                        <p>Conduct professional inspections to ensure the property meets your standards.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Close the Deal</h3>
+                        <p>Complete the final paperwork, secure financing, and get the keys to your new home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="buyer-tools">
+        <div class="container">
+            <div class="section-header">
+                <h2>Helpful Buyer Tools</h2>
+                <p>Resources to make your home buying journey easier</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Mortgage Calculator</h3>
+                    <p>Calculate monthly payments and explore different loan scenarios.</p>
+                    <button class="btn btn-primary auth-required" data-service="calculator">Use Calculator</button>
+                </div>
+                <div class="tool-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Neighborhood Guide</h3>
+                    <p>Explore different neighborhoods and find the perfect community.</p>
+                    <button class="btn btn-primary auth-required" data-service="neighborhoods">Explore Areas</button>
+                </div>
+                <div class="tool-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Buyer's Guide</h3>
+                    <p>Download our comprehensive guide for first-time home buyers.</p>
+                    <button class="btn btn-primary auth-required" data-service="guide">Download Guide</button>
+                </div>
+                <div class="tool-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Ask an Expert</h3>
+                    <p>Get answers to your questions from our real estate professionals.</p>
+                    <button class="btn btn-primary auth-required" data-service="expert">Contact Us</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="featured-properties">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Properties for Sale</h2>
+                <p>Handpicked properties perfect for home buyers</p>
+                <div class="premium-notice">
+                    <i class="fas fa-crown"></i>
+                    <span>Premium listings available to registered members only</span>
+                </div>
+            </div>
+            <div class="properties-grid" id="buyerPropertiesGrid">
+                <!-- Properties will be loaded dynamically -->
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary auth-required" data-service="all-properties">View All Properties for Sale</button>
+            </div>
+        </div>
+    </section>
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Home Buying Journey?</h2>
+                <p>Connect with one of our expert agents today and find your dream home</p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary auth-required" data-service="contact-agent">Contact an Agent</button>
+                    <button class="btn btn-secondary auth-required" data-service="browse">Browse Properties</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <!-- ...existing footer code... -->
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/buy-property.js"></script>
+</body>
+</html>

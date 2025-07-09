@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Tours - Horizon Homes</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/virtual-tours.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/horizonhomes-logo.png" alt="Horizon Homes" class="logo-img">
+                <span class="logo-text">Horizon Homes</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="virtual-tours.html" class="nav-link active">Virtual Tours</a></li>
+                <li><a href="neighborhoods.html" class="nav-link">Neighborhood</a></li>
+                <li><a href="mortgage.html" class="nav-link">Mortgage</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-auth">
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="register.html" class="btn-outline-small">Register</a> 
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Page Header -->
+    <section class="page-header">
+        <div class="header-overlay"></div>
+        <div class="floating-elements">
+            <div class="floating-icon" style="top: 20%; left: 10%;"><i class="fas fa-vr-cardboard"></i></div>
+            <div class="floating-icon" style="top: 60%; right: 15%;"><i class="fas fa-360-degrees"></i></div>
+            <div class="floating-icon" style="top: 40%; left: 80%;"><i class="fas fa-video"></i></div>
+            <div class="floating-icon" style="top: 80%; left: 20%;"><i class="fas fa-home"></i></div>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-badge">
+                    <i class="fas fa-cube"></i>
+                    <span>3D & VR Ready</span>
+                </div>
+                <h1>Immersive Virtual Tours</h1>
+                <p class="header-subtitle">Experience properties like never before with our cutting-edge 3D virtual tours and VR technology</p>
+                <div class="header-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">3D Tours</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4K</span>
+                        <span class="stat-label">HD Quality</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">VR</span>
+                        <span class="stat-label">Compatible</span>
+                    </div>
+                </div>
+                <nav class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span>Virtual Tours</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Filter Section -->
+    <section class="tour-filters">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-header">
+                    <h3><i class="fas fa-filter"></i> Find Your Perfect Tour</h3>
+                    <p>Filter by location, property type, and tour style</p>
+                </div>
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="tour-location"><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <select id="tour-location" class="filter-select">
+                            <option value="">All Locations</option>
+                            <option value="beverly-hills">Beverly Hills, CA</option>
+                            <option value="manhattan">Manhattan, NY</option>
+                            <option value="austin">Austin, TX</option>
+                            <option value="miami">Miami, FL</option>
+                            <option value="seattle">Seattle, WA</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="tour-type"><i class="fas fa-building"></i> Property Type</label>
+                        <select id="tour-type" class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="villa">Villa</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="house">House</option>
+                            <option value="condo">Condo</option>
+                            <option value="penthouse">Penthouse</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="tour-style"><i class="fas fa-eye"></i> Tour Style</label>
+                        <select id="tour-style" class="filter-select">
+                            <option value="">All Styles</option>
+                            <option value="3d">3D Virtual Tour</option>
+                            <option value="360">360° Panoramic</option>
+                            <option value="video">HD Video Tour</option>
+                            <option value="vr">VR Experience</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-primary" id="applyFilters">
+                            <i class="fas fa-search"></i> Apply Filters
+                        </button>
+                        <button class="btn btn-outline reset-filters">
+                            <i class="fas fa-refresh"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured 3D Tour -->
+    <section class="featured-tour">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured 3D Virtual Tour</h2>
+                <p>Experience our most stunning property in immersive 3D detail</p>
+            </div>
+            <div class="featured-tour-content">
+                <div class="tour-player">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/shorts/6c82goND8pY" 
+                            title="Luxury Home 3D Virtual Tour"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                        <div class="tour-controls">
+                            <button class="control-btn fullscreen-btn" title="Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                            <button class="control-btn vr-btn" title="VR Mode">
+                                <i class="fas fa-vr-cardboard"></i>
+                            </button>
+                            <button class="control-btn info-btn" title="Property Info">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                        <div class="tour-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tour-info">
+                    <div class="tour-badges">
+                        <span class="tour-badge featured">Featured</span>
+                        <span class="tour-badge new">New 3D</span>
+                    </div>
+                    <h3>Luxury Modern Villa</h3>
+                    <div class="tour-price">$2,850,000</div>
+                    <div class="tour-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Beverly Hills, California
+                    </div>
+                    <div class="tour-details">
+                        <div class="detail-item">
+                            <i class="fas fa-bed"></i>
+                            <span>5 Bedrooms</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-bath"></i>
+                            <span>4 Bathrooms</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>4,200 sqft</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-car"></i>
+                            <span>3 Car Garage</span>
+                        </div>
+                    </div>
+                    <div class="tour-features">
+                        <div class="feature-item">
+                            <i class="fas fa-cube"></i>
+                            <div class="feature-text">
+                                <h5>3D Virtual Tour</h5>
+                                <p>Walk through every room</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-vr-cardboard"></i>
+                            <div class="feature-text">
+                                <h5>VR Compatible</h5>
+                                <p>Immersive VR experience</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-calendar"></i>
+                            <div class="feature-text">
+                                <h5>Live Tour Available</h5>
+                                <p>Schedule with agent</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tour-actions">
+                        <button class="btn btn-primary start-tour-btn">
+                            <i class="fas fa-play"></i>
+                            Start 3D Tour
+                        </button>
+                        <button class="btn btn-secondary schedule-btn">
+                            <i class="fas fa-calendar"></i>
+                            Schedule Live Tour
+                        </button>
+                        <button class="btn btn-outline vr-mode-btn">
+                            <i class="fas fa-vr-cardboard"></i>
+                            VR Mode
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tours Grid -->
+    <section class="tours-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore All Virtual Tours</h2>
+                <p>Browse our complete collection of 3D virtual property tours</p>
+                <div class="view-toggle">
+                    <button class="toggle-btn active" data-view="grid">
+                        <i class="fas fa-th-large"></i> Grid
+                    </button>
+                    <button class="toggle-btn" data-view="list">
+                        <i class="fas fa-list"></i> List
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tours-grid" id="tours-grid">
+                <!-- Tours will be dynamically loaded here -->
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn btn-outline load-more-btn">
+                    <i class="fas fa-plus"></i>
+                    Load More Tours
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- VR Experience Section -->
+    <section class="vr-experience">
+        <div class="container">
+            <div class="vr-content">
+                <div class="vr-info">
+                    <h2>Immersive VR Experience</h2>
+                    <p>Take your property viewing to the next level with our virtual reality tours. Experience homes as if you're actually there.</p>
+                    <div class="vr-features">
+                        <div class="vr-feature">
+                            <i class="fas fa-vr-cardboard"></i>
+                            <h4>VR Compatible</h4>
+                            <p>Works with all major VR headsets</p>
+                        </div>
+                        <div class="vr-feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Mobile Ready</h4>
+                            <p>Use your smartphone for instant VR</p>
+                        </div>
+                        <div class="vr-feature">
+                            <i class="fas fa-cube"></i>
+                            <h4>3D Navigation</h4>
+                            <p>Walk through properties naturally</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Download VR App
+                    </button>
+                </div>
+                <div class="vr-visual">
+                    <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=600" alt="VR Experience">
+                    <div class="vr-overlay">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Booking Section -->
+    <section class="tour-booking">
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-info">
+                    <h2>Schedule a Live Virtual Tour</h2>
+                    <p>Get a personalized tour with one of our expert agents via video call</p>
+                    <div class="booking-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Expert guidance</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-comments"></i>
+                            <span>Ask questions in real-time</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-clock"></i>
+                            <span>Flexible scheduling</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Safe and secure</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-form">
+                    <form id="tour-booking-form">
+                        <h3>Book Your Live Tour</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-name">Full Name</label>
+                                <input type="text" id="booking-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-email">Email</label>
+                                <input type="email" id="booking-email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-phone">Phone</label>
+                                <input type="tel" id="booking-phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-property">Property Interest</label>
+                                <select id="booking-property" name="property" required>
+                                    <option value="">Select a property</option>
+                                    <option value="penthouse">Luxury Downtown Penthouse</option>
+                                    <option value="family-home">Modern Family Home</option>
+                                    <option value="condo">Riverside Condo</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-date">Preferred Date</label>
+                                <input type="date" id="booking-date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-time">Preferred Time</label>
+                                <select id="booking-time" name="time" required>
+                                    <option value="">Select time</option>
+                                    <option value="09:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-message">Message (Optional)</label>
+                            <textarea id="booking-message" name="message" rows="3" placeholder="Any specific requests or questions?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-calendar-check"></i>
+                            Schedule Tour
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated on New Tours</h2>
+                    <p>Be the first to know about new virtual tours and property listings</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-home"></i>
+                        <span>Horizon Homes</span>
+                    </div>
+                    <p>Your trusted partner in finding the perfect home. Experience the future of real estate with our virtual tours.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="virtual-tours.html">Virtual Tours</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="mortgage.html">Mortgage Calculator</a></li>
+                        <li><a href="virtual-tours.html">Virtual Tours</a></li>
+                        <li><a href="contact.html">Property Consultation</a></li>
+                        <li><a href="#">Investment Advice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, City, State 12345</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Horizon Homes. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/virtual-tours.js"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Property - Horizon Homes</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/sell-property.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/horizonhomes-logo.png" alt="Horizon Homes" class="logo-img">
+                <span class="logo-text">Horizon Homes</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="dropdown">
+                    <a href="properties.html" class="nav-link">Properties <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="buy-property.html"><i class="fas fa-home"></i> Buy Property</a>
+                        <a href="sell-property.html"><i class="fas fa-dollar-sign"></i> Sell Property</a>
+                        <a href="rent-property.html"><i class="fas fa-key"></i> Rent Property</a>
+                        <a href="properties.html"><i class="fas fa-search"></i> Browse All</a> 
+                    </div>
+                </li>
+                <li><a href="virtual-tours.html" class="nav-link">Virtual Tours</a></li>
+                <li><a href="neighborhoods.html" class="nav-link">Neighborhood</a></li>
+                <li><a href="mortgage.html" class="nav-link">Mortgage</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-auth">
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="register.html" class="btn-outline-small">Register</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <div class="header-content">
+                <h1>Sell Your Property</h1>
+                <p>Get top dollar for your home with our expert marketing and sales team</p>
+                <nav class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span>Sell Property</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authentication Required Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h3><i class="fas fa-lock"></i> Authentication Required</h3>
+                <button class="auth-modal-close" id="closeAuthModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="auth-modal-body">
+                <div class="auth-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h4>Please Login or Register</h4>
+                <p>To list your property and access our selling services, you need to be a registered member of Horizon Homes.</p>
+                <div class="auth-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Free market analysis</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-camera"></i>
+                        <span>Professional photography</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Marketing analytics</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-handshake"></i>
+                        <span>Expert negotiation</span>
+                    </div>
+                </div>
+                <div class="auth-actions">
+                    <a href="login.html" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="register.html" class="btn btn-secondary">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+                <p class="auth-note">Join thousands of successful sellers!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Value Estimator -->
+    <section class="home-value-estimator">
+        <div class="container">
+            <div class="estimator-content">
+                <div class="estimator-info">
+                    <h2>What's Your Home Worth?</h2>
+                    <p>Get an instant estimate of your property's current market value</p>
+                    <div class="auth-notice">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Please <a href="login.html">login</a> or <a href="register.html">register</a> to get your free home valuation</span>
+                    </div>
+                    <div class="value-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Real-time market data</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-eye"></i>
+                            <span>Comparative market analysis</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-clock"></i>
+                            <span>Instant results</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="estimator-form">
+                    <form id="home-value-form">
+                        <h3>Property Details</h3>
+                        <div class="form-row">
+                            <input type="text" placeholder="Property Address" required>
+                            <input type="text" placeholder="City, State" required>
+                        </div>
+                        <div class="form-row">
+                            <select required>
+                                <option value="">Property Type</option>
+                                <option value="house">House</option>
+                                <option value="condo">Condo</option>
+                                <option value="townhouse">Townhouse</option>
+                                <option value="apartment">Apartment</option>
+                            </select>
+                            <input type="number" placeholder="Square Feet" required>
+                        </div>
+                        <div class="form-row">
+                            <select required>
+                                <option value="">Bedrooms</option>
+                                <option value="1">1 Bedroom</option>
+                                <option value="2">2 Bedrooms</option>
+                                <option value="3">3 Bedrooms</option>
+                                <option value="4">4 Bedrooms</option>
+                                <option value="5+">5+ Bedrooms</option>
+                            </select>
+                            <select required>
+                                <option value="">Bathrooms</option>
+                                <option value="1">1 Bathroom</option>
+                                <option value="2">2 Bathrooms</option>
+                                <option value="3">3 Bathrooms</option>
+                                <option value="4+">4+ Bathrooms</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-full auth-required" data-service="home-value">
+                            <i class="fas fa-calculator"></i> Get My Home Value
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selling Services -->
+    <section class="selling-services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Complete Selling Services</h2>
+                <p>Everything you need to sell your property quickly and for top dollar</p>
+                <div class="premium-notice">
+                    <i class="fas fa-crown"></i>
+                    <span>Premium selling services for registered members</span>
+                </div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Professional Photography</h3>
+                    <p>High-quality photos and virtual tours to showcase your property's best features.</p>
+                    <button class="btn btn-outline auth-required" data-service="photography">Get Started</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Strategic Marketing</h3>
+                    <p>Multi-channel marketing campaigns to reach qualified buyers quickly.</p>
+                    <button class="btn btn-outline auth-required" data-service="marketing">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Market Analysis</h3>
+                    <p>Comprehensive analysis to price your property competitively in the current market.</p>
+                    <button class="btn btn-outline auth-required" data-service="analysis">Get Analysis</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Expert Negotiation</h3>
+                    <p>Skilled negotiation to get you the best possible price and terms.</p>
+                    <button class="btn btn-outline auth-required" data-service="negotiation">Find Agent</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selling Process -->
+    <section class="selling-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>How We Sell Your Home</h2>
+                <p>Our proven process gets results</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Property Evaluation</h3>
+                        <p>We assess your property and provide a comprehensive market analysis.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Strategic Pricing</h3>
+                        <p>Set the optimal price to attract buyers while maximizing your return.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Property Preparation</h3>
+                        <p>Staging advice and professional photography to showcase your home.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Marketing Launch</h3>
+                        <p>List on MLS and launch comprehensive marketing campaign.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Show & Negotiate</h3>
+                        <p>Handle showings and negotiate offers to get you the best deal.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Close Successfully</h3>
+                        <p>Manage the closing process to ensure a smooth transaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seller Tools -->
+    <section class="seller-tools">
+        <div class="container">
+            <div class="section-header">
+                <h2>Seller Resources</h2>
+                <p>Tools and information to help you sell successfully</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Net Proceeds Calculator</h3>
+                    <p>Calculate your estimated proceeds after all selling costs.</p>
+                    <button class="btn btn-primary auth-required" data-service="calculator">Calculate Now</button>
+                </div>
+                <div class="tool-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Home Staging Tips</h3>
+                    <p>Learn how to prepare your home to sell quickly and for top dollar.</p>
+                    <button class="btn btn-primary auth-required" data-service="staging">Get Tips</button>
+                </div>
+                <div class="tool-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Market Timing Guide</h3>
+                    <p>Understand the best time to list your property for maximum exposure.</p>
+                    <button class="btn btn-primary auth-required" data-service="timing">View Guide</button>
+                </div>
+                <div class="tool-card">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Seller's Guide</h3>
+                    <p>Comprehensive guide covering the entire selling process.</p>
+                    <button class="btn btn-primary auth-required" data-service="guide">Download</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Sell Your Property?</h2>
+                <p>Contact us today for a free market analysis and consultation</p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary auth-required" data-service="free-analysis">Get Free Analysis</button>
+                    <button class="btn btn-secondary auth-required" data-service="value-home">Value My Home</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-home"></i>
+                        <span>Horizon Homes</span>
+                    </div>
+                    <p>Your trusted partner in selling your property. Get top dollar with our expert marketing and sales team.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="virtual-tours.html">Virtual Tours</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="buy-property.html">Buy Property</a></li>
+                        <li><a href="sell-property.html">Sell Property</a></li>
+                        <li><a href="rent-property.html">Rent Property</a></li>
+                        <li><a href="#">Property Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, City, State 12345</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Horizon Homes. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth-handler.js"></script>
+    <script src="js/sell-property.js"></script>
+</body>
+</html>

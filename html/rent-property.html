@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Property - Horizon Homes</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/rent-property.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/horizonhomes-logo.png" alt="Horizon Homes" class="logo-img">
+                <span class="logo-text">Horizon Homes</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="dropdown">
+                    <a href="properties.html" class="nav-link">Properties <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="buy-property.html"><i class="fas fa-home"></i> Buy Property</a>
+                        <a href="sell-property.html"><i class="fas fa-dollar-sign"></i> Sell Property</a>
+                        <a href="rent-property.html"><i class="fas fa-key"></i> Rent Property</a>
+                        <a href="properties.html"><i class="fas fa-search"></i> Browse All</a> 
+                    </div>
+                </li>
+                <li><a href="virtual-tours.html" class="nav-link">Virtual Tours</a></li>
+                <li><a href="neighborhoods.html" class="nav-link">Neighborhood</a></li>
+                <li><a href="mortgage.html" class="nav-link">Mortgage</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-auth">
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="register.html" class="btn-outline-small">Register</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <div class="header-content">
+                <h1>Find Your Perfect Rental</h1>
+                <p>Discover premium rental properties and professional property management services</p>
+                <nav class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span>Rent Property</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authentication Required Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h3><i class="fas fa-lock"></i> Authentication Required</h3>
+                <button class="auth-modal-close" id="closeAuthModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="auth-modal-body">
+                <div class="auth-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h4>Please Login or Register</h4>
+                <p>To access rental listings and property management services, you need to be a registered member of Horizon Homes.</p>
+                <div class="auth-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-search"></i>
+                        <span>Advanced rental search</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-bell"></i>
+                        <span>Instant rental alerts</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Verified listings only</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-tools"></i>
+                        <span>Property management tools</span>
+                    </div>
+                </div>
+                <div class="auth-actions">
+                    <a href="login.html" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="register.html" class="btn btn-secondary">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+                <p class="auth-note">Free membership with instant access!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Type Toggle -->
+    <section class="service-toggle">
+        <div class="container">
+            <div class="toggle-buttons">
+                <button class="toggle-btn active" data-service="tenant">
+                    <i class="fas fa-search"></i>
+                    Find a Rental
+                </button>
+                <button class="toggle-btn" data-service="landlord">
+                    <i class="fas fa-building"></i>
+                    List Your Property
+                </button>
+            </div>
+            <div class="auth-notice">
+                <i class="fas fa-info-circle"></i>
+                <span>Please <a href="login.html">login</a> or <a href="register.html">register</a> to access rental services</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tenant Services -->
+    <section class="tenant-services service-content active" id="tenant-content">
+        <div class="container">
+            <div class="section-header">
+                <h2>Find Your Next Home</h2>
+                <p>Browse our selection of quality rental properties</p>
+            </div>
+            
+            <!-- Rental Search -->
+            <div class="rental-search">
+                <form class="search-form">
+                    <div class="search-row">
+                        <input type="text" placeholder="Location (City, State or ZIP)" class="search-input">
+                        <select class="search-input">
+                            <option value="">Property Type</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="house">House</option>
+                            <option value="condo">Condo</option>
+                            <option value="townhouse">Townhouse</option>
+                        </select>
+                    </div>
+                    <div class="search-row">
+                        <select class="search-input">
+                            <option value="">Bedrooms</option>
+                            <option value="studio">Studio</option>
+                            <option value="1">1 Bedroom</option>
+                            <option value="2">2 Bedrooms</option>
+                            <option value="3">3 Bedrooms</option>
+                            <option value="4+">4+ Bedrooms</option>
+                        </select>
+                        <div class="price-range">
+                            <input type="number" placeholder="Min Rent" class="search-input">
+                            <input type="number" placeholder="Max Rent" class="search-input">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary search-btn auth-required" data-service="search-rentals">
+                        <i class="fas fa-search"></i> Search Rentals
+                    </button>
+                </form>
+            </div>
+
+            <!-- Tenant Benefits -->
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Verified Listings</h3>
+                    <p>All properties are verified and professionally managed</p>
+                    <button class="btn btn-outline auth-required" data-service="verified">Learn More</button>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>24/7 Maintenance</h3>
+                    <p>Quick response maintenance and repair services</p>
+                    <button class="btn btn-outline auth-required" data-service="maintenance">Get Support</button>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Easy Payments</h3>
+                    <p>Convenient online rent payment options</p>
+                    <button class="btn btn-outline auth-required" data-service="payments">Setup Payments</button>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Flexible Leases</h3>
+                    <p>Various lease terms to fit your needs</p>
+                    <button class="btn btn-outline auth-required" data-service="leases">View Options</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landlord Services -->
+    <section class="landlord-services service-content" id="landlord-content">
+        <div class="container">
+            <div class="section-header">
+                <h2>Property Management Services</h2>
+                <p>Maximize your rental income with our professional management</p>
+            </div>
+
+            <!-- Property Listing Form -->
+            <div class="listing-form-container">
+                <form class="property-listing-form">
+                    <h3>List Your Property</h3>
+                    <div class="auth-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>You must be logged in to list a property. <a href="login.html">Login</a> or <a href="register.html">Register</a> to continue.</span>
+                    </div>
+                    <div class="form-section">
+                        <h4>Property Details</h4>
+                        <div class="form-row">
+                            <input type="text" placeholder="Property Address" required disabled>
+                            <input type="text" placeholder="City, State, ZIP" required disabled>
+                        </div>
+                        <div class="form-row">
+                            <select required disabled>
+                                <option value="">Property Type</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="house">House</option>
+                                <option value="condo">Condo</option>
+                                <option value="townhouse">Townhouse</option>
+                            </select>
+                            <input type="number" placeholder="Square Feet" required disabled>
+                        </div>
+                        <div class="form-row">
+                            <select required disabled>
+                                <option value="">Bedrooms</option>
+                                <option value="studio">Studio</option>
+                                <option value="1">1 Bedroom</option>
+                                <option value="2">2 Bedrooms</option>
+                                <option value="3">3 Bedrooms</option>
+                                <option value="4+">4+ Bedrooms</option>
+                            </select>
+                            <select required disabled>
+                                <option value="">Bathrooms</option>
+                                <option value="1">1 Bathroom</option>
+                                <option value="2">2 Bathrooms</option>
+                                <option value="3">3 Bathrooms</option>
+                                <option value="4+">4+ Bathrooms</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h4>Rental Information</h4>
+                        <div class="form-row">
+                            <input type="number" placeholder="Monthly Rent ($)" required disabled>
+                            <input type="number" placeholder="Security Deposit ($)" required disabled>
+                        </div>
+                        <div class="form-row">
+                            <input type="date" placeholder="Available Date" required disabled>
+                            <select required disabled>
+                                <option value="">Lease Term</option>
+                                <option value="6">6 Months</option>
+                                <option value="12">12 Months</option>
+                                <option value="24">24 Months</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Contact Information</h4>
+                        <div class="form-row">
+                            <input type="text" placeholder="Your Name" required disabled>
+                            <input type="email" placeholder="Email Address" required disabled>
+                        </div>
+                        <div class="form-row">
+                            <input type="tel" placeholder="Phone Number" required disabled>
+                            <select required disabled>
+                                <option value="">Management Preference</option>
+                                <option value="self">Self-Managed</option>
+                                <option value="full">Full Management</option>
+                                <option value="partial">Partial Management</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-full auth-required" data-service="list-property">
+                        <i class="fas fa-plus"></i> List My Property
+                    </button>
+                </form>
+            </div>
+
+            <!-- Management Services -->
+            <div class="management-services">
+                <h3>Our Management Services</h3>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-users"></i>
+                        <h4>Tenant Screening</h4>
+                        <p>Comprehensive background and credit checks</p>
+                        <button class="btn btn-outline auth-required" data-service="screening">Learn More</button>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h4>Rent Collection</h4>
+                        <p>Automated collection and late payment handling</p>
+                        <button class="btn btn-outline auth-required" data-service="collection">Get Started</button>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-wrench"></i>
+                        <h4>Maintenance Coordination</h4>
+                        <p>24/7 maintenance requests and vendor management</p>
+                        <button class="btn btn-outline auth-required" data-service="maintenance-coord">Setup Service</button>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Financial Reporting</h4>
+                        <p>Monthly statements and tax-ready reports</p>
+                        <button class="btn btn-outline auth-required" data-service="reporting">View Sample</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Rentals -->
+    <section class="featured-rentals">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Rental Properties</h2>
+                <p>Premium rentals available now</p>
+                <div class="premium-notice">
+                    <i class="fas fa-crown"></i>
+                    <span>Exclusive rentals for registered members</span>
+                </div>
+            </div>
+            <div class="rentals-grid" id="rentalPropertiesGrid">
+                <!-- Rental properties will be loaded dynamically -->
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary auth-required" data-service="all-rentals">View All Rentals</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need Help Finding the Perfect Rental?</h2>
+                <p>Our rental specialists are here to help you find your next home</p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary auth-required" data-service="contact-specialist">Contact a Specialist</button>
+                    <button class="btn btn-secondary auth-required" data-service="browse-rentals">Browse Rentals</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-home"></i>
+                        <span>Horizon Homes</span>
+                    </div>
+                    <p>Your trusted partner in finding the perfect rental. Experience the future of real estate with our professional property management.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="virtual-tours.html">Virtual Tours</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="buy-property.html">Buy Property</a></li>
+                        <li><a href="sell-property.html">Sell Property</a></li>
+                        <li><a href="rent-property.html">Rent Property</a></li>
+                        <li><a href="#">Property Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, City, State 12345</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Horizon Homes. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth-handler.js"></script>
+    <script src="js/rent-property.js"></script>
+</body>
+</html>

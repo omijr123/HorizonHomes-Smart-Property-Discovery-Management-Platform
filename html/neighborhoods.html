@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Neighborhoods - Horizon Homes</title>
+    <meta name="description" content="Discover safe and family-friendly neighborhoods with detailed safety ratings, amenities, and community information.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/neighborhoods.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container"> 
+            <div class="nav-logo">
+                <img src="images/horizonhomes-logo.png" alt="Horizon Homes" class="logo-img">
+                <span class="logo-text">Horizon Homes</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="virtual-tours.html" class="nav-link">Virtual Tours</a></li>
+                <li><a href="neighborhoods.html" class="nav-link active">Neighborhood</a></li>
+                <li><a href="mortgage.html" class="nav-link">Mortgage</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-auth">
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="register.html" class="btn-outline-small">Register</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <section class="page-header">
+        <div class="header-overlay"></div>
+        <div class="floating-elements">
+            <div class="floating-icon" style="top: 20%; left: 10%;"><i class="fas fa-shield-alt"></i></div>
+            <div class="floating-icon" style="top: 60%; right: 15%;"><i class="fas fa-map-marked-alt"></i></div>
+            <div class="floating-icon" style="top: 40%; left: 80%;"><i class="fas fa-graduation-cap"></i></div>
+            <div class="floating-icon" style="top: 80%; left: 20%;"><i class="fas fa-shopping-cart"></i></div>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-badge">
+                    <i class="fas fa-shield-check"></i>
+                    <span>AI-Powered Safety Analysis</span>
+                </div>
+                <h1>Smart Neighborhood Discovery</h1>
+                <p class="header-subtitle">Find the perfect community with our AI-powered safety analysis, real-time crime data, and comprehensive amenity mapping</p>
+                <div class="header-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Safe Areas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">A+</span>
+                        <span class="stat-label">Safety Rating</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Monitoring</span>
+                    </div>
+                </div>
+                <nav class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span>Neighborhoods</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section class="ai-search-section">
+        <div class="container">
+            <div class="ai-search-container">
+                <div class="ai-assistant">
+                    <div class="ai-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="ai-chat">
+                        <h3>Ask Our AI Assistant</h3>
+                        <p>Try: "Show safe neighborhoods near schools" or "Find areas with low crime rates"</p>
+                        <div class="ai-input-container">
+                            <input type="text" id="ai-query" placeholder="Ask about neighborhoods, safety, schools, shopping..." />
+                            <button type="button" id="ai-search-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="quick-queries">
+                            <button class="quick-query" data-query="Show safe neighborhoods near schools">
+                                <i class="fas fa-graduation-cap"></i> Near Schools
+                            </button>
+                            <button class="quick-query" data-query="Find low crime rate areas">
+                                <i class="fas fa-shield-alt"></i> Low Crime
+                            </button>
+                            <button class="quick-query" data-query="Areas with good shopping centers">
+                                <i class="fas fa-shopping-bag"></i> Shopping
+                            </button>
+                            <button class="quick-query" data-query="Family-friendly neighborhoods">
+                                <i class="fas fa-users"></i> Family Areas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <div class="map-sidebar">
+                    <div class="filter-header">
+                        <h3>Smart Filters</h3>
+                        <button class="btn btn-outline btn-small" id="reset-filters">Reset All</button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4><i class="fas fa-shield-alt"></i> Safety Metrics</h4>
+                        <div class="range-slider">
+                            <label>Crime Rate (Lower is better)</label>
+                            <input type="range" id="crime-rate" min="1" max="10" value="3" />
+                            <div class="range-values">
+                                <span>Low</span>
+                                <span id="crime-value">3/10</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+                        <div class="checkbox-filters">
+                            <label><input type="checkbox" checked> Neighborhood Watch</label>
+                            <label><input type="checkbox" checked> 24/7 Security</label>
+                            <label><input type="checkbox"> Gated Community</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4><i class="fas fa-graduation-cap"></i> Education</h4>
+                        <div class="range-slider">
+                            <label>School Rating</label>
+                            <input type="range" id="school-rating" min="1" max="10" value="8" />
+                            <div class="range-values">
+                                <span>1</span>
+                                <span id="school-value">8/10</span>
+                                <span>10</span>
+                            </div>
+                        </div>
+                        <div class="distance-filter">
+                            <label>Distance to Schools</label>
+                            <select id="school-distance">
+                                <option value="0.5">Within 0.5 miles</option>
+                                <option value="1" selected>Within 1 mile</option>
+                                <option value="2">Within 2 miles</option>
+                                <option value="5">Within 5 miles</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4><i class="fas fa-shopping-cart"></i> Amenities</h4>
+                        <div class="checkbox-filters">
+                            <label><input type="checkbox" checked> Shopping Centers</label>
+                            <label><input type="checkbox" checked> Grocery Stores</label>
+                            <label><input type="checkbox"> Restaurants</label>
+                            <label><input type="checkbox"> Parks & Recreation</label>
+                            <label><input type="checkbox"> Public Transit</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4><i class="fas fa-users"></i> Demographics</h4>
+                        <div class="checkbox-filters">
+                            <label><input type="checkbox"> Young Families</label>
+                            <label><input type="checkbox"> Professionals</label>
+                            <label><input type="checkbox"> Retirees</label>
+                            <label><input type="checkbox"> Students</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-full" id="apply-filters">
+                        <i class="fas fa-search"></i> Apply Filters
+                    </button>
+                </div>
+
+                <div class="map-display">
+                    <div class="map-controls">
+                        <div class="map-layers">
+                            <button class="layer-btn active" data-layer="safety">
+                                <i class="fas fa-shield-alt"></i> Safety
+                            </button>
+                            <button class="layer-btn" data-layer="schools">
+                                <i class="fas fa-graduation-cap"></i> Schools
+                            </button>
+                            <button class="layer-btn" data-layer="shopping">
+                                <i class="fas fa-shopping-cart"></i> Shopping
+                            </button>
+                            <button class="layer-btn" data-layer="transport">
+                                <i class="fas fa-bus"></i> Transit
+                            </button>
+                        </div>
+                        <div class="map-view-controls">
+                            <button class="view-control" data-view="satellite">
+                                <i class="fas fa-satellite"></i>
+                            </button>
+                            <button class="view-control active" data-view="street">
+                                <i class="fas fa-map"></i>
+                            </button>
+                        </div>
+                    </div> 
+                    <div class="interactive-map" id="neighborhood-map">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h3>Interactive Neighborhood Map</h3>
+                            <p>Click on areas to see detailed safety and amenity information</p>
+                        </div>
+                    </div>
+
+                    <div class="map-legend">
+                        <h4>Safety Color Code</h4>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <div class="color-indicator" style="background: #28a745;"></div>
+                                <span>Very Safe (A+)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-indicator" style="background: #ffc107;"></div>
+                                <span>Safe (B+)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-indicator" style="background: #fd7e14;"></div>
+                                <span>Moderate (C+)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-indicator" style="background: #dc3545;"></div>
+                                <span>Below Average (D)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="neighborhoods-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Safe Neighborhoods</h2>
+                <p>Handpicked communities with excellent safety ratings and amenities</p>
+                <div class="view-toggle">
+                    <button class="toggle-btn active" data-view="grid">
+                        <i class="fas fa-th-large"></i> Grid
+                    </button>
+                    <button class="toggle-btn" data-view="list">
+                        <i class="fas fa-list"></i> List
+                    </button>
+                </div>
+            </div>
+            <div class="neighborhoods-grid" id="neighborhoods-grid">
+            </div>
+        </div>
+    </section>
+    <div class="modal" id="neighborhood-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Neighborhood Details</h2>
+                <button class="modal-close" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="detail-tabs">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="safety">Safety</button>
+                    <button class="tab-btn" data-tab="amenities">Amenities</button>
+                    <button class="tab-btn" data-tab="demographics">Demographics</button>
+                </div>
+                <div class="tab-content active" id="overview-tab">
+                </div>
+                
+                <div class="tab-content" id="safety-tab">
+                </div>
+                
+                <div class="tab-content" id="amenities-tab">
+                    
+                </div>
+                
+                <div class="tab-content" id="demographics-tab">
+                    <!-- Demographics details will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="schedule-visit">
+                    <i class="fas fa-calendar"></i> Schedule Visit
+                </button>
+                <button class="btn btn-primary" id="view-properties">
+                    <i class="fas fa-home"></i> View Properties
+                </button>
+            </div>
+        </div>
+    </div>
+    <section class="safety-resources">
+        <div class="container">
+            <div class="section-header">
+                <h2>Safety Resources & Tips</h2>
+                <p>Essential information for evaluating neighborhood safety</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Crime Analytics</h3>
+                    <p>Real-time crime data and trend analysis powered by AI to help you make informed decisions.</p>
+                    <ul>
+                        <li>Weekly crime reports</li>
+                        <li>Trend analysis</li>
+                        <li>Comparative statistics</li>
+                        <li>Predictive insights</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Community Watch</h3>
+                    <p>Active neighborhood watch programs and community safety initiatives in your area.</p>
+                    <ul>
+                        <li>Watch group locations</li>
+                        <li>Meeting schedules</li>
+                        <li>Contact information</li>
+                        <li>Safety events</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Emergency Services</h3>
+                    <p>Response times and coverage areas for police, fire, and medical emergency services.</p>
+                    <ul>
+                        <li>Average response times</li>
+                        <li>Station locations</li>
+                        <li>Coverage areas</li>
+                        <li>Emergency contacts</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Safety Checklist</h3>
+                    <p>Comprehensive checklist for evaluating neighborhood safety during your visit.</p>
+                    <ul>
+                        <li>Lighting assessment</li>
+                        <li>Traffic patterns</li>
+                        <li>Maintenance quality</li>
+                        <li>Community activity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Find Your Safe Haven?</h2>
+                <p>Let our neighborhood experts help you discover the perfect community with our AI-powered safety analysis.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="fas fa-user-tie"></i> Speak with Expert
+                    </a>
+                    <a href="properties.html" class="btn btn-outline">
+                        <i class="fas fa-home"></i> View Properties
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Horizon Homes</h3>
+                    <p>Your trusted partner in finding the perfect home. We provide comprehensive real estate services with a commitment to excellence.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="virtual-tours.html">Virtual Tours</a></li>
+                        <li><a href="mortgage.html">Mortgage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Buy Property</a></li>
+                        <li><a href="#">Sell Property</a></li>
+                        <li><a href="#">Rent Property</a></li>
+                        <li><a href="#">Property Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, City, State 12345</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Horizon Homes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/neighborhoods.js"></script>
+</body>
+</html>

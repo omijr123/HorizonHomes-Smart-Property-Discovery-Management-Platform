@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Horizon Homes</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/horizonhomes-logo.png" alt="Horizon Homes" class="logo-img">
+                <span class="logo-text">Horizon Homes</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="virtual-tours.html" class="nav-link">Virtual Tours</a></li>
+                <li><a href="neighborhoods.html" class="nav-link">Neighborhood</a></li>
+                <li><a href="mortgage.html" class="nav-link">Mortgage</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li class="nav-auth">
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="register.html" class="btn-outline-small">Register</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger"> 
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Get In Touch</h1>
+                <p>We're here to help you find your perfect home</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span>Contact</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="quick-contact">
+        <div class="container">
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="card-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Us Now</h3>
+                    <p>Speak with our experts</p>
+                    <a href="tel:+15551234567" class="contact-link">(555) 123-4567</a>
+                    <span class="availability">Available 24/7</span>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Get detailed responses</p>
+                    <a href="mailto:info@horizonhomes.com" class="contact-link">info@horizonhomes.com</a>
+                    <span class="availability">Response within 2 hours</span>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Office</h3>
+                    <p>Personal consultation</p>
+                    <address class="contact-link">123 Real Estate Ave<br>City, State 12345</address>
+                    <span class="availability">Mon-Fri: 8AM-8PM</span>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="card-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Instant support</p>
+                    <button class="contact-link chat-btn" id="startChat">Start Conversation</button>
+                    <span class="availability">Online now</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Contact Form -->
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Send us a Message</h2>
+                        <p>Fill out the form below and we'll get back to you within 24 hours</p>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-tabs">
+                            <button type="button" class="tab-btn active" data-tab="general">
+                                <i class="fas fa-comment"></i>
+                                General
+                            </button>
+                            <button type="button" class="tab-btn" data-tab="buying">
+                                <i class="fas fa-home"></i>
+                                Buying
+                            </button>
+                            <button type="button" class="tab-btn" data-tab="selling">
+                                <i class="fas fa-tag"></i>
+                                Selling
+                            </button>
+                        </div>
+                        <div class="tab-content active" id="general">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">
+                                        <i class="fas fa-user"></i>
+                                        Full Name *
+                                    </label>
+                                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">
+                                        <i class="fas fa-envelope"></i>
+                                        Email Address *
+                                    </label>
+                                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">
+                                        <i class="fas fa-phone"></i>
+                                        Phone Number
+                                    </label>
+                                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">
+                                        <i class="fas fa-tag"></i>
+                                        Subject
+                                    </label>
+                                    <select id="subject" name="subject">
+                                        <option value="">Select a topic</option>
+                                        <option value="general">General Question</option>
+                                        <option value="property">Property Inquiry</option>
+                                        <option value="appointment">Schedule Appointment</option>
+                                        <option value="feedback">Feedback</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">
+                                    <i class="fas fa-comment-alt"></i>
+                                    Message *
+                                </label>
+                                <textarea id="message" name="message" rows="5" required placeholder="How can we help you today?"></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="buying">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="buyerName">
+                                        <i class="fas fa-user"></i>
+                                        Full Name *
+                                    </label>
+                                    <input type="text" id="buyerName" name="buyerName" required placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="buyerEmail">
+                                        <i class="fas fa-envelope"></i>
+                                        Email Address *
+                                    </label>
+                                    <input type="email" id="buyerEmail" name="buyerEmail" required placeholder="your@email.com">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="budget">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        Budget Range
+                                    </label>
+                                    <select id="budget" name="budget">
+                                        <option value="">Select budget</option>
+                                        <option value="under-300k">Under $300K</option>
+                                        <option value="300k-500k">$300K - $500K</option>
+                                        <option value="500k-750k">$500K - $750K</option>
+                                        <option value="750k-1m">$750K - $1M</option>
+                                        <option value="over-1m">Over $1M</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="propertyType">
+                                        <i class="fas fa-home"></i>
+                                        Property Type
+                                    </label>
+                                    <select id="propertyType" name="propertyType">
+                                        <option value="">Any type</option>
+                                        <option value="house">Single Family Home</option>
+                                        <option value="condo">Condominium</option>
+                                        <option value="townhouse">Townhouse</option>
+                                        <option value="apartment">Apartment</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Preferred Location
+                                </label>
+                                <input type="text" id="location" name="location" placeholder="e.g., Downtown, Westside, etc.">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="buyingMessage">
+                                    <i class="fas fa-comment-alt"></i>
+                                    Additional Requirements
+                                </label>
+                                <textarea id="buyingMessage" name="buyingMessage" rows="4" placeholder="Tell us about your ideal home..."></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="selling">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="sellerName">
+                                        <i class="fas fa-user"></i>
+                                        Full Name *
+                                    </label>
+                                    <input type="text" id="sellerName" name="sellerName" required placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sellerEmail">
+                                        <i class="fas fa-envelope"></i>
+                                        Email Address *
+                                    </label>
+                                    <input type="email" id="sellerEmail" name="sellerEmail" required placeholder="your@email.com">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="propertyAddress">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Property Address
+                                </label>
+                                <input type="text" id="propertyAddress" name="propertyAddress" placeholder="Enter your property address">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="propertyValue">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        Estimated Value
+                                    </label>
+                                    <input type="text" id="propertyValue" name="propertyValue" placeholder="e.g., $500,000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="timeline">
+                                        <i class="fas fa-calendar"></i>
+                                        Selling Timeline
+                                    </label>
+                                    <select id="timeline" name="timeline">
+                                        <option value="">Select timeline</option>
+                                        <option value="asap">As soon as possible</option>
+                                        <option value="3months">Within 3 months</option>
+                                        <option value="6months">Within 6 months</option>
+                                        <option value="exploring">Just exploring</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="sellingMessage">
+                                    <i class="fas fa-comment-alt"></i>
+                                    Tell us about your property
+                                </label>
+                                <textarea id="sellingMessage" name="sellingMessage" rows="4" placeholder="Describe your property and selling goals..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <label for="newsletter">
+                                    <i class="fas fa-check"></i>
+                                    Subscribe to our newsletter for market updates
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar-info">
+                    <div class="info-card">
+                        <h3>Why Choose Us?</h3>
+                        <div class="benefits">
+                            <div class="benefit">
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <h4>15+ Years Experience</h4>
+                                    <p>Proven track record in real estate</p>
+                                </div>
+                            </div>
+                            <div class="benefit">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <h4>Expert Team</h4>
+                                    <p>Licensed professionals ready to help</p>
+                                </div>
+                            </div>
+                            <div class="benefit">
+                                <i class="fas fa-handshake"></i>
+                                <div>
+                                    <h4>Personalized Service</h4>
+                                    <p>Tailored solutions for your needs</p>
+                                </div>
+                            </div>
+                            <div class="benefit">
+                                <i class="fas fa-chart-line"></i>
+                                <div>
+                                    <h4>Market Expertise</h4>
+                                    <p>Deep knowledge of local markets</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Office Hours</h3>
+                        <div class="hours">
+                            <div class="day">
+                                <span>Monday - Friday</span>
+                                <span>8:00 AM - 8:00 PM</span>
+                            </div>
+                            <div class="day">
+                                <span>Saturday</span>
+                                <span>9:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="day">
+                                <span>Sunday</span>
+                                <span>10:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Emergency Contact</h3>
+                        <p>For urgent property matters outside business hours:</p>
+                        <a href="tel:+15551234567" class="emergency-phone">
+                            <i class="fas fa-phone"></i>
+                            (555) 123-4567
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="map-section">
+        <div class="container">
+            <h2>Find Our Office</h2>
+            <div class="map-content">
+                <div class="map-placeholder">
+                    <div class="map-info">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Interactive Map</h3>
+                        <p>123 Real Estate Avenue, Suite 100<br>City, State 12345</p>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-directions"></i>
+                            Get Directions
+                        </button>
+                    </div>
+                </div>
+                <div class="location-details">
+                    <h3>Getting Here</h3>
+                    <div class="transport-info">
+                        <div class="transport-item">
+                            <i class="fas fa-car"></i>
+                            <div>
+                                <h4>By Car</h4>
+                                <p>Free parking available<br>Garage entrance on Main St</p>
+                            </div>
+                        </div>
+                        <div class="transport-item">
+                            <i class="fas fa-subway"></i>
+                            <div>
+                                <h4>Public Transit</h4>
+                                <p>Metro Station: 2 blocks<br>Bus Stop: 1 block away</p>
+                            </div>
+                        </div>
+                        <div class="transport-item">
+                            <i class="fas fa-walking"></i>
+                            <div>
+                                <h4>Walking</h4>
+                                <p>Accessible entrance<br>Elevator available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Horizon Homes</h3>
+                    <p>Your trusted partner in finding the perfect home. We provide comprehensive real estate services with a commitment to excellence.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="virtual-tours.html">Virtual Tours</a></li>
+                        <li><a href="mortgage.html">Mortgage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Buy Property</a></li>
+                        <li><a href="#">Sell Property</a></li>
+                        <li><a href="#">Rent Property</a></li>
+                        <li><a href="#">Property Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, City, State 12345</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Horizon Homes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

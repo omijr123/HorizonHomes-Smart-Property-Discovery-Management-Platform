@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - Horizon Homes</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/properties.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/horizonhomes-logo.png" alt="Horizon Homes" class="logo-img">
+                <span class="logo-text">Horizon Homes</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="properties.html" class="nav-link active">Properties</a></li>
+                <li><a href="virtual-tours.html" class="nav-link">Virtual Tours</a></li>
+                <li><a href="neighborhoods.html" class="nav-link">Neighborhood</a></li>
+                <li><a href="mortgage.html" class="nav-link">Mortgage</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-auth">
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="register.html" class="btn-outline-small">Register</a> 
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <section class="page-header">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <div class="header-content">
+                <h1>Premium Properties</h1>
+                <p>Discover your perfect home from our exclusive collection of luxury properties</p>
+                <nav class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span>Properties</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section class="search-filter-section">
+        <div class="container">
+            <div class="search-filter-container">
+                <div class="search-box">
+                    <div class="search-header">
+                        <h3><i class="fas fa-search"></i> Find Your Dream Property</h3>
+                        <p>Use advanced filters to discover properties that match your needs</p>
+                    </div>
+                    <div class="search-row">
+                        <select class="filter-input" id="propertyType">
+                            <option value="">All Property Types</option>
+                            <option value="house">House</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="condo">Condo</option>
+                            <option value="villa">Villa</option>
+                            <option value="townhouse">Townhouse</option>
+                            <option value="penthouse">Penthouse</option>
+                        </select>
+                        <select class="filter-input" id="location">
+                            <option value="">All Locations</option>
+                            <option value="beverly-hills">Beverly Hills, CA</option>
+                            <option value="manhattan">Manhattan, NY</option>
+                            <option value="austin">Austin, TX</option>
+                            <option value="miami">Miami, FL</option>
+                            <option value="seattle">Seattle, WA</option>
+                            <option value="chicago">Chicago, IL</option>
+                            <option value="san-francisco">San Francisco, CA</option>
+                            <option value="boston">Boston, MA</option>
+                        </select>
+                    </div>
+                    <div class="search-row">
+                        <select class="filter-input" id="priceRange">
+                            <option value="">Any Price</option>
+                            <option value="0-300000">Under $300K</option>
+                            <option value="300000-500000">$300K - $500K</option>
+                            <option value="500000-750000">$500K - $750K</option>
+                            <option value="750000-1000000">$750K - $1M</option>
+                            <option value="1000000-1500000">$1M - $1.5M</option>
+                            <option value="1500000-2000000">$1.5M - $2M</option>
+                            <option value="2000000-99999999">Above $2M</option>
+                        </select>
+                        <select class="filter-input" id="bedrooms">
+                            <option value="">Any Bedrooms</option>
+                            <option value="1">1 Bedroom</option>
+                            <option value="2">2 Bedrooms</option>
+                            <option value="3">3 Bedrooms</option>
+                            <option value="4">4 Bedrooms</option>
+                            <option value="5">5 Bedrooms</option>
+                            <option value="6+">6+ Bedrooms</option>
+                        </select>
+                    </div>
+                    <div class="advanced-filters">
+                        <button class="btn btn-outline" id="advancedToggle">
+                            <i class="fas fa-sliders-h"></i> Advanced Filters
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="advanced-filters-panel" id="advancedFilters">
+                        <div class="filter-row">
+                            <select class="filter-input" id="bathrooms">
+                                <option value="">Any Bathrooms</option>
+                                <option value="1">1+ Bathroom</option>
+                                <option value="2">2+ Bathrooms</option>
+                                <option value="3">3+ Bathrooms</option>
+                                <option value="4">4+ Bathrooms</option>
+                            </select>
+                            <select class="filter-input" id="propertyAge">
+                                <option value="">Any Age</option>
+                                <option value="new">New Construction</option>
+                                <option value="0-5">0-5 Years</option>
+                                <option value="5-10">5-10 Years</option>
+                                <option value="10-20">10-20 Years</option>
+                                <option value="20+">20+ Years</option>
+                            </select>
+                        </div>
+                        <div class="filter-row">
+                            <input type="number" class="filter-input" id="minSize" placeholder="Min Size (sq ft)">
+                            <input type="number" class="filter-input" id="maxSize" placeholder="Max Size (sq ft)">
+                        </div>
+                        <div class="amenities-filter">
+                            <h4>Amenities</h4>
+                            <div class="amenities-grid">
+                                <label><input type="checkbox" value="pool"> Pool</label>
+                                <label><input type="checkbox" value="garage"> Garage</label>
+                                <label><input type="checkbox" value="garden"> Garden</label>
+                                <label><input type="checkbox" value="gym"> Gym</label>
+                                <label><input type="checkbox" value="security"> Security</label>
+                                <label><input type="checkbox" value="elevator"> Elevator</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-actions">
+                        <button class="btn btn-primary" id="searchBtn">
+                            <i class="fas fa-search"></i> Search Properties
+                        </button>
+                        <button class="btn btn-outline" id="clearBtn">
+                            <i class="fas fa-times"></i> Clear All
+                        </button>
+                        <button class="btn btn-secondary" id="saveSearch">
+                            <i class="fas fa-bookmark"></i> Save Search
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="view-controls">
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                        <button class="view-btn" data-view="map">
+                            <i class="fas fa-map"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="properties-section">
+        <div class="container">
+            <div class="properties-header">
+                <div class="results-info">
+                    <p><span id="resultsCount">0</span> properties found</p>
+                    <div class="active-filters" id="activeFilters"></div>
+                </div>
+                <div class="sort-dropdown">
+                    <label for="sortBy">Sort by:</label>
+                    <select id="sortBy">
+                        <option value="newest">Newest First</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="size-large">Size: Largest First</option>
+                        <option value="size-small">Size: Smallest First</option>
+                        <option value="bedrooms">Most Bedrooms</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Properties will be dynamically loaded here -->
+            </div>
+            <div class="pagination" id="pagination">
+                <button class="pagination-btn" id="prevBtn" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="pagination-numbers" id="paginationNumbers">
+                    <!-- Page numbers will be generated dynamically -->
+                </div>
+                <button class="pagination-btn" id="nextBtn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <div class="modal" id="propertyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Property Details</h2>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="property-detail-tabs">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="features">Features</button>
+                    <button class="tab-btn" data-tab="location">Location</button>
+                    <button class="tab-btn" data-tab="mortgage">Mortgage</button>
+                </div>
+                
+                <div class="tab-content active" id="overview-tab">
+                </div>
+                
+                <div class="tab-content" id="features-tab">
+                    <!-- Features content will be loaded here -->
+                </div>
+                
+                <div class="tab-content" id="location-tab">
+                    <!-- Location content will be loaded here -->
+                </div>
+                
+                <div class="tab-content" id="mortgage-tab">
+                    <!-- Mortgage calculator will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="scheduleViewing">
+                    <i class="fas fa-calendar"></i> Schedule Viewing
+                </button>
+                <button class="btn btn-secondary" id="virtualTour">
+                    <i class="fas fa-vr-cardboard"></i> Virtual Tour
+                </button>
+                <button class="btn btn-primary" id="contactAgent">
+                    <i class="fas fa-phone"></i> Contact Agent
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>Stay Updated</h3>
+                <p>Get notified about new properties and price changes</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Horizon Homes</h3>
+                    <p>Your trusted partner in finding the perfect home. We provide comprehensive real estate services with a commitment to excellence.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="virtual-tours.html">Virtual Tours</a></li>
+                        <li><a href="mortgage.html">Mortgage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="buy-property.html">Buy Property</a></li>
+                        <li><a href="sell-property.html">Sell Property</a></li>
+                        <li><a href="rent-property.html">Rent Property</a></li>
+                        <li><a href="#">Property Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, City, State 12345</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Horizon Homes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/properties.js"></script>
+</body>
+</html>

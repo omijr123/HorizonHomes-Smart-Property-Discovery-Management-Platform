@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Services - Horizon Homes</title>
+    <meta name="description" content="Explore mortgage options and financing solutions with Horizon Homes. Get pre-approved, calculate payments, and find the best loan options.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mortgage.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container"> 
+            <div class="nav-logo">
+                <img src="images/horizonhomes-logo.png" alt="Horizon Homes" class="logo-img">
+                <span class="logo-text">Horizon Homes</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="virtual-tours.html" class="nav-link">Virtual Tours</a></li>
+                <li><a href="neighborhoods.html" class="nav-link">Neighborhood</a></li>
+                <li><a href="mortgage.html" class="nav-link active">Mortgage</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-auth">
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="register.html" class="btn-outline-small">Register</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <section class="page-header">
+        <div class="header-overlay"></div>
+        <div class="floating-elements">
+            <div class="floating-icon" style="top: 20%; left: 10%;"><i class="fas fa-home"></i></div>
+            <div class="floating-icon" style="top: 60%; right: 15%;"><i class="fas fa-calculator"></i></div>
+            <div class="floating-icon" style="top: 40%; left: 80%;"><i class="fas fa-chart-line"></i></div>
+            <div class="floating-icon" style="top: 80%; left: 20%;"><i class="fas fa-shield-alt"></i></div>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-badge">
+                    <i class="fas fa-award"></i>
+                    <span>Trusted Mortgage Solutions</span>
+                </div>
+                <h1>Mortgage Services</h1>
+                <p class="header-subtitle">Find the perfect loan for your dream home with competitive rates and expert guidance</p>
+                <div class="header-stats">
+                    <div class="stat">
+                        <span class="stat-number">4.8%</span>
+                        <span class="stat-label">Average Rate</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24hrs</span>
+                        <span class="stat-label">Pre-Approval</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$0</span>
+                        <span class="stat-label">Application Fee</span>
+                    </div>
+                </div>
+                <nav class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <span><i class="fas fa-chevron-right"></i></span>
+                    <span>Mortgage Services</span>
+                </nav>
+                <div class="cta-buttons">
+                    <a href="#mortgage-calculator" class="btn btn-primary btn-large">
+                        <i class="fas fa-calculator"></i>
+                        Calculate Payment
+                    </a>
+                    <a href="#pre-approval" class="btn btn-outline-white btn-large">
+                        <i class="fas fa-rocket"></i>
+                        Get Pre-Approved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="quick-features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Fast Approval</h3>
+                    <p>Get pre-approved in 24 hours or less</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>Low Rates</h3>
+                    <p>Competitive interest rates starting at 4.8%</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Expert Guidance</h3>
+                    <p>Professional loan officers to guide you</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>Secure Process</h3>
+                    <p>Bank-level security for your information</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mortgage-calculator" id="mortgage-calculator">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mortgage Calculator</h2>
+                <p>Calculate your monthly payments and see what you can afford</p>
+            </div>
+            
+            <div class="calculator-container">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="loan-amount">Loan Amount</label>
+                        <div class="input-group">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="loan-amount" value="400000" min="0" step="1000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="down-payment">Down Payment</label>
+                        <div class="input-group">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="down-payment" value="80000" min="0" step="1000">
+                        </div>
+                        <div class="percentage-display">
+                            <span id="down-payment-percentage">20%</span> of loan amount
+                        </div>
+                    </div>   
+                    <div class="form-group">
+                        <label for="interest-rate">Interest Rate</label>
+                        <div class="input-group">
+                            <input type="number" id="interest-rate" value="6.5" min="0" max="20" step="0.1">
+                            <span class="input-suffix">%</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loan-term">Loan Term</label>
+                        <select id="loan-term">
+                            <option value="15">15 years</option>
+                            <option value="20">20 years</option>
+                            <option value="25">25 years</option>
+                            <option value="30" selected>30 years</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="property-tax">Annual Property Tax</label>
+                        <div class="input-group">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="property-tax" value="8000" min="0" step="100">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="home-insurance">Annual Home Insurance</label>
+                        <div class="input-group">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="home-insurance" value="2000" min="0" step="100">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pmi">PMI (if applicable)</label>
+                        <div class="input-group">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="pmi" value="0" min="0" step="10">
+                        </div>
+                    </div>
+                    <button type="button" id="calculate-btn" class="btn btn-primary">Calculate Payment</button>
+                </div>
+                <div class="calculator-results">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <h3>Monthly Payment Breakdown</h3>
+                        </div>
+                        <div class="payment-summary">
+                            <div class="total-payment">
+                                <span class="label">Total Monthly Payment</span>
+                                <span class="amount" id="total-payment">$2,498</span>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-breakdown">
+                            <div class="breakdown-item">
+                                <span class="label">Principal & Interest</span>
+                                <span class="amount" id="principal-interest">$2,131</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="label">Property Tax</span>
+                                <span class="amount" id="monthly-tax">$667</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="label">Home Insurance</span>
+                                <span class="amount" id="monthly-insurance">$167</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="label">PMI</span>
+                                <span class="amount" id="monthly-pmi">$0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="loan-summary">
+                            <div class="summary-item">
+                                <span class="label">Total Loan Amount</span>
+                                <span class="value" id="total-loan">$320,000</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">Total Interest Paid</span>
+                                <span class="value" id="total-interest">$447,160</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">Total Cost of Loan</span>
+                                <span class="value" id="total-cost">$767,160</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="payment-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="loan-types">
+        <div class="container">
+            <div class="section-header">
+                <h2>Loan Types We Offer</h2>
+                <p>Choose the mortgage option that best fits your needs</p>
+            </div>
+            
+            <div class="loan-grid">
+                <div class="loan-card">
+                    <div class="loan-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Conventional Loans</h3>
+                    <p>Traditional mortgages with competitive rates and flexible terms. Ideal for borrowers with good credit.</p>
+                    <ul class="loan-features">
+                        <li><i class="fas fa-check"></i> Down payment as low as 3%</li>
+                        <li><i class="fas fa-check"></i> Competitive interest rates</li>
+                        <li><i class="fas fa-check"></i> Fixed or adjustable rates</li>
+                        <li><i class="fas fa-check"></i> No upfront mortgage insurance</li>
+                    </ul>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+                
+                <div class="loan-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="loan-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>FHA Loans</h3>
+                    <p>Government-backed loans with lower down payment requirements and flexible credit standards.</p>
+                    <ul class="loan-features">
+                        <li><i class="fas fa-check"></i> Down payment as low as 3.5%</li>
+                        <li><i class="fas fa-check"></i> Lower credit score requirements</li>
+                        <li><i class="fas fa-check"></i> Streamlined refinancing</li>
+                        <li><i class="fas fa-check"></i> Gift funds allowed</li>
+                    </ul>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                
+                <div class="loan-card">
+                    <div class="loan-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>VA Loans</h3>
+                    <p>Exclusive benefits for veterans and active military with no down payment required.</p>
+                    <ul class="loan-features">
+                        <li><i class="fas fa-check"></i> No down payment required</li>
+                        <li><i class="fas fa-check"></i> No private mortgage insurance</li>
+                        <li><i class="fas fa-check"></i> Competitive interest rates</li>
+                        <li><i class="fas fa-check"></i> No prepayment penalties</li>
+                    </ul>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+                
+                <div class="loan-card">
+                    <div class="loan-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>USDA Rural Loans</h3>
+                    <p>Zero down payment loans for eligible rural and suburban areas with income limits.</p>
+                    <ul class="loan-features">
+                        <li><i class="fas fa-check"></i> No down payment required</li>
+                        <li><i class="fas fa-check"></i> Below-market interest rates</li>
+                        <li><i class="fas fa-check"></i> Income and area restrictions apply</li>
+                        <li><i class="fas fa-check"></i> Low monthly mortgage insurance</li>
+                    </ul>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+                
+                <div class="loan-card">
+                    <div class="loan-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Jumbo Loans</h3>
+                    <p>For high-value properties that exceed conforming loan limits in your area.</p>
+                    <ul class="loan-features">
+                        <li><i class="fas fa-check"></i> Higher loan amounts</li>
+                        <li><i class="fas fa-check"></i> Competitive rates</li>
+                        <li><i class="fas fa-check"></i> Flexible down payment options</li>
+                        <li><i class="fas fa-check"></i> Various term options</li>
+                    </ul>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+                
+                <div class="loan-card">
+                    <div class="loan-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Refinancing</h3>
+                    <p>Lower your monthly payments or tap into your home's equity with refinancing options.</p>
+                    <ul class="loan-features">
+                        <li><i class="fas fa-check"></i> Lower interest rates</li>
+                        <li><i class="fas fa-check"></i> Cash-out refinancing</li>
+                        <li><i class="fas fa-check"></i> Shorten loan term</li>
+                        <li><i class="fas fa-check"></i> Remove PMI</li>
+                    </ul>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pre-approval" id="pre-approval">
+        <div class="container">
+            <div class="pre-approval-content">
+                <div class="pre-approval-info">
+                    <h2>Get Pre-Approved Today</h2>
+                    <p>Start your home buying journey with confidence. Our pre-approval process is quick, easy, and gives you the power to make competitive offers.</p>
+                    
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Quick Process</h4>
+                                <p>Get pre-approved in as little as 24 hours</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-lock"></i>
+                            <div>
+                                <h4>Rate Lock</h4>
+                                <p>Lock in your rate for up to 90 days</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h4>Competitive Edge</h4>
+                                <p>Show sellers you're a serious buyer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pre-approval-form">
+                    <div class="form-header">
+                        <h3>Pre-Approval Application</h3>
+                        <p>Get started with your mortgage pre-approval</p>
+                    </div>
+                    
+                    <form id="pre-approval-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name *</label>
+                                <input type="text" id="first-name" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name *</label>
+                                <input type="text" id="last-name" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="purchase-price">Expected Purchase Price *</label>
+                            <div class="input-group">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="purchase-price" name="purchasePrice" min="0" step="1000" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="annual-income">Annual Income *</label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="annual-income" name="annualIncome" min="0" step="1000" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="down-payment-amount">Down Payment *</label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="down-payment-amount" name="downPaymentAmount" min="0" step="1000" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="credit-score">Credit Score Range</label>
+                            <select id="credit-score" name="creditScore">
+                                <option value="">Select Range</option>
+                                <option value="excellent">Excellent (750+)</option>
+                                <option value="good">Good (670-749)</option>
+                                <option value="fair">Fair (580-669)</option>
+                                <option value="poor">Poor (Below 580)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employment-status">Employment Status *</label>
+                            <select id="employment-status" name="employmentStatus" required>
+                                <option value="">Select Status</option>
+                                <option value="employed">Employed</option>
+                                <option value="self-employed">Self-Employed</option>
+                                <option value="retired">Retired</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="first-time-buyer" name="firstTimeBuyer">
+                            <label for="first-time-buyer">I am a first-time home buyer</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms-agreement" name="termsAgreement" required>
+                            <label for="terms-agreement">I agree to the terms and conditions and privacy policy *</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">Get Pre-Approved</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="current-rates">
+        <div class="container">
+            <div class="section-header">
+                <h2>Today's Mortgage Rates</h2>
+                <p>Updated daily to help you make informed decisions</p>
+                <span class="last-updated">Last updated: <span id="rate-date"></span></span>
+            </div>
+            
+            <div class="rates-table">
+                <div class="table-header">
+                    <div class="column">Loan Type</div>
+                    <div class="column">Term</div>
+                    <div class="column">Rate</div>
+                    <div class="column">APR</div>
+                    <div class="column">Points</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="column">
+                        <strong>30-Year Fixed</strong>
+                        <small>Conventional</small>
+                    </div>
+                    <div class="column">30 years</div>
+                    <div class="column rate">6.250%</div>
+                    <div class="column">6.312%</div>
+                    <div class="column">0.5</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="column">
+                        <strong>15-Year Fixed</strong>
+                        <small>Conventional</small>
+                    </div>
+                    <div class="column">15 years</div>
+                    <div class="column rate">5.875%</div>
+                    <div class="column">5.924%</div>
+                    <div class="column">0.3</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="column">
+                        <strong>5/1 ARM</strong>
+                        <small>Adjustable Rate</small>
+                    </div>
+                    <div class="column">30 years</div>
+                    <div class="column rate">5.750%</div>
+                    <div class="column">6.891%</div>
+                    <div class="column">0.2</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="column">
+                        <strong>FHA 30-Year</strong>
+                        <small>Government</small>
+                    </div>
+                    <div class="column">30 years</div>
+                    <div class="column rate">6.125%</div>
+                    <div class="column">7.234%</div>
+                    <div class="column">0.5</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="column">
+                        <strong>VA 30-Year</strong>
+                        <small>Government</small>
+                    </div>
+                    <div class="column">30 years</div>
+                    <div class="column rate">6.000%</div>
+                    <div class="column">6.187%</div>
+                    <div class="column">0.3</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="column">
+                        <strong>Jumbo 30-Year</strong>
+                        <small>Non-Conforming</small>
+                    </div>
+                    <div class="column">30 years</div>
+                    <div class="column rate">6.375%</div>
+                    <div class="column">6.421%</div>
+                    <div class="column">0.4</div>
+                </div>
+            </div>
+            
+            <div class="rate-disclaimer">
+                <p><small>*Rates shown are sample rates and may not reflect actual market rates. Your actual rate may be different based on your credit profile, loan amount, loan term, and other factors. Contact us for personalized rate quotes.</small></p>
+            </div>
+        </div>
+    </section>
+    <section class="mortgage-faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Get answers to common mortgage questions</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much can I afford to borrow?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The amount you can borrow depends on several factors including your income, debt-to-income ratio, credit score, and down payment. Generally, lenders prefer that your total monthly debt payments don't exceed 43% of your gross monthly income. Use our mortgage calculator above to get an estimate, and speak with one of our loan officers for a personalized assessment.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What's the difference between pre-qualification and pre-approval?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pre-qualification is an initial assessment based on information you provide about your income, debts, and assets. Pre-approval is a more thorough process where we verify your financial information and check your credit. Pre-approval gives you a conditional commitment for a specific loan amount and shows sellers you're a serious buyer.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much should I put down?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Down payment requirements vary by loan type. Conventional loans can have down payments as low as 3%, FHA loans require 3.5%, and VA/USDA loans may require no down payment. A larger down payment typically means lower monthly payments and potentially better interest rates, but it's not always necessary to put down 20%.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are closing costs and how much are they?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Closing costs are fees associated with finalizing your mortgage, typically ranging from 2-5% of the loan amount. They include items like appraisal fees, title insurance, origination fees, and prepaid items like property taxes and insurance. We'll provide a detailed estimate of your closing costs early in the process.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Should I choose a fixed or adjustable rate mortgage?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Fixed-rate mortgages offer stability with the same payment throughout the loan term, making budgeting easier. Adjustable-rate mortgages (ARMs) typically start with lower rates but can change over time. ARMs may be suitable if you plan to move or refinance within a few years, while fixed rates are better for long-term stability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How long does the mortgage process take?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The typical mortgage process takes 30-45 days from application to closing. This includes time for processing your application, ordering an appraisal, underwriting review, and final approval. We can often expedite the process for qualified borrowers, and having all your documentation ready can help speed things up.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Home Buying Journey?</h2>
+                <p>Our experienced mortgage professionals are here to guide you through every step of the process.</p>
+                <div class="cta-buttons">
+                    <a href="#pre-approval-form" class="btn btn-primary">Get Pre-Approved</a>
+                    <a href="contact.html" class="btn btn-outline">Speak with a Loan Officer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-home"></i>
+                        <span>Horizon Homes</span>
+                    </div>
+                    <p>Your trusted partner in finding the perfect home. We're committed to making your real estate dreams a reality.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="virtual-tours.html">Virtual Tours</a></li>
+                        <li><a href="mortgage.html">Mortgage</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Buying</a></li>
+                        <li><a href="#">Selling</a></li>
+                        <li><a href="#">Renting</a></li>
+                        <li><a href="#">Property Management</a></li>
+                        <li><a href="#">Market Analysis</a></li>
+                        <li><a href="#">Investment Properties</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Real Estate Blvd<br>Los Angeles, CA 90210</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@horizonhomes.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Horizon Homes. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/mortgage.js"></script>
+</body>
+</html>

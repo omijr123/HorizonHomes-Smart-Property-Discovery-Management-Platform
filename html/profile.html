@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Homes - My Profile</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .profile-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-picture i {
+            font-size: 3rem;
+            color: #3498db;
+        }
+        
+        .profile-info h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+        }
+        
+        .profile-info p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .profile-tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .profile-tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-tab.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .property-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .property-image {
+            height: 200px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        
+        .property-details {
+            padding: 1.5rem;
+        }
+        
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+        
+        .property-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .property-location {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .property-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .logout-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/horizonhomes-logo.png" alt="Horizon Homes" class="logo-img">
+                <span class="logo-text">Horizon Homes</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="profile.html" class="nav-link active">My Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-picture" id="profilePicture">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <h1 id="profileName">Loading...</h1>
+                <p id="profileEmail">Loading...</p>
+                <p id="profileRole">User</p>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+
+        <div class="profile-tabs">
+            <button class="profile-tab active" onclick="switchTab('profile')">
+                <i class="fas fa-user"></i> Profile
+            </button>
+            <button class="profile-tab" onclick="switchTab('properties')">
+                <i class="fas fa-home"></i> My Properties
+            </button>
+            <button class="profile-tab" onclick="switchTab('add-property')">
+                <i class="fas fa-plus"></i> Add Property
+            </button>
+        </div>
+
+        <!-- Profile Tab -->
+        <div id="profileTab" class="tab-content active">
+            <h2>Profile Information</h2>
+            <div id="profileMessage" class="message"></div>
+            
+            <form onsubmit="updateProfile(event)">
+                <div class="form-group">
+                    <label for="profileNameInput">Full Name</label>
+                    <input type="text" id="profileNameInput" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profilePhoneInput">Phone Number</label>
+                    <input type="tel" id="profilePhoneInput">
+                </div>
+                
+                <div class="form-group">
+                    <label for="profileBioInput">Bio</label>
+                    <textarea id="profileBioInput" rows="4" placeholder="Tell us about yourself..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profileAddressInput">Address</label>
+                    <input type="text" id="profileAddressInput">
+                </div>
+                
+                <div class="form-group">
+                    <label for="profilePictureInput">Profile Picture URL</label>
+                    <input type="url" id="profilePictureInput" placeholder="https://example.com/image.jpg">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Update Profile
+                </button>
+            </form>
+        </div>
+
+        <!-- Properties Tab -->
+        <div id="propertiesTab" class="tab-content">
+            <h2>My Properties</h2>
+            <div id="propertiesMessage" class="message"></div>
+            <div id="propertiesList" class="properties-grid">
+                <p>Loading your properties...</p>
+            </div>
+        </div>
+
+        <!-- Add Property Tab -->
+        <div id="addPropertyTab" class="tab-content">
+            <h2>Add New Property</h2>
+            <div id="addPropertyMessage" class="message"></div>
+            
+            <form onsubmit="addProperty(event)">
+                <div class="form-group">
+                    <label for="propertyTitle">Property Title</label>
+                    <input type="text" id="propertyTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="propertyDescription">Description</label>
+                    <textarea id="propertyDescription" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="propertyPrice">Price ($)</label>
+                    <input type="number" id="propertyPrice" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="propertyLocation">Location</label>
+                    <input type="text" id="propertyLocation" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="propertyType">Property Type</label>
+                    <select id="propertyType" required>
+                        <option value="">Select Type</option>
+                        <option value="house">House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="condo">Condo</option>
+                        <option value="villa">Villa</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="propertyBedrooms">Bedrooms</label>
+                    <input type="number" id="propertyBedrooms" min="1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="propertyBathrooms">Bathrooms</label>
+                    <input type="number" id="propertyBathrooms" min="1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="propertySquareFootage">Square Footage</label>
+                    <input type="number" id="propertySquareFootage" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="listingType">Listing Type</label>
+                    <select id="listingType" required>
+                        <option value="">Select Type</option>
+                        <option value="sale">For Sale</option>
+                        <option value="rent">For Rent</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add Property
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3000/api';
+        let currentUser = null;
+
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(tab + 'Tab').classList.add('active');
+            
+            // Load content if needed
+            if (tab === 'properties') {
+                loadUserProperties();
+            }
+        }
+
+        function showMessage(elementId, message, type = 'success') {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = `message ${type}`;
+            element.style.display = 'block';
+            
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 5000);
+        }
+
+        function getAuthHeaders() {
+            const token = localStorage.getItem('token');
+            return {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            };
+        }
+
+        async function loadUserProfile() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/me`, {
+                    headers: getAuthHeaders()
+                });
+
+                if (!response.ok) {
+                    window.location.href = 'auth.html';
+                    return;
+                }
+
+                const user = await response.json();
+                currentUser = user;
+                
+                // Update profile display
+                document.getElementById('profileName').textContent = user.name;
+                document.getElementById('profileEmail').textContent = user.email;
+                document.getElementById('profileRole').textContent = user.role.charAt(0).toUpperCase() + user.role.slice(1);
+                
+                // Update profile picture
+                const profilePicture = document.getElementById('profilePicture');
+                if (user.profilePicture) {
+                    profilePicture.innerHTML = `<img src="${user.profilePicture}" alt="Profile Picture">`;
+                }
+                
+                // Update form fields
+                document.getElementById('profileNameInput').value = user.name || '';
+                document.getElementById('profilePhoneInput').value = user.phone || '';
+                document.getElementById('profileBioInput').value = user.bio || '';
+                document.getElementById('profileAddressInput').value = user.address || '';
+                document.getElementById('profilePictureInput').value = user.profilePicture || '';
+                
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                window.location.href = 'auth.html';
+            }
+        }
+
+        async function updateProfile(event) {
+            event.preventDefault();
+            
+            const profileData = {
+                name: document.getElementById('profileNameInput').value,
+                phone: document.getElementById('profilePhoneInput').value,
+                bio: document.getElementById('profileBioInput').value,
+                address: document.getElementById('profileAddressInput').value,
+                profilePicture: document.getElementById('profilePictureInput').value
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/auth/profile`, {
+                    method: 'PUT',
+                    headers: getAuthHeaders(),
+                    body: JSON.stringify(profileData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showMessage('profileMessage', 'Profile updated successfully!', 'success');
+                    loadUserProfile(); // Refresh profile data
+                } else {
+                    showMessage('profileMessage', data.error || 'Failed to update profile', 'error');
+                }
+            } catch (error) {
+                showMessage('profileMessage', 'Network error. Please try again.', 'error');
+            }
+        }
+
+        async function loadUserProperties() {
+            try {
+                const response = await fetch(`${API_BASE}/properties/my-properties`, {
+                    headers: getAuthHeaders()
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to load properties');
+                }
+
+                const properties = await response.json();
+                displayProperties(properties);
+            } catch (error) {
+                document.getElementById('propertiesList').innerHTML = 
+                    '<p>Error loading properties. Please try again.</p>';
+            }
+        }
+
+        function displayProperties(properties) {
+            const container = document.getElementById('propertiesList');
+            
+            if (properties.length === 0) {
+                container.innerHTML = '<p>You haven\'t added any properties yet.</p>';
+                return;
+            }
+
+            container.innerHTML = properties.map(property => `
+                <div class="property-card">
+                    <div class="property-image">
+                        ${property.images && property.images.length > 0 
+                            ? `<img src="${property.images[0]}" alt="${property.title}">` 
+                            : '<i class="fas fa-home fa-3x"></i>'}
+                    </div>
+                    <div class="property-details">
+                        <div class="property-price">$${property.price.toLocaleString()}</div>
+                        <div class="property-title">${property.title}</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> ${property.location}
+                        </div>
+                        <p>${property.description.substring(0, 100)}...</p>
+                        <div class="property-actions">
+                            <button class="btn btn-secondary" onclick="editProperty('${property._id}')">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn btn-danger" onclick="deleteProperty('${property._id}')">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function addProperty(event) {
+            event.preventDefault();
+            
+            const propertyData = {
+                title: document.getElementById('propertyTitle').value,
+                description: document.getElementById('propertyDescription').value,
+                price: parseFloat(document.getElementById('propertyPrice').value),
+                location: document.getElementById('propertyLocation').value,
+                propertyType: document.getElementById('propertyType').value,
+                bedrooms: parseInt(document.getElementById('propertyBedrooms').value),
+                bathrooms: parseInt(document.getElementById('propertyBathrooms').value),
+                squareFootage: parseInt(document.getElementById('propertySquareFootage').value),
+                listingType: document.getElementById('listingType').value
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/properties`, {
+                    method: 'POST',
+                    headers: getAuthHeaders(),
+                    body: JSON.stringify(propertyData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showMessage('addPropertyMessage', 'Property added successfully!', 'success');
+                    document.querySelector('#addPropertyTab form').reset();
+                } else {
+                    showMessage('addPropertyMessage', data.error || 'Failed to add property', 'error');
+                }
+            } catch (error) {
+                showMessage('addPropertyMessage', 'Network error. Please try again.', 'error');
+            }
+        }
+
+        async function deleteProperty(propertyId) {
+            if (!confirm('Are you sure you want to delete this property?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/properties/${propertyId}`, {
+                    method: 'DELETE',
+                    headers: getAuthHeaders()
+                });
+
+                if (response.ok) {
+                    showMessage('propertiesMessage', 'Property deleted successfully!', 'success');
+                    loadUserProperties(); // Refresh the list
+                } else {
+                    showMessage('propertiesMessage', 'Failed to delete property', 'error');
+                }
+            } catch (error) {
+                showMessage('propertiesMessage', 'Network error. Please try again.', 'error');
+            }
+        }
+
+        function editProperty(propertyId) {
+            // For now, just show an alert. You could implement a modal or redirect to edit page
+            alert('Edit functionality would be implemented here. Property ID: ' + propertyId);
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'index.html';
+        }
+
+        // Load profile on page load
+        window.addEventListener('load', () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'auth.html';
+                return;
+            }
+            
+            loadUserProfile();
+        });
+    </script>
+</body>
+</html>
