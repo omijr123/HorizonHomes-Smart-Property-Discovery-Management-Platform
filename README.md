@@ -2,6 +2,9 @@
 
 ![Horizon Homes Banner](https://i.postimg.cc/x1xhxrpg/horizonhomes-logo.png)
 
+**Find your dream home today with Horizon Homes!** 🏡  
+[Live Demo](https://horizon-homes-demo.com) | 
+
 **Horizon Homes** is a cutting-edge MERN stack real estate platform revolutionizing property search, listing, and reservation. Designed for both property seekers and professionals, it offers a seamless, secure, and feature-rich experience for all real estate needs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -342,10 +345,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## ✨ Contributors
 
-- [Jablay Noor Rahman (Omi)](https://github.com/your-profile)
-- [Md Nazmus Sajjad Naiem](https://github.com/team-member2)
+- [Jablay Noor Rahman (Omi)](https://github.com/omijr123)
+- [Md Nazmus Sajjad Naiem]
 
 ---
 
-**Find your dream home today with Horizon Homes!** 🏡  
-[Live Demo](https://horizon-homes-demo.com) | [API Documentation](https://horizon-homes-api.com) | [Support](mailto:support@horizon-homes.com)
+
