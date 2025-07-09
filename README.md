@@ -135,16 +135,14 @@ npm run dev
 7. **Access the application**:
 Open your browser and visit `http://localhost:3000`
 
-## 📸 Screenshots
-
-<div align="center">
-  
-  <img src="[https://via.placeholder.com/400x250/3b82f6/ffffff?text=Home+Page](https://i.postimg.cc/GmqqLkkp/Screenshot-2025-07-08-111527.png)" alt="Home Page" width="200">
-  <img src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Property+Listing" alt="Property Listing" width="200">
-  <img src="https://via.placeholder.com/400x250/10b981/ffffff?text=Admin+Dashboard" alt="Admin Dashboard" width="200">
-  <img src="https://via.placeholder.com/400x250/ef4444/ffffff?text=Mortgage+Calculator" alt="Mortgage Calculator" width="200">
-  <img src="https://via.placeholder.com/400x250/f97316/ffffff?text=Virtual+Tour" alt="Virtual Tour" width="200">
-  <img src="https://via.placeholder.com/400x250/ec4899/ffffff?text=Property+Comparison" alt="Property Comparison" width="200">
+## Screenshots 📸
+Home Page
+(https://i.postimg.cc/GmqqLkkp/Screenshot-2025-07-08-111527.png)
+Property Listing
+https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Property+Listing
+Admin Dashboard
+https://via.placeholder.com/400x250/10b981/ffffff?text=Admin+Dashboard	Mortgage Calculator
+https://via.placeholder.com/400x250/ef4444/ffffff?text=Mortgage+Calculator
 </div>
 
 ## 💻 Code Snippets
