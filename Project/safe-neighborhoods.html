@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safe Neighborhoods Near Schools - HorizonHomes</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .map-container {
+      display: flex;
+      min-height: calc(100vh - 100px);
+    }
+    
+    .map-sidebar {
+      width: 350px;
+      background: white;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      z-index: 10;
+      overflow-y: auto;
+    }
+    
+    .map-filters {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .map-filters h3 {
+      color: #004466;
+      margin-bottom: 15px;
+    }
+    
+    .filter-group {
+      margin-bottom: 15px;
+    }
+    
+    .filter-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    
+    .filter-group input,
+    .filter-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    
+    .filter-group input[type="range"] {
+      padding: 0;
+    }
+    
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 5px;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .checkbox-group input {
+      width: auto;
+      margin-right: 10px;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .filter-button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .apply-btn {
+      background: #004466;
+      color: white;
+    }
+    
+    .reset-btn {
+      background: #f0f0f0;
+      color: #333;
+    }
+    
+    .safety-score {
+      background: #f8f9fa;
+      padding: 15px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .safety-score h3 {
+      color: #004466;
+      margin-bottom: 10px;
+    }
+    
+    .score-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .safety-meter {
+      flex: 1;
+      height: 10px;
+      background: linear-gradient(90deg, #dc3545, #ffc107, #28a745);
+      border-radius: 5px;
+      margin: 0 15px;
+    }
+    
+    .needle {
+      width: 8px;
+      height: 20px;
+      background: #333;
+      position: relative;
+      left: calc(80% - 4px);
+      top: -5px;
+      border-radius: 4px;
+    }
+    
+    .score-value {
+      font-weight: bold;
+      color: #28a745;
+    }
+    
+    .ai-insights {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .ai-insights h3 {
+      color: #004466;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .ai-insights h3 i {
+      margin-right: 10px;
+      color: #0077b6;
+    }
+    
+    .ai-insight-item {
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #f8f9fa;
+      border-left: 3px solid #0077b6;
+      border-radius: 0 5px 5px 0;
+    }
+    
+    .property-listings {
+      padding: 20px;
+    }
+    
+    .property-listings h3 {
+      color: #004466;
+      margin-bottom: 15px;
+    }
+    
+    .property-card-small {
+      padding: 10px;
+      border-radius: 5px;
+      background: white;
+      border: 1px solid #eee;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .property-card-small:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+    
+    .property-card-small img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .property-card-small h4 {
+      color: #333;
+      margin: 0 0 5px 0;
+    }
+    
+    .property-card-small .location {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+    
+    .property-card-small .price {
+      font-weight: bold;
+      color: #004466;
+    }
+    
+    .property-card-small .safety-tag {
+      display: inline-block;
+      padding: 3px 8px;
+      background: #e8f5e9;
+      color: #28a745;
+      font-size: 0.8rem;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+    
+    #map {
+      flex: 1;
+      background-color: #e0e0e0;
+      position: relative;
+    }
+    
+    .map-marker {
+      position: absolute;
+      transform: translate(-50%, -100%);
+      cursor: pointer;
+    }
+    
+    .map-marker i {
+      font-size: 2rem;
+      color: #e74c3c;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+    }
+    
+    .school-marker i {
+      color: #3498db;
+    }
+    
+    .safest-marker i {
+      color: #2ecc71;
+    }
+    
+    .map-marker .price-tag {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: white;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .map-popup {
+      position: absolute;
+      background: white;
+      width: 280px;
+      border-radius: 5px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+      padding: 15px;
+      z-index: 100;
+      display: none;
+    }
+    
+    .map-popup img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .map-popup h4 {
+      margin: 0 0 5px 0;
+      color: #333;
+    }
+    
+    .map-popup .location {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    
+    .map-popup .price {
+      font-weight: bold;
+      color: #004466;
+    }
+    
+    .map-popup .popup-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .map-popup .popup-actions button {
+      flex: 1;
+      padding: 8px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .view-btn {
+      background: #004466;
+      color: white;
+    }
+    
+    .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #666;
+    }
+    
+    @media (max-width: 768px) {
+      .map-container {
+        flex-direction: column;
+      }
+      
+      .map-sidebar {
+        width: 100%;
+        height: 50vh;
+        order: 2;
+      }
+      
+      #map {
+        height: 50vh;
+        order: 1;
+      }
+    }
+    
+    .legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    
+    .legend-item i {
+      margin-right: 10px;
+    }
+    
+    .page-intro {
+      background: #f8f9fa;
+      padding: 2rem 5%;
+      text-align: center;
+    }
+    
+    .page-intro h1 {
+      color: #004466;
+      margin-bottom: 1rem;
+    }
+    
+    .page-intro p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #555;
+    }
+    
+    .feature-card {
+      display: flex;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      background: #0077b6;
+      color: white;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+    }
+    
+    .feature-content {
+      padding: 15px;
+      flex: 1;
+    }
+    
+    .feature-content h3 {
+      margin: 0 0 10px 0;
+      color: #004466;
+      font-size: 1.1rem;
+    }
+    
+    .feature-content p {
+      margin: 0 0 10px 0;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    
+    .amenity-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      padding: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .amenity-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .amenity-icon {
+      font-size: 2rem;
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+    
+    .amenity-content h3 {
+      margin: 0 0 10px 0;
+      color: #004466;
+      font-size: 1.1rem;
+    }
+    
+    .amenity-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    
+    .amenity-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .amenity-list i {
+      color: #28a745;
+      margin-right: 10px;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .ranking-stars {
+      color: #f39c12;
+    }
+    
+    .neighborhood-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .neighborhood-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .neighborhood-card-image {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .neighborhood-card-image img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    
+    .neighborhood-card-content {
+      padding: 15px;
+    }
+    
+    .neighborhood-card-title {
+      margin: 0 0 10px 0;
+      color: #004466;
+      font-size: 1.2rem;
+    }
+    
+    .neighborhood-card-location {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    
+    .neighborhood-card-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .highlight {
+      background: #f1f1f1;
+      padding: 5px 10px;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    
+    .highlight .highlight-value {
+      font-weight: bold;
+      color: #0077b6;
+    }
+    
+    .view-all-properties {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .view-all-properties a {
+      background: #004466;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    
+    .view-all-properties a:hover {
+      background: #003355;
+    }
+    
+    .faq-section {
+      background: #f8f9fa;
+      padding: 2rem 5%;
+      border-radius: 5px;
+      margin: 2rem 0;
+    }
+    
+    .faq-section h2 {
+      color: #004466;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .faq-accordion {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: max-height 0.3s, box-shadow 0.3s;
+    }
+    
+    .faq-item.active {
+      max-height: 500px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .faq-question {
+      padding: 15px;
+      cursor: pointer;
+      position: relative;
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .faq-question i {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      transition: transform 0.3s;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      padding: 15px;
+      color: #555;
+      font-size: 0.9rem;
+      display: none;
+    }
+    
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    
+    .footer-newsletter {
+      background: #004466;
+      color: white;
+      padding: 2rem 5%;
+      border-radius: 5px;
+      margin: 2rem 0;
+    }
+    
+    .footer-newsletter h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .footer-newsletter p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .newsletter-form input[type="email"] {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    .newsletter-form button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #28a745;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .newsletter-form button:hover {
+      background: #218838;
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #28a745;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .toast.hide {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/horizonhomes-logo.png" alt="HorizonHomes Logo" class="main-logo">
+      <h1>HorizonHomes</h1>
+    </div>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="agents.html"><i class="fas fa-users"></i> Agents</a>
+      <a href="#" id="favorites-link"><i class="fas fa-heart"></i> Favorites (<span id="fav-count">0</span>)</a>
+      <a href="virtual-tour.html"><i class="fas fa-vr-cardboard"></i> Virtual Tours</a>
+      <a href="mortgage-calculator.html"><i class="fas fa-calculator"></i> Calculator</a>
+      <a href="safe-neighborhoods.html" class="active"><i class="fas fa-shield-alt"></i> Safe Neighborhoods</a>
+      <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a href="register.html"><i class="fas fa-user-plus"></i> Register</a>
+    </nav>
+  </header>
+
+  <section class="page-intro">
+    <h1><i class="fas fa-shield-alt"></i> Safe Neighborhoods Near Schools</h1>
+    <p>Our AI-powered neighborhood safety analysis helps you find the perfect family home in safe areas close to quality schools. Explore the map to discover properties in neighborhoods with high safety ratings.</p>
+  </section>
+
+  <div class="map-container">
+    <div class="map-sidebar">
+      <div class="map-filters">
+        <h3>Find Safe Neighborhoods</h3>
+        
+        <div class="filter-group">
+          <label for="school-distance">Distance to Schools (miles)</label>
+          <input type="range" id="school-distance" min="0.5" max="5" step="0.5" value="2">
+          <div class="range-labels">
+            <span>0.5</span>
+            <span>5</span>
+          </div>
+          <div id="selected-distance">2 miles</div>
+        </div>
+        
+        <div class="filter-group">
+          <label for="safety-level">Minimum Safety Score</label>
+          <input type="range" id="safety-level" min="1" max="10" step="1" value="7">
+          <div class="range-labels">
+            <span>Low</span>
+            <span>High</span>
+          </div>
+          <div id="selected-safety">7/10 or higher</div>
+        </div>
+        
+        <div class="filter-group">
+          <label>School Types</label>
+          <div class="checkbox-group">
+            <input type="checkbox" id="elementary" checked>
+            <label for="elementary">Elementary Schools</label>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="middle" checked>
+            <label for="middle">Middle Schools</label>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="high" checked>
+            <label for="high">High Schools</label>
+          </div>
+        </div>
+        
+        <div class="filter-group">
+          <label for="price-range">Price Range</label>
+          <select id="price-range">
+            <option value="any">Any Price</option>
+            <option value="0-200000">Under $200,000</option>
+            <option value="200000-500000">$200,000 - $500,000</option>
+            <option value="500000-1000000">$500,000 - $1,000,000</option>
+            <option value="1000000+">$1,000,000+</option>
+          </select>
+        </div>
+        
+        <div class="filter-buttons">
+          <button id="apply-filters" class="filter-button apply-btn">Apply Filters</button>
+          <button id="reset-filters" class="filter-button reset-btn">Reset</button>
+        </div>
+      </div>
+      
+      <div class="safety-score">
+        <h3>Selected Area Safety Score</h3>
+        <div class="score-container">
+          <span>Low</span>
+          <div class="safety-meter">
+            <div class="needle"></div>
+          </div>
+          <span>High</span>
+        </div>
+        <div style="text-align: right; margin-top: 5px;">
+          Score: <span class="score-value">8.5/10</span>
+        </div>
+      </div>
+      
+      <div class="ai-insights">
+        <h3><i class="fas fa-robot"></i> AI Neighborhood Insights</h3>
+        <div class="ai-insight-item">
+          <p>This area has 4 top-rated schools within 2 miles.</p>
+        </div>
+        <div class="ai-insight-item">
+          <p>Crime rate is 42% lower than the city average.</p>
+        </div>
+        <div class="ai-insight-item">
+          <p>Sidewalks and pedestrian crossings make this a walkable school route.</p>
+        </div>
+        <div class="ai-insight-item">
+          <p>Area has seen property value increase of 12% in the last year.</p>
+        </div>
+      </div>
+      
+      <div class="property-listings">
+        <h3>Properties in Safe Areas (6)</h3>
+        <div id="safe-property-listings">
+          <!-- Property listings will be populated here -->
+        </div>
+      </div>
+    </div>
+    
+    <div id="map">
+      <!-- This would be replaced by a real map API in production -->
+      <!-- For now, using static positioning for demonstration -->
+      <div class="map-marker" style="top: 40%; left: 30%;">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="price-tag">$350k</div>
+      </div>
+      
+      <div class="map-marker" style="top: 45%; left: 35%;">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="price-tag">$275k</div>
+      </div>
+      
+      <div class="map-marker school-marker" style="top: 43%; left: 33%;">
+        <i class="fas fa-school"></i>
+      </div>
+      
+      <div class="map-marker safest-marker" style="top: 50%; left: 40%;">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="price-tag">$420k</div>
+      </div>
+      
+      <div class="map-marker" style="top: 55%; left: 25%;">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="price-tag">$320k</div>
+      </div>
+      
+      <div class="map-marker school-marker" style="top: 60%; left: 35%;">
+        <i class="fas fa-school"></i>
+      </div>
+      
+      <div class="map-marker" style="top: 35%; left: 60%;">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="price-tag">$395k</div>
+      </div>
+      
+      <div class="map-marker safest-marker" style="top: 25%; left: 55%;">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="price-tag">$450k</div>
+      </div>
+      
+      <div class="map-popup" id="property-popup" style="display: none; top: 30%; left: 40%;">
+        <span class="close-popup">&times;</span>
+        <img src="images/house2.jpg.png" alt="Property Image">
+        <h4>Modern Family Home</h4>
+        <div class="location">Wilson School District, New York</div>
+        <div class="price">$350,000</div>
+        <p>3 beds, 2 baths, located in a safe neighborhood with 8.5/10 safety score.</p>
+        <div class="popup-actions">
+          <button class="view-btn">View Details</button>
+        </div>
+      </div>
+      
+      <div class="legend">
+        <div class="legend-item">
+          <i class="fas fa-map-marker-alt" style="color: #e74c3c;"></i>
+          <span>Properties</span>
+        </div>
+        <div class="legend-item">
+          <i class="fas fa-school" style="color: #3498db;"></i>
+          <span>Schools</span>
+        </div>
+        <div class="legend-item">
+          <i class="fas fa-map-marker-alt" style="color: #2ecc71;"></i>
+          <span>Safest Areas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Safety Tool Preview -->
+  <section class="ai-safety-tool">
+    <div class="ai-tool-content">
+      <h2><i class="fas fa-brain"></i> AI-Powered Neighborhood Safety Analysis</h2>
+      <p>Our advanced AI system analyzes thousands of data points including crime statistics, school ratings, emergency response times, and community reviews to provide you with comprehensive safety scores for any neighborhood.</p>
+      
+      <div class="ai-demo">
+        <img src="images/safety-analyzer-demo.jpg" alt="AI Safety Analyzer Tool Demo" loading="lazy">
+      </div>
+      
+      <button class="ai-button" id="try-ai-tool">
+        <i class="fas fa-chart-bar"></i> Try Our Safety Analyzer
+      </button>
+    </div>
+  </section>
+
+  <!-- Neighborhood Details (initially hidden) -->
+  <section id="neighborhood-details" class="neighborhood-details">
+    <div class="neighborhood-header">
+      <div class="neighborhood-header-left">
+        <h2 class="neighborhood-name">Brookside Heights</h2>
+        <div class="neighborhood-location">
+          <i class="fas fa-map-marker-alt"></i> Seattle, Washington
+        </div>
+        <div class="neighborhood-ranking">
+          <span>Safety Score:</span>
+          <div class="ranking-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <span class="ranking-score">4.7/5</span>
+        </div>
+      </div>
+      <div class="neighborhood-header-right">
+        <button class="share-btn">
+          <i class="fas fa-share-alt"></i> Share
+        </button>
+        <button class="save-btn">
+          <i class="far fa-bookmark"></i> Save
+        </button>
+      </div>
+    </div>
+    
+    <div class="neighborhood-gallery">
+      <img src="images/brookside-neighborhood.jpg" alt="Brookside Heights" class="gallery-main">
+      <div class="gallery-thumbnails">
+        <img src="images/brookside-neighborhood.jpg" alt="Brookside Heights" class="thumbnail active">
+        <img src="images/brookside-neighborhood-2.jpg" alt="Brookside Heights Street" class="thumbnail">
+        <img src="images/brookside-neighborhood-3.jpg" alt="Brookside Heights Park" class="thumbnail">
+        <img src="images/brookside-neighborhood-4.jpg" alt="Brookside Heights School" class="thumbnail">
+      </div>
+    </div>
+    
+    <div class="neighborhood-tabs">
+      <button class="tab-btn active" data-tab="overview">
+        <i class="fas fa-info-circle"></i> Overview
+      </button>
+      <button class="tab-btn" data-tab="schools">
+        <i class="fas fa-school"></i> Schools
+      </button>
+      <button class="tab-btn" data-tab="amenities">
+        <i class="fas fa-store"></i> Amenities
+      </button>
+      <button class="tab-btn" data-tab="transportation">
+        <i class="fas fa-bus"></i> Transportation
+      </button>
+      <button class="tab-btn" data-tab="safety">
+        <i class="fas fa-shield-alt"></i> Safety
+      </button>
+      <button class="tab-btn" data-tab="properties">
+        <i class="fas fa-home"></i> Properties
+      </button>
+    </div>
+    
+    <!-- Overview Tab -->
+    <div class="tab-content active" id="overview-tab">
+      <div class="neighborhood-overview">
+        <div class="overview-text">
+          <p>Brookside Heights is one of Seattle's most family-friendly neighborhoods, featuring tree-lined streets, excellent schools, and abundant green spaces. This peaceful residential area provides the perfect balance of suburban tranquility with convenient access to urban amenities.</p>
+          
+          <p>Established in the 1980s, this neighborhood has grown into a close-knit community with strong homeowner associations and regular community events. The area features well-maintained sidewalks, bike lanes, and numerous parks making it especially appealing to families with children.</p>
+          
+          <p>With consistently low crime rates and top-rated schools, Brookside Heights consistently ranks among the safest neighborhoods in the Seattle metropolitan area. Its strategic location provides quick access to major highways while still maintaining a quiet, residential atmosphere.</p>
+        </div>
+        
+        <div class="overview-stats">
+          <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <div class="stat-value">12,450</div>
+            <div class="stat-label">Residents</div>
+          </div>
+          
+          <div class="stat-card">
+            <i class="fas fa-home"></i>
+            <div class="stat-value">$680k</div>
+            <div class="stat-label">Median Home Price</div>
+          </div>
+          
+          <div class="stat-card">
+            <i class="fas fa-building"></i>
+            <div class="stat-value">$2,100</div>
+            <div class="stat-label">Avg. Rent (2BR)</div>
+          </div>
+          
+          <div class="stat-card">
+            <i class="fas fa-graduation-cap"></i>
+            <div class="stat-value">A</div>
+            <div class="stat-label">Education Grade</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="neighborhood-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d172139.62567781461!2d-122.48215482617125!3d47.61294318323123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490102c93e83355%3A0x102565466944d59a!2sSeattle%2C%20WA!5e0!3m2!1sen!2sus!4v1659785465961!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    
+    <!-- Schools Tab -->
+    <div class="tab-content" id="schools-tab">
+      <h3>Schools in Brookside Heights</h3>
+      <div class="schools-list">
+        <div class="school-card">
+          <div class="school-header">
+            <h4 class="school-name">Brookside Elementary</h4>
+            <div class="school-rating excellent">
+              <i class="fas fa-award"></i> 10/10
+            </div>
+          </div>
+          <div class="school-details">
+            <div class="school-type">
+              <i class="fas fa-school"></i> Public Elementary • Grades K-5
+            </div>
+            <div class="school-distance">
+              <i class="fas fa-map-marker-alt"></i> 0.5 miles away
+            </div>
+            <div class="school-stats">
+              <div class="school-stat">
+                <div class="stat-heading">Students</div>
+                <div class="stat-fig">520</div>
+              </div>
+              <div class="school-stat">
+                <div class="stat-heading">Teachers</div>
+                <div class="stat-fig">42</div>
+              </div>
+              <div class="school-stat">
+                <div class="stat-heading">Ratio</div>
+                <div class="stat-fig">12:1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="school-card">
+          <div class="school-header">
+            <h4 class="school-name">Washington Middle School</h4>
+            <div class="school-rating excellent">
+              <i class="fas fa-award"></i> 9/10
+            </div>
+          </div>
+          <div class="school-details">
+            <div class="school-type">
+              <i class="fas fa-school"></i> Public Middle School • Grades 6-8
+            </div>
+            <div class="school-distance">
+              <i class="fas fa-map-marker-alt"></i> 0.8 miles away
+            </div>
+            <div class="school-stats">
+              <div class="school-stat">
+                <div class="stat-heading">Students</div>
+                <div class="stat-fig">750</div>
+              </div>
+              <div class="school-stat">
+                <div class="stat-heading">Teachers</div>
+                <div class="stat-fig">58</div>
+              </div>
+              <div class="school-stat">
+                <div class="stat-heading">Ratio</div>
+                <div class="stat-fig">13:1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="school-card">
+          <div class="school-header">
+            <h4 class="school-name">Roosevelt High School</h4>
+            <div class="school-rating excellent">
+              <i class="fas fa-award"></i> 9/10
+            </div>
+          </div>
+          <div class="school-details">
+            <div class="school-type">
+              <i class="fas fa-school"></i> Public High School • Grades 9-12
+            </div>
+            <div class="school-distance">
+              <i class="fas fa-map-marker-alt"></i> 1.2 miles away
+            </div>
+            <div class="school-stats">
+              <div class="school-stat">
+                <div class="stat-heading">Students</div>
+                <div class="stat-fig">1,850</div>
+              </div>
+              <div class="school-stat">
+                <div class="stat-heading">Teachers</div>
+                <div class="stat-fig">95</div>
+              </div>
+              <div class="school-stat">
+                <div class="stat-heading">Ratio</div>
+                <div class="stat-fig">19:1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="school-card">
+          <div class="school-header">
+            <h4 class="school-name">Montessori Academy</h4>
+            <div class="school-rating good">
+              <i class="fas fa-award"></i> 8/10
+            </div>
+          </div>
+          <div class="school-details">
+            <div class="school-type">
+              <i class="fas fa-school"></i> Private School • Grades K-8
+            </div>
+            <div class="school-distance">
+              <i class="fas fa-map-marker-alt"></i> 0.7 miles away
+            </div>
+            <div class="school-stats">
+              <div class="school-stat">
+                <div class="stat-heading">Students</div>
+                <div class="stat-fig">340</div>
+              </div>
+              <div class="school-stat">
+                <div class="stat-heading">Teachers</div>
+                <div class="stat-fig">36</div>
+              </div>
+              <div class="school-stat">
+                <div class="stat-heading">Ratio</div>
+                <div class="stat-fig">9:1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="school-district-info">
+        <h3>School District Information</h3>
+        <div class="district-stats">
+          <div class="district-stat">
+            <div class="stat-icon stat-blue">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Graduation Rate</h3>
+              <p>96%</p>
+              <span>State Avg: 84%</span>
+            </div>
+          </div>
+          
+          <div class="district-stat">
+            <div class="stat-icon stat-green">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="stat-info">
+              <h3>College Readiness</h3>
+              <p>9.2/10</p>
+              <span>Top 5% nationally</span>
+            </div>
+          </div>
+          
+          <div class="district-stat">
+            <div class="stat-icon stat-orange">
+              <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Teacher Quality</h3>
+              <p>A+</p>
+              <span>98% fully credentialed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Amenities Tab -->
+    <div class="tab-content" id="amenities-tab">
+      <h3>Local Amenities</h3>
+      <div class="amenities-grid">
+        <div class="amenity-card grocery">
+          <div class="amenity-icon">
+            <i class="fas fa-shopping-basket"></i>
+          </div>
+          <div class="amenity-content">
+            <h3>Grocery & Markets</h3>
+            <ul class="amenity-list">
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Brookside Fresh Market</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.3 miles • 6 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Whole Foods Market</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.8 miles • 15 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Trader Joe's</div>
+                  <div class="amenity-distance"><i class="fas fa-car"></i> 1.2 miles • 5 min drive</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="amenity-card healthcare">
+          <div class="amenity-icon">
+            <i class="fas fa-hospital"></i>
+          </div>
+          <div class="amenity-content">
+            <h3>Healthcare</h3>
+            <ul class="amenity-list">
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Downtown Medical Center</div>
+                  <div class="amenity-distance"><i class="fas fa-car"></i> 0.9 miles • 5 min drive</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">City Urgent Care</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.7 miles • 14 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Downtown Pharmacy</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.3 miles • 6 min walk</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="amenity-card shopping">
+          <div class="amenity-icon">
+            <i class="fas fa-shopping-bag"></i>
+          </div>
+          <div class="amenity-content">
+            <h3>Shopping</h3>
+            <ul class="amenity-list">
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">The Bloc</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.4 miles • 8 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">FIGat7th</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.6 miles • 12 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Fashion District</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.8 miles • 16 min walk</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Transportation Tab -->
+    <div class="tab-content" id="transportation-tab">
+      <h3>Transportation Options</h3>
+      <div class="amenities-grid">
+        <div class="amenity-card transit">
+          <div class="amenity-icon">
+            <i class="fas fa-subway"></i>
+          </div>
+          <div class="amenity-content">
+            <h3>Public Transit</h3>
+            <ul class="amenity-list">
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Pershing Square Metro Station</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.2 miles • 4 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">7th St/Metro Center Station</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.5 miles • 10 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Union Station</div>
+                  <div class="amenity-distance"><i class="fas fa-bus"></i> 1.1 miles • 10 min bus</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="amenity-card transit">
+          <div class="amenity-icon">
+            <i class="fas fa-bus"></i>
+          </div>
+          <div class="amenity-content">
+            <h3>Bus Lines</h3>
+            <ul class="amenity-list">
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">DASH Route A, B, E, F</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.1 miles • 2 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Metro Bus Lines 2, 4, 10, 28, 30</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.2 miles • 4 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Silver Line (910)</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.3 miles • 6 min walk</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="amenity-card transit">
+          <div class="amenity-icon">
+            <i class="fas fa-bicycle"></i>
+          </div>
+          <div class="amenity-content">
+            <h3>Biking & Walking</h3>
+            <ul class="amenity-list">
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Metro Bike Share Stations</div>
+                  <div class="amenity-distance"><i class="fas fa-walking"></i> 0.1 miles • 2 min walk</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Dedicated Bike Lanes</div>
+                  <div class="amenity-distance"><i class="fas fa-info-circle"></i> On Spring, Main & 7th Streets</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Walk Score</div>
+                  <div class="amenity-distance"><i class="fas fa-star"></i> 95/100 - Walker's Paradise</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="amenity-card transit">
+          <div class="amenity-icon">
+            <i class="fas fa-car"></i>
+          </div>
+          <div class="amenity-content">
+            <h3>Driving & Parking</h3>
+            <ul class="amenity-list">
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Public Parking Structures</div>
+                  <div class="amenity-distance"><i class="fas fa-parking"></i> 8 structures within 0.5 miles</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Major Highway Access</div>
+                  <div class="amenity-distance"><i class="fas fa-road"></i> 0.8 miles to US-101</div>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <div class="amenity-name">Ride-sharing Wait Time</div>
+                  <div class="amenity-distance"><i class="fas fa-clock"></i> Average 3-5 minutes</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Safety Tab -->
+    <div class="tab-content" id="safety-tab">
+      <h3>Neighborhood Safety</h3>
+      <div class="safety-header">
+        <div class="safety-score">
+          <div class="score-circle high">85</div>
+          <div class="score-details">
+            <h4>Safety Score</h4>
+            <p>Downtown Los Angeles ranks safer than 85% of neighborhoods in Los Angeles</p>
+          </div>
+        </div>
+        
+        <div class="safety-toggle">
+          <button class="active" data-view="crime">Crime Data</button>
+          <button data-view="police">Police Stations</button>
+        </div>
+      </div>
+      
+      <div class="crime-view">
+        <div class="crime-chart">
+          <!-- Chart would be rendered here in a real app -->
+        </div>
+        
+        <div class="crime-stats">
+          <div class="crime-stat low">
+            <div class="crime-type">Assault</div>
+            <div class="crime-value">
+              24 <span class="crime-comparison better">-18% vs city avg</span>
+            </div>
+          </div>
+          
+          <div class="crime-stat medium">
+            <div class="crime-type">Theft</div>
+            <div class="crime-value">
+              78 <span class="crime-comparison similar">+2% vs city avg</span>
+            </div>
+          </div>
+          
+          <div class="crime-stat low">
+            <div class="crime-type">Burglary</div>
+            <div class="crime-value">
+              12 <span class="crime-comparison better">-35% vs city avg</span>
+            </div>
+          </div>
+          
+          <div class="crime-stat high">
+            <div class="crime-type">Vehicle Theft</div>
+            <div class="crime-value">
+              45 <span class="crime-comparison worse">+22% vs city avg</span>
+            </div>
+          </div>
+        </div>
+        
+        <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+          <i class="fas fa-info-circle"></i> Data represents incidents per 1,000 residents over the past 12 months.
+          Source: Los Angeles Police Department, 2023.
+        </p>
+      </div>
+      
+      <div class="neighborhood-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26447.228088976088!2d-118.26583120859373!3d34.04401483066401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c634253dfd01%3A0x26fe52df19a5a920!2sDowntown%20Los%20Angeles%2C%20Los%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1659785465961!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    
+    <!-- Properties Tab -->
+    <div class="tab-content" id="properties-tab">
+      <h3>Safe Properties in Downtown Los Angeles</h3>
+      <div class="properties-in-neighborhood">
+        <div class="property-card">
+          <div class="property-image-container">
+            <img src="images/apartment3.jpg" alt="Luxury Penthouse" loading="lazy">
+            <div class="property-type-badge">
+              <i class="fas fa-building"></i> Apartment
+            </div>
+          </div>
+          <div class="property-details">
+            <h3>Modern High-Rise Apartment</h3>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Downtown, Los Angeles</p>
+            <div class="property-stats">
+              <span><i class="fas fa-bed"></i> 2 beds</span>
+              <span><i class="fas fa-bath"></i> 2 baths</span>
+              <span><i class="fas fa-ruler-combined"></i> 1,200 sq ft</span>
+            </div>
+            <p class="price">$650,000</p>
+            <div class="safety-features">
+              <span class="safety-feature"><i class="fas fa-video"></i> 24/7 Security</span>
+              <span class="safety-feature"><i class="fas fa-door-closed"></i> Secure Access</span>
+            </div>
+            <a href="#" class="view-details-btn">View Details</a>
+          </div>
+        </div>
+        
+        <div class="property-card">
+          <div class="property-image-container">
+            <img src="images/apartment1.jpg" alt="Downtown Loft" loading="lazy">
+            <div class="property-type-badge">
+              <i class="fas fa-building"></i> Apartment
+            </div>
+          </div>
+          <div class="property-details">
+            <h3>Historic Loft with City Views</h3>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Arts District, Los Angeles</p>
+            <div class="property-stats">
+              <span><i class="fas fa-bed"></i> 1 bed</span>
+              <span><i class="fas fa-bath"></i> 1 bath</span>
+              <span><i class="fas fa-ruler-combined"></i> 950 sq ft</span>
+            </div>
+            <p class="price">$525,000</p>
+            <div class="safety-features">
+              <span class="safety-feature"><i class="fas fa-shield-alt"></i> Gated Community</span>
+              <span class="safety-feature"><i class="fas fa-lightbulb"></i> Well-lit Common Areas</span>
+            </div>
+            <a href="#" class="view-details-btn">View Details</a>
+          </div>
+        </div>
+        
+        <div class="property-card">
+          <div class="property-image-container">
+            <img src="images/apartment2.jpg" alt="Luxury Condo" loading="lazy">
+            <div class="property-type-badge">
+              <i class="fas fa-building"></i> Condo
+            </div>
+          </div>
+          <div class="property-details">
+            <h3>Luxury High-Rise Condo</h3>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Financial District, Los Angeles</p>
+            <div class="property-stats">
+              <span><i class="fas fa-bed"></i> 3 beds</span>
+              <span><i class="fas fa-bath"></i> 2.5 baths</span>
+              <span><i class="fas fa-ruler-combined"></i> 1,800 sq ft</span>
+            </div>
+            <p class="price">$920,000</p>
+            <div class="safety-features">
+              <span class="safety-feature"><i class="fas fa-concierge-bell"></i> Doorman</span>
+              <span class="safety-feature"><i class="fas fa-lock"></i> Smart Lock System</span>
+            </div>
+            <a href="#" class="view-details-btn">View Details</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="view-all-properties">
+        <a href="#" class="cta-button secondary">
+          View All Safe Properties <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Similar Safe Neighborhoods -->
+  <section class="similar-neighborhoods">
+    <h2>Similar Safe Neighborhoods</h2>
+    <div class="neighborhoods-grid">
+      <div class="neighborhood-card">
+        <div class="neighborhood-card-image">
+          <img src="images/silverlake-la.jpg" alt="Silver Lake, Los Angeles" loading="lazy">
+        </div>
+        <div class="neighborhood-card-content">
+          <h3 class="neighborhood-card-title">Silver Lake</h3>
+          <p class="neighborhood-card-location"><i class="fas fa-map-marker-alt"></i> Los Angeles, CA</p>
+          <div class="neighborhood-card-highlights">
+            <div class="highlight">
+              <div class="highlight-value">A-</div>
+              <div class="highlight-label">Safety Grade</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight-value">A</div>
+              <div class="highlight-label">Schools</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight-value">A+</div>
+              <div class="highlight-label">Family-Friendly</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight-value">B+</div>
+              <div class="highlight-label">Public Transit</div>
+            </div>
+          </div>
+          <a href="#" class="neighborhood-card-link">View Neighborhood</a>
+        </div>
+      </div>
+      
+      <div class="neighborhood-card">
+        <div class="neighborhood-card-image">
+          <img src="images/culver-city.jpg" alt="Culver City, Los Angeles" loading="lazy">
+        </div>
+        <div class="neighborhood-card-content">
+          <h3 class="neighborhood-card-title">Culver City</h3>
+          <p class="neighborhood-card-location"><i class="fas fa-map-marker-alt"></i> Los Angeles, CA</p>
+          <div class="neighborhood-card-highlights">
+            <div class="highlight">
+              <div class="highlight-value">A</div>
+              <div class="highlight-label">Safety Grade</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight-value">A+</div>
+              <div class="highlight-label">Schools</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight-value">A-</div>
+              <div class="highlight-label">Family-Friendly</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight-value">B</div>
+              <div class="highlight-label">Public Transit</div>
+            </div>
+          </div>
+          <a href="#" class="neighborhood-card-link">View Neighborhood</a>
+        </div>
+      </div>
+      
+      <div class="neighborhood-card">
+        <div class="neighborhood-card-image">
+          <img src="images/studio-city.jpg" alt="Studio City, Los Angeles" loading="lazy">
+        </div>
+        <div class="neighborhood-card-content">
+          <h3 class="neighborhood-card-title">Studio City</h3>
+          <p class="neighborhood-card-location"><i class="fas fa-map-marker-alt"></i> Los Angeles, CA</p>
+          <div class="neighborhood-card-highlights">
+            <div class="highlight">
+              <div class="highlight-value">A+</div>
+              <div class="highlight-label">Safety Grade</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight-value">A</div>
+              <div class="highlight-label">Schools</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight-value">A</div>
+              <div class="highlight-label">Family-Friendly</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight-value">B-</div>
+              <div class="highlight-label">Public Transit</div>
+            </div>
+          </div>
+          <a href="#" class="neighborhood-card-link">View Neighborhood</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-accordion">
+      <div class="faq-item">
+        <div class="faq-question">
+          How do you determine neighborhood safety scores? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Our neighborhood safety scores are calculated using a comprehensive algorithm that considers multiple factors including crime rates (weighted by type and recency), proximity to emergency services, school safety ratings, community watch programs, street lighting quality, and resident feedback. The data is updated quarterly to ensure accuracy.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          How accurate are your school ratings? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Our school ratings incorporate data from state education departments, standardized test scores, graduation rates, teacher-student ratios, parent reviews, and extracurricular opportunities. We partner with educational experts to ensure our methodology prioritizes factors that genuinely impact educational quality and safety.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Do you have information on neighborhoods outside major cities? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Yes! Our database covers neighborhoods in all 50 states, including suburban and rural areas. While data may be more comprehensive in metropolitan regions, we strive to provide detailed safety information for communities of all sizes across the country.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          How often is your neighborhood data updated? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          We update our neighborhood safety data quarterly, crime statistics monthly, and school information annually (or whenever new official data is released). Property listings and amenities information are updated in real-time as changes occur in our database.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Can I request a safety analysis for a specific neighborhood? <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Absolutely! If you don't see your neighborhood of interest in our database, you can request a custom safety analysis. Simply contact our customer service team with the neighborhood details, and we'll prepare a comprehensive report within 3-5 business days.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="footer-newsletter">
+    <div class="newsletter-content">
+      <h2>Stay Updated on Safe Neighborhoods</h2>
+      <p>Subscribe to receive notifications about new safe neighborhoods, school district updates, and safety improvement projects in your area of interest.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3><i class="fas fa-home"></i> About HorizonHomes</h3>
+        <p>Your trusted partner in finding the perfect property. We've been connecting people with their dream homes since 2015.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section links">
+        <h3><i class="fas fa-link"></i> Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section contact">
+        <h3><i class="fas fa-paper-plane"></i> Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, Cityville, USA</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 HorizonHomes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tab switching functionality
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all tabs
+          tabBtns.forEach(btn => btn.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
+          
+          // Add active class to current tab
+          this.classList.add('active');
+          const tabId = this.getAttribute('data-tab');
+          document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+      });
+      
+      // Safety toggle functionality
+      const safetyToggleBtns = document.querySelectorAll('.safety-toggle button');
+      
+      safetyToggleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          safetyToggleBtns.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          // In a real application, this would switch between different views
+          console.log('Switched to view:', this.getAttribute('data-view'));
+        });
+      });
+      
+      // Image gallery functionality
+      const galleryThumbnails = document.querySelectorAll('.gallery-thumbnails .thumbnail');
+      const galleryMain = document.querySelector('.gallery-main');
+      
+      galleryThumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+          // Remove active class from all thumbnails
+          galleryThumbnails.forEach(thumb => thumb.classList.remove('active'));
+          
+          // Add active class to clicked thumbnail
+          this.classList.add('active');
+          
+          // Update main image
+          galleryMain.src = this.src;
+          galleryMain.alt = this.alt;
+        });
+      });
+      
+      // Neighborhood search functionality
+      const searchBtn = document.querySelector('.search-btn');
+      const neighborhoodDetails = document.getElementById('neighborhood-details');
+      const neighborhoodChips = document.querySelectorAll('.neighborhood-chip');
+      
+      if (searchBtn) {
+        searchBtn.addEventListener('click', function() {
+          const searchInput = document.getElementById('neighborhood-search').value;
+          const stateSelect = document.getElementById('state-select').value;
+          
+          if (searchInput.trim() !== '' || stateSelect !== '') {
+            neighborhoodDetails.classList.add('active');
+            neighborhoodDetails.scrollIntoView({ behavior: 'smooth' });
+            
+            // In a real application, this would perform an actual search
+            console.log('Search for:', searchInput, 'in state:', stateSelect);
+          }
+        });
+      }
+      
+      neighborhoodChips.forEach(chip => {
+        chip.addEventListener('click', function() {
+          neighborhoodDetails.classList.add('active');
+          
+          // Smooth scroll to neighborhood details
+          neighborhoodDetails.scrollIntoView({ behavior: 'smooth' });
+          
+          // In a real application, this would load data for the selected neighborhood
+          console.log('Selected neighborhood:', this.getAttribute('data-id'));
+        });
+      });
+      
+      // Search functionality for main search form
+      const searchNeighborhoodBtn = document.getElementById('search-neighborhoods-btn');
+      if (searchNeighborhoodBtn) {
+        searchNeighborhoodBtn.addEventListener('click', function() {
+          const location = document.getElementById('location').value;
+          const schoolRating = document.getElementById('school-rating').value;
+          const crimeRate = document.getElementById('crime-rate').value;
+          const maxPrice = document.getElementById('max-price').value;
+          
+          // In a real app, we'd search the database
+          // For this demo, just show the hidden section
+          neighborhoodDetails.classList.add('active');
+          neighborhoodDetails.scrollIntoView({ behavior: 'smooth' });
+          
+          console.log('Searching with filters:', { location, schoolRating, crimeRate, maxPrice });
+        });
+      }
+      
+      // Reset search form
+      const resetSearchBtn = document.getElementById('reset-search-btn');
+      if (resetSearchBtn) {
+        resetSearchBtn.addEventListener('click', function() {
+          document.getElementById('location').value = '';
+          document.getElementById('school-rating').value = '';
+          document.getElementById('crime-rate').value = '';
+          document.getElementById('max-price').value = '';
+        });
+      }
+      
+      // FAQ accordion functionality
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', function() {
+          // Toggle active class on the item
+          item.classList.toggle('active');
+          
+          // Toggle icon
+          const icon = this.querySelector('i');
+          if (item.classList.contains('active')) {
+            icon.className = 'fas fa-chevron-up';
+          } else {
+            icon.className = 'fas fa-chevron-down';
+          }
+        });
+      });
+      
+      // AI tool button
+      const aiToolBtn = document.getElementById('try-ai-tool');
+      if (aiToolBtn) {
+        aiToolBtn.addEventListener('click', function() {
+          // In a real app, this would open the AI tool
+          // For demo, just scroll to neighborhood details
+          neighborhoodDetails.classList.add('active');
+          neighborhoodDetails.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+      
+      // Newsletter form functionality
+      const newsletterForm = document.querySelector('.newsletter-form');
+      
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const email = this.querySelector('input[type="email"]').value;
+          
+          // Show toast notification
+          showToast(`Thank you! ${email} has been subscribed to neighborhood safety updates.`);
+          
+          // Reset form
+          this.reset();
+        });
+      }
+      
+      // Toast notification function
+      function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+        document.body.appendChild(toast);
+        
+        // Style the toast if not already styled in CSS
+        setTimeout(() => {
+          toast.classList.add('show');
+        }, 10);
+        
+        // Auto hide after 5 seconds
+        setTimeout(() => {
+          toast.classList.remove('show');
+          toast.classList.add('hide');
+          setTimeout(() => {
+            toast.remove();
+          }, 500);
+        }, 5000);
+           }
+      
+      // Map marker functionality
+      const mapMarkers = document.querySelectorAll('.map-marker');
+      const propertyPopup = document.getElementById('property-popup');
+      
+      mapMarkers.forEach(marker => {
+        if (!marker.classList.contains('school-marker')) {
+          marker.addEventListener('click', function() {
+            // Get position info
+            const rect = this.getBoundingClientRect();
+            const mapRect = document.getElementById('map').getBoundingClientRect();
+            
+            // Calculate position for popup
+            const top = rect.top - mapRect.top - 220; // Adjust as needed
+            const left = rect.left - mapRect.left + 20; // Adjust as needed
+            
+            // Position the popup
+            propertyPopup.style.top = top + 'px';
+            propertyPopup.style.left = left + 'px';
+            propertyPopup.style.display = 'block';
+            
+            // In a real app, would fetch actual property data
+            // For demo, we're using static data
+          });
+        }
+      });
+      
+      // Range slider interactions
+      const distanceRange = document.getElementById('school-distance');
+      const selectedDistance = document.getElementById('selected-distance');
+      const safetyRange = document.getElementById('safety-level');
+      const selectedSafety = document.getElementById('selected-safety');
+      
+      if (distanceRange) {
+        distanceRange.addEventListener('input', function() {
+          selectedDistance.textContent = this.value + ' miles';
+        });
+      }
+      
+      if (safetyRange) {
+        safetyRange.addEventListener('input', function() {
+          selectedSafety.textContent = this.value + '/10 or higher';
+        });
+      }
+      
+      // Filter buttons
+      const applyFiltersBtn = document.getElementById('apply-filters');
+      const resetFiltersBtn = document.getElementById('reset-filters');
+      
+      if (applyFiltersBtn) {
+        applyFiltersBtn.addEventListener('click', function() {
+          // In a real app, this would filter the map and properties
+          showToast('Filters applied. Showing properties that match your criteria.');
+          
+          // For demo, we'll just simulate loading
+          const safePropertyListings = document.getElementById('safe-property-listings');
+          if (safePropertyListings) {
+            safePropertyListings.innerHTML = '<p>Loading properties...</p>';
+            
+            setTimeout(() => {
+              renderSafeListings();
+            }, 1000);
+          }
+        });
+      }
+      
+      if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', function() {
+          // Reset all filter values
+          if (distanceRange) distanceRange.value = 2;
+          if (selectedDistance) selectedDistance.textContent = '2 miles';
+          if (safetyRange) safetyRange.value = 7;
+          if (selectedSafety) selectedSafety.textContent = '7/10 or higher';
+          
+          document.getElementById('elementary').checked = true;
+          document.getElementById('middle').checked = true;
+          document.getElementById('high').checked = true;
+          document.getElementById('price-range').value = 'any';
+          
+          showToast('Filters have been reset.');
+        });
+      }
+      
+      // Populate property listings in sidebar
+      function renderSafeListings() {
+        const container = document.getElementById('safe-property-listings');
+        if (!container) return;
+        
+        // Sample data - in a real app, would come from database based on filters
+        const safeProperties = [
+          {
+            image: 'images/house2.jpg',
+            title: 'Modern Family Home',
+            location: 'Wilson School District, New York',
+            price: '$350,000',
+            safety: '8.5/10'
+          },
+          {
+            image: 'images/house1.jpg',
+            title: 'Spacious Suburban House',
+            location: 'Roosevelt School District, Seattle',
+            price: '$420,000',
+            safety: '9.2/10'
+          },
+          {
+            image: 'images/apartment1.jpg',
+            title: 'Downtown Condo',
+            location: 'Central District, Boston',
+            price: '$275,000',
+            safety: '7.8/10'
+          },
+          {
+            image: 'images/house3.jpg',
+            title: 'Elegant Family Home',
+            location: 'Lincoln School District, Chicago',
+            price: '$395,000',
+            safety: '8.7/10'
+          },
+          {
+            image: 'images/apartment3.jpg',
+            title: 'Modern Apartment',
+            location: 'Jefferson School District, Portland',
+            price: '$320,000',
+            safety: '8.1/10'
+          },
+          {
+            image: 'images/house4.jpg',
+            title: 'Luxury Villa',
+            location: 'Washington School District, Miami',
+            price: '$450,000',
+            safety: '9.5/10'
+          }
+        ];
+        
+        container.innerHTML = '';
+        
+        safeProperties.forEach(property => {
+          const propertyCard = document.createElement('div');
+          propertyCard.className = 'property-card-small';
+          propertyCard.innerHTML = `
+            <img src="${property.image}" alt="${property.title}" loading="lazy">
+            <h4>${property.title}</h4>
+            <div class="location">${property.location}</div>
+            <div class="price">${property.price}</div>
+            <div class="safety-tag"><i class="fas fa-shield-alt"></i> Safety: ${property.safety}</div>
+          `;
+          
+          propertyCard.addEventListener('click', function() {
+            // In a real app, navigate to property details page
+            showToast('Viewing details for ' + property.title);
+          });
+          
+          container.appendChild(propertyCard);
+        });
+      }
+      
+      // Initialize property listings
+      renderSafeListings();
+    </script>
+    
+    <script src="js/favorites-common.js"></script>
+  </body>
+</html>

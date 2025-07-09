@@ -1,0 +1,237 @@
+/* Logo Styling */
+.main-logo {
+  height: 50px;
+  width: auto;
+}
+
+/* Quick Mortgage Calculator */
+.quick-mortgage-calculator {
+  background: #f4f9fe;
+  padding: 3rem 5%;
+  margin: 3rem 0;
+}
+
+.quick-mortgage-calculator h2 {
+  text-align: center;
+  color: #004466;
+  margin-bottom: 2rem;
+}
+
+.calculator-preview {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.calc-inputs {
+  flex: 2;
+  padding: 2rem;
+  min-width: 300px;
+}
+
+.calc-input-group {
+  margin-bottom: 1.5rem;
+}
+
+.calc-input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.calc-input-group input[type="range"] {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.calc-input-group span {
+  font-weight: bold;
+  color: #004466;
+}
+
+.calc-input-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.calc-results {
+  flex: 1;
+  padding: 2rem;
+  background: #004466;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
+}
+
+.monthly-estimate {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.monthly-estimate span {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.monthly-estimate p {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.calc-details-btn {
+  background: #ffcc00;
+  color: #333;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calc-details-btn:hover {
+  background: #ffd700;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat Widget */
+.chat-widget {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 320px;
+  height: 400px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  display: none;
+}
+
+.chat-header {
+  background: #004466;
+  color: white;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.chat-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.chat-header span {
+  flex: 1;
+  font-weight: bold;
+}
+
+#close-chat {
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.bot {
+  background: #f1f1f1;
+  align-self: flex-start;
+}
+
+.user {
+  background: #e1f5fe;
+  margin-left: auto;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #eee;
+  padding: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+}
+
+.chat-input button {
+  background: #004466;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.chat-input button:hover {
+  background: #00598a;
+}
+
+.chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #004466;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+  z-index: 999;
+  transition: all 0.3s;
+}
+
+.chat-button:hover {
+  background: #00598a;
+  transform: scale(1.05);
+}
+
+/* Chat widget responsiveness */
+@media (max-width: 480px) {
+  .chat-widget {
+    width: calc(100% - 40px);
+    height: 50vh;
+  }
+}

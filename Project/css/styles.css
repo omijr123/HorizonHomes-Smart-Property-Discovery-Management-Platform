@@ -1,0 +1,1211 @@
+/* Basic Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Styles */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #f8fafc;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Styling - Enhanced with gradient and modern look */
+header {
+  background: linear-gradient(135deg, #004466, #006699);
+  color: white;
+  padding: 1rem 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.main-logo {
+  height: 45px;
+  width: auto;
+  margin-right: 10px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+header h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: white;
+  display: inline-block;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+}
+
+nav {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+nav a i {
+  margin-right: 5px;
+}
+
+nav a:hover, nav a.active {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav a.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid #ffcc00;
+}
+
+/* Enhanced Hero Section with improved visuals */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg') center/cover no-repeat fixed;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 68, 102, 0.7), rgba(0, 119, 182, 0.4));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transform: translateY(0);
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+  animation: fadeInDown 1.2s ease;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  background: linear-gradient(to right, #ffffff, #e6e6e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1.2s ease 0.3s;
+  animation-fill-mode: both;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  animation: fadeInUp 1.2s ease 0.6s;
+  animation-fill-mode: both;
+}
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffcc00, #ffd700);
+  color: #333;
+  padding: 15px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s;
+}
+
+.cta-button:hover:before {
+  left: 100%;
+}
+
+.cta-button.secondary {
+  background: transparent;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #ffd700, #ffcc00);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 204, 0, 0.15);
+  border-color: #ffd700;
+  transform: translateY(-5px);
+}
+
+/* Main Content Area */
+main {
+  padding: 3rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  color: #004466;
+  text-align: center;
+  margin: 2rem 0;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #ffcc00, #ffd700);
+  border-radius: 2px;
+}
+
+/* Featured Properties with enhanced visual appeal */
+#featured-properties {
+  padding: 5rem 5%;
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+#featured-properties::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, #f8fafc, transparent);
+  z-index: -1;
+}
+
+#featured-properties h2 {
+  text-align: center;
+  color: #004466;
+  margin-bottom: 3.5rem;
+  font-size: 2.5rem;
+  position: relative;
+  padding-bottom: 20px;
+  letter-spacing: 0.8px;
+}
+
+#featured-properties h2 i {
+  color: #ffcc00;
+  margin-right: 10px;
+}
+
+#featured-properties h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 5px;
+  width: 100px;
+  background: linear-gradient(90deg, #ffcc00, #ffd700);
+  border-radius: 3px;
+}
+
+/* Enhanced Property Card Styling with proper image sizing */
+.property-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.property-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease;
+  position: relative;
+  border: 1px solid #f0f0f0;
+  height: 100%;
+  max-width: 100%;
+  transform: translateY(0);
+}
+
+.property-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.property-image-container {
+  position: relative;
+  height: 180px; /* Smaller fixed height for all images */
+  overflow: hidden;
+  background-color: #f8f8f8; /* Background color while images load */
+}
+
+.property-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.property-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.property-type-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0, 68, 102, 0.85);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.property-type-badge i {
+  font-size: 0.9rem;
+}
+
+.ribbon {
+  position: absolute;
+  top: 20px;
+  right: -34px;
+  background: linear-gradient(135deg, #ffcc00, #ffd700);
+  color: #333;
+  padding: 7px 30px;
+  transform: rotate(45deg);
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Properties List Enhancement */
+#properties-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Enhanced Property Details Styling */
+.property-details {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: white;
+  position: relative;
+}
+
+.property-details h3 {
+  margin: 0 0 0.7rem 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.property-details .location {
+  margin: 0.5rem 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+.property-details .location i {
+  color: #0077b6;
+  margin-right: 5px;
+  font-size: 0.9rem;
+}
+
+.property-details .price {
+  font-weight: bold;
+  color: #004466;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Property Stats Improvement */
+.property-stats {
+  display: flex;
+  gap: 15px;
+  margin: 15px 0;
+  padding: 10px 0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.property-stats span {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.property-stats i {
+  color: #0077b6;
+  margin-right: 5px;
+}
+
+.view-details-btn {
+  background: linear-gradient(to right, #0077cc, #0099ff);
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 119, 204, 0.2);
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-details-btn:hover {
+  background: linear-gradient(to right, #0066b3, #0088ee);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 119, 204, 0.3);
+}
+
+.view-details-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.view-details-btn:hover::after {
+  left: 100%;
+}
+
+/* Enhanced Modal with better image display */
+.modal-property-images {
+  position: relative;
+  height: 300px; /* Reduced height */
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
+
+.image-gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #0077b6 #e6f3ff;
+}
+
+.image-gallery-thumbs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.image-gallery-thumbs::-webkit-scrollbar-track {
+  background: #e6f3ff;
+  border-radius: 10px;
+}
+
+.image-gallery-thumbs::-webkit-scrollbar-thumb {
+  background: #0077b6;
+  border-radius: 10px;
+}
+
+.image-gallery-thumbs img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.image-gallery-thumbs img:hover,
+.image-gallery-thumbs img.active-thumb {
+  opacity: 1;
+  border-color: #0077b6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced Safe Neighborhoods CTA Section */
+.safe-neighborhoods-cta {
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../images/family-neighborhood.jpg') center/cover no-repeat fixed;
+  color: white;
+  padding: 6rem 5%;
+  margin: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.safe-neighborhoods-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 68, 102, 0.8), rgba(0, 119, 182, 0.7));
+  z-index: 0;
+}
+
+.cta-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(0);
+  animation: float 6s ease-in-out infinite;
+}
+
+.safe-neighborhoods-cta h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.safe-neighborhoods-cta h2::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffcc00, #ffd700);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.safe-neighborhoods-cta h2 i {
+  color: #ffcc00;
+  margin-right: 10px;
+  font-size: 2.5rem;
+  vertical-align: middle;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.safe-neighborhoods-cta p {
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.safe-neighborhoods-cta .cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffcc00, #ffd700);
+  color: #333;
+  padding: 15px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.safe-neighborhoods-cta .cta-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s;
+}
+
+.safe-neighborhoods-cta .cta-button:hover:before {
+  left: 100%;
+}
+
+.safe-neighborhoods-cta .cta-button:hover {
+  background: linear-gradient(135deg, #ffd700, #ffcc00);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Enhanced Quick Mortgage Calculator Section */
+.quick-mortgage-calculator {
+  padding: 6rem 5%;
+  background: linear-gradient(135deg, #f0f7ff, #e6f3ff);
+  margin: 6rem 0;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 119, 182, 0.1);
+}
+
+.quick-mortgage-calculator::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/calculator-pattern.png');
+  background-size: cover;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.quick-mortgage-calculator h2 {
+  text-align: center;
+  color: #004466;
+  margin-bottom: 3.5rem;
+  font-size: 2.8rem;
+  position: relative;
+  padding-bottom: 15px;
+  font-weight: 700;
+  z-index: 1;
+  letter-spacing: 1px;
+}
+
+.quick-mortgage-calculator h2 i {
+  color: #0077b6;
+  margin-right: 12px;
+}
+
+.quick-mortgage-calculator h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 100px;
+  background: linear-gradient(90deg, #0077b6, #0099ff);
+  border-radius: 2px;
+}
+
+.calculator-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(0, 119, 182, 0.1);
+}
+
+.calc-inputs {
+  flex: 2;
+  padding: 2.8rem;
+  min-width: 350px;
+  border-right: 1px solid #f0f0f0;
+}
+
+.calc-input-group {
+  margin-bottom: 2.2rem;
+  position: relative;
+}
+
+.calc-input-group:last-child {
+  margin-bottom: 0;
+}
+
+.calc-input-group label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #004466;
+  font-size: 1.1rem;
+}
+
+.calc-input-group input[type="range"] {
+  width: 100%;
+  margin: 15px 0;
+  height: 10px;
+  -webkit-appearance: none;
+  background: linear-gradient(to right, #0077b6, #0099ff);
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.calc-input-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #0077b6;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.calc-input-group span {
+  font-weight: bold;
+  color: #004466;
+  font-size: 1.3rem;
+  display: block;
+  margin-top: 10px;
+}
+
+.calc-input-group select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  font-size: 1.1rem;
+  color: #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 18px;
+}
+
+.calc-input-group select:focus {
+  border-color: #0077b6;
+  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+}
+
+.calc-results {
+  flex: 1;
+  padding: 3rem;
+  background: linear-gradient(135deg, #004466, #006699);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.calc-results::before {
+  content: "$";
+  position: absolute;
+  font-size: 18rem;
+  opacity: 0.05;
+  top: -30px;
+  right: -30px;
+  font-weight: bold;
+  line-height: 1;
+  font-family: serif;
+}
+
+.monthly-estimate {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.monthly-estimate span {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  position: relative;
+}
+
+.monthly-estimate span::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.monthly-estimate p {
+  opacity: 0.9;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  margin-top: 1.5rem;
+}
+
+.calc-details-btn {
+  background: #ffcc00;
+  color: #333;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.calc-details-btn i {
+  font-size: 1.1rem;
+}
+
+.calc-details-btn:hover {
+  background: #ffd700;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes payment-updated {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); color: #ffcc00; }
+  100% { transform: scale(1); }
+}
+
+.payment-updated {
+  animation: payment-updated 0.5s ease;
+}
+
+/* Section divider styling */
+.section-divider {
+  position: relative;
+  text-align: center;
+  height: 1px;
+  margin: 5rem 0;
+}
+
+.section-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 68, 102, 0.2), transparent);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.section-divider span {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  background: #f8fafc;
+  font-weight: 600;
+  color: #004466;
+  z-index: 2;
+}
+
+/* Testimonials Section */
+.testimonials {
+  background: linear-gradient(135deg, #edf6ff, #e6f3ff);
+  padding: 6rem 5%;
+  margin: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 119, 182, 0.1);
+  border-radius: 15px;
+}
+
+.testimonials::before {
+  content: '"';
+  position: absolute;
+  top: 40px;
+  left: 5%;
+  font-size: 20rem;
+  color: rgba(0, 119, 182, 0.05);
+  font-family: Georgia, serif;
+  line-height: 0;
+}
+
+.testimonials h2 {
+  text-align: center;
+  color: #004466;
+  margin-bottom: 4rem;
+  font-size: 2.5rem;
+  position: relative;
+  padding-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.testimonials h2 i {
+  color: #0077b6;
+  margin-right: 12px;
+}
+
+.testimonials h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 100px;
+  background: linear-gradient(90deg, #0077b6, #0099ff);
+  border-radius: 2px;
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* Testimonial Card Styling */
+.testimonial {
+  background: white;
+  border-radius: 15px;
+  padding: 3rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  width: 400px;
+  position: relative;
+  transition: all 0.4s;
+  border: 1px solid rgba(0, 119, 182, 0.1);
+  height: 100%;
+}
+
+.testimonial::before {
+  content: '"';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 5rem;
+  color: #f0f7ff;
+  font-family: Georgia, serif;
+  line-height: 0;
+  z-index: 0;
+}
+
+.testimonial:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+  color: #555;
+  position: relative;
+  font-size: 1.1rem;
+  z-index: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1.5rem;
+}
+
+.testimonial-author img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 3px solid #f0f7ff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.testimonial:hover .testimonial-author img {
+  transform: scale(1.1);
+  border-color: #0077b6;
+}
+
+.testimonial-author p {
+  font-weight: 700;
+  color: #333;
+  font-size: 1.2rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.testimonial-author span {
+  display: block;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.testimonial-rating {
+  margin-top: 8px;
+}
+
+.testimonial-rating i {
+  color: #ffcc00;
+  font-size: 0.9rem;
+  margin-right: 1px;
+}
+
+/* Responsive footer adjustments */
+@media (max-width: 900px) {
+  .footer-content {
+    flex-direction: column;
+  }
+  
+  .footer-section {
+    padding-right: 0;
+    max-width: 100%;
+  }
+}
+
+/* Responsive Enhancements */
+@media (max-width: 1200px) {
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+  
+  .property-gallery {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .hero-section {
+    height: 550px;
+  }
+  
+  .property-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .testimonial {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 30px 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  
+  .property-image-container {
+    height: 160px; /* Even smaller on mobile */
+  }
+  
+  .property-details h3 {
+    font-size: 1.1rem;
+  }
+  
+  .modal-property-images {
+    height: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    height: 500px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .property-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .property-image-container {
+    height: 220px;
+  }
+  
+  #newsletter-form {
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  
+  #newsletter-form input {
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  #newsletter-form button {
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+  }
+  
+  .safe-neighborhoods-cta h2,
+  .quick-mortgage-calculator h2,
+  .testimonials h2 {
+    font-size: 1.8rem;
+  }
+  
+  .safe-neighborhoods-cta p {
+    font-size: 1.1rem;
+  }
+  
+  .cta-content {
+    padding: 2rem;
+  }
+  
+  .calc-inputs {
+    padding: 1.5rem;
+  }
+  
+  .testimonial {
+    padding: 2rem;
+  }
+  
+  .monthly-estimate span {
+    font-size: 2rem;
+  }
+}

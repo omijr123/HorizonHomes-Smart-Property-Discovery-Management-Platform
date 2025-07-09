@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - HorizonHomes</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo-icon.png" type="image/png">
+  <style>
+    /* About Page Specific Styles */
+    .about-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/about-hero.jpg') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .about-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .about-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+    
+    .about-section {
+      margin-bottom: 5rem;
+    }
+    
+    .about-section h2 {
+      color: #004466;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 15px;
+      font-size: 2.2rem;
+    }
+    
+    .about-section h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #0077b6, #00b4d8);
+      border-radius: 2px;
+    }
+    
+    .about-intro {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .about-text p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: #444;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transform: perspective(1000px) rotateY(-5deg);
+      transition: all 0.5s;
+    }
+    
+    .about-image:hover {
+      transform: perspective(1000px) rotateY(0);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .values-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 3rem;
+    }
+    
+    .value-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      border-top: 5px solid #0077b6;
+    }
+    
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .value-card i {
+      font-size: 3rem;
+      color: #0077b6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .value-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    
+    .team-section {
+      margin-top: 5rem;
+      text-align: center;
+    }
+    
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+    
+    .team-member {
+      flex: 0 0 280px;
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+    }
+    
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .team-member img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: top;
+    }
+    
+    .team-member-info {
+      padding: 1.5rem;
+    }
+    
+    .team-member-info h3 {
+      margin: 0 0 0.5rem 0;
+      color: #333;
+    }
+    
+    .team-member-info p {
+      color: #666;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    
+    .team-socials {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .team-socials a {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #f0f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0077b6;
+      transition: all 0.3s;
+    }
+    
+    .team-socials a:hover {
+      background: #0077b6;
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 4px;
+      background: #0077b6;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+    }
+    
+    .timeline-item {
+      width: 100%;
+      position: relative;
+      margin-bottom: 3rem;
+    }
+    
+    .timeline-item:nth-child(even) {
+      margin-left: auto;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: auto;
+      border-radius: 15px 0 15px 15px;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-right: auto;
+      border-radius: 0 15px 15px 15px;
+    }
+    
+    .timeline-content {
+      width: 45%;
+      padding: 1.5rem;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .timeline-content h3 {
+      margin: 0 0 0.5rem 0;
+      color: #0077b6;
+    }
+    
+    .timeline-content .date {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #ffcc00;
+      border-radius: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 20px;
+      z-index: 2;
+      border: 4px solid white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 40px;
+      }
+      
+      .timeline-content {
+        width: calc(100% - 80px);
+        margin-left: 80px !important;
+      }
+      
+      .timeline-dot {
+        left: 40px;
+        transform: none;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        border-radius: 0 15px 15px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/horizonhomes-logo.png" alt="HorizonHomes Logo" class="main-logo">
+      <h1>HorizonHomes</h1>
+    </div>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a>
+      <a href="agents.html"><i class="fas fa-users"></i> Agents</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="#" id="favorites-link"><i class="fas fa-heart"></i> Favorites (<span id="fav-count">0</span>)</a>
+      <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+      <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+    </nav>
+  </header>
+
+  <div class="about-hero">
+    <div>
+      <h1>About HorizonHomes</h1>
+      <p>Discover the story behind our mission to connect people with their dream properties</p>
+    </div>
+  </div>
+
+  <div class="about-container">
+    <section class="about-section">
+      <div class="about-intro">
+        <div class="about-text">
+          <h2>Our Story</h2>
+          <p>Founded in 2015, HorizonHomes began with a simple vision: to transform the way people find and purchase real estate. Our founders, having experienced firsthand the challenges of the property market, set out to create a platform that would make the process transparent, efficient, and enjoyable.</p>
+          <p>Today, we've grown to become one of the leading real estate agencies in the region, with a portfolio of over 500 properties and a team of dedicated professionals who are passionate about helping our clients find their perfect home or investment opportunity.</p>
+          <p>At HorizonHomes, we believe that finding the right property is about more than square footage and location—it's about finding a place where memories will be made. This belief drives everything we do, from our personalized customer service to our innovative digital tools.</p>
+        </div>
+        <div class="about-image">
+          <img src="images/horizonhomes-logo.png" alt="HorizonHomes Office">
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <h2>Our Core Values</h2>
+      <div class="values-container">
+        <div class="value-card">
+          <i class="fas fa-handshake"></i>
+          <h3>Integrity</h3>
+          <p>We operate with honesty and transparency in every transaction, building trust with our clients and partners.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-star"></i>
+          <h3>Excellence</h3>
+          <p>We strive for excellence in all aspects of our service, continuously improving to exceed expectations.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-users"></i>
+          <h3>Client-Centered</h3>
+          <p>Our clients' needs and goals are at the heart of everything we do, guiding our recommendations and actions.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Innovation</h3>
+          <p>We embrace technology and creative solutions to enhance the real estate experience for our clients.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <h2>Our Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Company Founded</h3>
+            <div class="date">2015</div>
+            <p>HorizonHomes was established with just 3 agents and a vision to transform real estate services.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>First Office Opens</h3>
+            <div class="date">2016</div>
+            <p>Our first physical office opened, allowing us to better serve our growing client base.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>100th Sale Milestone</h3>
+            <div class="date">2017</div>
+            <p>We celebrated our 100th successful property transaction and expanded our team to 10 agents.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Digital Platform Launch</h3>
+            <div class="date">2018</div>
+            <p>Launched our innovative property search platform, combining AI technology with personalized service.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Regional Expansion</h3>
+            <div class="date">2020</div>
+            <p>Expanded operations to cover 5 major cities, with a team of 25 professional agents.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Today</h3>
+            <div class="date">2025</div>
+            <p>Now a market leader with 500+ properties, 30+ agents, and innovative real estate technology.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section team-section">
+      <h2>Meet Our Leadership Team</h2>
+      <div class="team-members">
+        <div class="team-member">
+          <img src="images/team-ceo.jpg" alt="CEO">
+          <div class="team-member-info">
+            <h3>John Davidson</h3>
+            <p>Founder & CEO</p>
+            <p>With 20+ years in real estate, John leads our vision for transforming property experiences.</p>
+            <div class="team-socials">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="far fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="images/team-coo.jpg" alt="COO">
+          <div class="team-member-info">
+            <h3>Sarah Johnson</h3>
+            <p>Chief Operations Officer</p>
+            <p>Sarah ensures our operations run smoothly while maintaining our high service standards.</p>
+            <div class="team-socials">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="far fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="images/team-cto.jpg" alt="CTO">
+          <div class="team-member-info">
+            <h3>Michael Chang</h3>
+            <p>Chief Technology Officer</p>
+            <p>Michael leads our technical innovations, creating tools that enhance the customer experience.</p>
+            <div class="team-socials">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="far fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Ready to Find Your Dream Home?</h2>
+      <p>Let our experienced team guide you through the process.</p>
+      <div class="cta-buttons">
+        <a href="index.html" class="cta-button">Browse Properties</a>
+        <a href="contact.html" class="cta-button secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#f8fafc" fill-opacity="1" d="M0,128L60,138.7C120,149,240,171,360,170.7C480,171,600,149,720,149.3C840,149,960,171,1080,176C1200,181,1320,171,1380,165.3L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+      </svg>
+    </div>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3><i class="fas fa-home"></i> About HorizonHomes</h3>
+        <p>Your trusted partner in finding the perfect property. We've been connecting people with their dream homes since 2015.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section links">
+        <h3><i class="fas fa-link"></i> Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section contact">
+        <h3><i class="fas fa-paper-plane"></i> Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, Cityville, USA</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+        <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 HorizonHomes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/favorites-common.js"></script>
+</body>
+</html>

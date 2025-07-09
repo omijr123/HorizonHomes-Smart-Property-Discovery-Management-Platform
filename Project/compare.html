@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Properties - HorizonHomes</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .compare-container {
+      padding: 2rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .compare-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .compare-header h1 {
+      color: #004466;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .compare-header p {
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .compare-table th {
+      background: #004466;
+      color: white;
+      padding: 15px;
+      text-align: left;
+    }
+    
+    .compare-table td {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+    
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .property-image-cell {
+      width: 25%;
+      text-align: center;
+    }
+    
+    .property-image-cell img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    
+    .property-feature {
+      margin-bottom: 8px;
+    }
+    
+    .property-feature i {
+      margin-right: 8px;
+      color: #0077b6;
+    }
+    
+    .property-price {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #004466;
+    }
+    
+    .action-buttons {
+      margin-top: 10px;
+    }
+    
+    .action-btn {
+      background: #004466;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 5px;
+      transition: background 0.3s;
+    }
+    
+    .action-btn:hover {
+      background: #00598a;
+    }
+    
+    .property-selector {
+      margin: 2rem 0;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .property-selector h3 {
+      margin-top: 0;
+      color: #004466;
+      margin-bottom: 1rem;
+    }
+    
+    .selector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 1rem;
+    }
+    
+    .property-card-small {
+      border: 1px solid #eee;
+      border-radius: 5px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .property-card-small:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .property-card-small img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    
+    .property-card-small-info {
+      padding: 10px;
+    }
+    
+    .property-card-small h4 {
+      margin: 0 0 5px 0;
+      font-size: 1rem;
+    }
+    
+    .property-card-small p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .property-card-small .price {
+      font-weight: bold;
+      color: #004466;
+    }
+    
+    .comparison-actions {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    .comparison-actions button {
+      background: #004466;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+    
+    .comparison-actions button:hover {
+      background: #00598a;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-available {
+      color: #28a745;
+    }
+    
+    .feature-unavailable {
+      color: #dc3545;
+    }
+    
+    @media (max-width: 768px) {
+      .compare-table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <i class="fas fa-home logo-icon"></i>
+      <h1>HorizonHomes</h1>
+    </div>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="agents.html"><i class="fas fa-users"></i> Agents</a>
+      <a href="#" id="favorites-link"><i class="fas fa-heart"></i> Favorites (<span id="fav-count">0</span>)</a>
+      <a href="compare.html" class="active"><i class="fas fa-balance-scale"></i> Compare</a>
+      <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a href="register.html"><i class="fas fa-user-plus"></i> Register</a>
+    </nav>
+  </header>
+
+  <div class="compare-container">
+    <div class="compare-header">
+      <h1><i class="fas fa-balance-scale"></i> Compare Properties</h1>
+      <p>Easily compare different properties side by side to help you make the best decision for your next home or investment.</p>
+    </div>
+    
+    <div class="property-selector">
+      <h3>Select Properties to Compare (up to 3)</h3>
+      <p>Choose from your favorites or browse our listings to add properties to your comparison.</p>
+      
+      <div class="selector-grid" id="property-selector-grid">
+        <!-- Will be populated by JavaScript -->
+      </div>
+    </div>
+    
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Property Details</th>
+          <th>Property 1</th>
+          <th>Property 2</th>
+          <th>Property 3</th>
+        </tr>
+      </thead>
+      <tbody id="compare-table-body">
+        <tr>
+          <td><strong>Image</strong></td>
+          <td class="property-image-cell">
+            <img src="images/modernfamilyhouse.jpg" alt="Modern Family House">
+          </td>
+          <td class="property-image-cell">
+            <img src="images/Downtown Apartment.jpg" alt="Downtown Apartment">
+          </td>
+          <td class="property-image-cell">
+            <img src="images/Mountain View Land.jpg" alt="Mountain View Cottage">
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Property Name</strong></td>
+          <td>Modern Family House</td>
+          <td>Downtown Apartment</td>
+          <td>Mountain View Cottage</td>
+        </tr>
+        <tr>
+          <td><strong>Location</strong></td>
+          <td>New York, NY</td>
+          <td>San Francisco, CA</td>
+          <td>Denver, CO</td>
+        </tr>
+        <tr>
+          <td><strong>Price</strong></td>
+          <td class="property-price">$250,000</td>
+          <td class="property-price">$350,000</td>
+          <td class="property-price">$320,000</td>
+        </tr>
+        <tr>
+          <td><strong>Property Type</strong></td>
+          <td>House</td>
+          <td>Apartment</td>
+          <td>House</td>
+        </tr>
+        <tr>
+          <td><strong>Area</strong></td>
+          <td>2,500 sq ft</td>
+          <td>1,200 sq ft</td>
+          <td>1,800 sq ft</td>
+        </tr>
+        <tr>
+          <td><strong>Bedrooms</strong></td>
+          <td>4</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><strong>Bathrooms</strong></td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><strong>Year Built</strong></td>
+          <td>2019</td>
+          <td>2020</td>
+          <td>2015</td>
+        </tr>
+        <tr>
+          <td><strong>Features</strong></td>
+          <td>
+            <div class="property-feature"><i class="fas fa-check"></i> Swimming Pool</div>
+            <div class="property-feature"><i class="fas fa-check"></i> Garage</div>
+            <div class="property-feature"><i class="fas fa-check"></i> Garden</div>
+            <div class="property-feature"><i class="fas fa-check"></i> Modern Kitchen</div>
+          </td>
+          <td>
+            <div class="property-feature"><i class="fas fa-check"></i> City View</div>
+            <div class="property-feature"><i class="fas fa-check"></i> Fitness Center</div>
+            <div class="property-feature"><i class="fas fa-check"></i> Security</div>
+            <div class="property-feature"><i class="fas fa-check"></i> Balcony</div>
+          </td>
+          <td>
+            <div class="property-feature"><i class="fas fa-check"></i> Mountain View</div>
+            <div class="property-feature"><i class="fas fa-check"></i> Fireplace</div>
+            <div class="property-feature"><i class="fas fa-check"></i> Large Deck</div>
+            <div class="property-feature"><i class="fas fa-check"></i> Hiking Trails</div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Actions</strong></td>
+          <td>
+            <div class="action-buttons">
+              <button class="action-btn view-btn" data-id="1"><i class="fas fa-eye"></i> View</button>
+              <button class="action-btn fav-btn" data-id="1"><i class="fas fa-heart"></i> Save</button>
+            </div>
+          </td>
+          <td>
+            <div class="action-buttons">
+              <button class="action-btn view-btn" data-id="2"><i class="fas fa-eye"></i> View</button>
+              <button class="action-btn fav-btn" data-id="2"><i class="fas fa-heart"></i> Save</button>
+            </div>
+          </td>
+          <td>
+            <div class="action-buttons">
+              <button class="action-btn view-btn" data-id="6"><i class="fas fa-eye"></i> View</button>
+              <button class="action-btn fav-btn" data-id="6"><i class="fas fa-heart"></i> Save</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="comparison-actions">
+      <button id="reset-comparison"><i class="fas fa-redo"></i> Reset Comparison</button>
+      <button id="save-comparison"><i class="fas fa-save"></i> Save Comparison</button>
+      <button id="share-comparison"><i class="fas fa-share-alt"></i> Share</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About HorizonHomes</h3>
+        <p>Your trusted partner in finding the perfect property. We've been connecting people with their dream homes since 2015.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="#">Properties</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section contact">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, Cityville, USA</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 HorizonHomes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Add auth.js before other scripts -->
+  <script src="js/auth.js"></script>
+  <script src="js/compare.js"></script>
+</body>
+</html>

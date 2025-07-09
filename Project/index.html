@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HorizonHomes - Browse Properties</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo-icon.png" type="image/png">
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-spinner"></div>
+  </div>
+
+  <header>
+    <div class="logo-container">
+      <img src="images/horizonhomes-logo.png" alt="HorizonHomes Logo" class="main-logo">
+      <h1>HorizonHomes</h1>
+    </div>
+    <nav>
+       <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="agents.html"><i class="fas fa-users"></i> Agents</a>
+      <a href="#" id="favorites-link"><i class="fas fa-heart"></i> Favorites (<span id="fav-count">0</span>)</a>
+      <a href="compare.html"><i class="fas fa-balance-scale"></i> Compare</a>
+      <a href="map-search.html"><i class="fas fa-map-marker-alt"></i> Map Search</a>
+      <a href="virtual-tour.html"><i class="fas fa-vr-cardboard"></i> Virtual Tours</a>
+      <a href="mortgage-calculator.html" class="active"><i class="fas fa-calculator"></i> Calculator</a>
+      <a href="safe-neighborhoods.html"><i class="fas fa-shield-alt"></i> Safe Neighborhoods</a>
+      <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a href="register.html"><i class="fas fa-user-plus"></i> Register</a>
+    </nav>
+  </header>
+
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>Find Your Dream Home</h1>
+      <p>Discover the perfect property with HorizonHomes - Your trusted real estate partner</p>
+      <div class="hero-buttons">
+        <a href="#properties-section" class="cta-button">Browse Properties</a>
+        <a href="agents.html" class="cta-button secondary">Contact Agent</a>
+      </div>
+    </div>
+  </div>
+  <section id="featured-properties">
+    <h2><i class="fas fa-star"></i> Featured Properties</h2>
+    <div class="property-gallery">
+      <!-- Featured property cards will be dynamically added by JS -->
+    </div>
+  </section>
+  <!-- Stats section -->
+  <section class="stats-section">
+    <h2><i class="fas fa-chart-line"></i> HorizonHomes in Numbers</h2>
+    <div class="stats-container">
+      <div class="stat-item">
+        <i class="fas fa-home"></i>
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Properties Listed</div>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-users"></i>
+        <div class="stat-number">1200+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-award"></i>
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-city"></i>
+        <div class="stat-number">25+</div>
+        <div class="stat-label">Cities Covered</div>
+      </div>
+    </div>
+  </section>
+  <main id="properties-section">
+    <section id="filters">
+      <h2><i class="fas fa-filter"></i> Filter Properties</h2>
+      <div class="filter-container">
+        <label>
+          <i class="fas fa-dollar-sign"></i> Price:
+          <select id="price-filter">
+            <option value="any">Any</option>
+            <option value="0-100000">$0 - $100,000</option>
+            <option value="100001-300000">$100,001 - $300,000</option>
+            <option value="300001-1000000">$300,001+</option>
+          </select>
+        </label>
+        <label>
+          <i class="fas fa-building"></i> Type:
+          <select id="type-filter">
+            <option value="any">Any</option>
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
+            <option value="land">Land</option>
+          </select>
+        </label>
+        <label>
+          <i class="fas fa-map-marker-alt"></i> Location:
+          <input type="text" id="location-filter" placeholder="City or neighborhood" />
+        </label>
+        <div class="filter-buttons">
+          <button id="filter-btn"><i class="fas fa-search"></i> Apply Filters</button>
+          <button id="clear-btn"><i class="fas fa-times"></i> Clear Filters</button>
+        </div>
+      </div>
+    </section>
+    <div class="section-header">
+      <h2 class="section-title">Available Properties</h2>
+      <a href="#" class="view-all-link">View All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <section id="properties-list">
+      <!-- Property cards will be inserted here by JS -->
+    </section>
+    <section id="favorites-list" style="display:none;">
+      <h2><i class="fas fa-heart"></i> Your Favorite Properties</h2>
+      <div id="favorites-container"></div>
+      <button id="close-favorites"><i class="fas fa-times"></i> Close</button>
+    </section>
+  </main>
+  <section class="safe-neighborhoods-cta">
+    <div class="cta-content">
+      <h2><i class="fas fa-shield-alt"></i> Find Safe Neighborhoods Near Schools</h2>
+      <p>Looking for the perfect family home? Our AI-powered tool helps you find safe neighborhoods near top-rated schools.</p>
+      <a href="safe-neighborhoods.html" class="cta-button">
+        <i class="fas fa-map-marked-alt"></i> Explore Safe Areas
+      </a>
+    </div>
+  </section>
+  <div class="section-divider">
+    <span>What Our Clients Say</span>
+  </div>
+  <section class="testimonials">
+    <h2><i class="fas fa-quote-left"></i> What Our Clients Say</h2>
+    <div class="testimonial-container">
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "HorizonHomes helped me find my dream house in just two weeks! Their AI-powered safe neighborhood tool was incredibly useful for our family's needs. Excellent service and very professional team."
+        </div>
+        <div class="testimonial-author">
+          <img src="images/client1.jpg" alt="Client 1">
+          <div>
+            <p>Kaili Johnson</p>
+            <span>Home Buyer</span>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "I was impressed with the variety of options and how easy it was to filter properties based on my requirements. The mortgage calculator helped me plan my finances perfectly. Highly recommended!"
+        </div>
+        <div class="testimonial-author">
+          <img src="images/client2.jpg" alt="Client 2">
+          <div>
+            <p>Michael Clarke</p>
+            <span>Property Investor</span>
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Newsletter section -->
+  <section class="newsletter">
+    <h2><i class="fas fa-envelope"></i> Stay Updated</h2>
+    <p>Subscribe to our newsletter for the latest property listings and market insights</p>
+    <form id="newsletter-form">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+  <!-- New Feature: Interactive Mortgage Calculator Preview -->
+  <section class="quick-mortgage-calculator">
+    <h2><i class="fas fa-calculator"></i> Quick Mortgage Estimate</h2>
+    <div class="calculator-preview">
+      <div class="calc-inputs">
+        <div class="calc-input-group">
+          <label for="quick-home-price"><i class="fas fa-home"></i> Home Price:</label>
+          <input type="range" id="quick-home-price" min="50000" max="1000000" step="10000" value="300000">
+          <span id="quick-price-display">$300,000</span>
+        </div>
+        <div class="calc-input-group">
+          <label for="quick-down-payment"><i class="fas fa-piggy-bank"></i> Down Payment:</label>
+          <input type="range" id="quick-down-payment" min="0" max="50" step="5" value="20">
+          <span id="quick-down-display">20%</span>
+        </div>
+        <div class="calc-input-group">
+          <label for="quick-term"><i class="fas fa-calendar-alt"></i> Loan Term:</label>
+          <select id="quick-term">
+            <option value="30">30 Years</option>
+            <option value="15">15 Years</option>
+            <option value="10">10 Years</option>
+            <option value="5">5 Years</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-results">
+        <div class="monthly-estimate">
+          <span id="monthly-payment">$1,966</span>
+          <p>Estimated Monthly Payment</p>
+        </div>
+        <a href="mortgage-calculator.html" class="calc-details-btn">
+          <i class="fas fa-chart-line"></i> Detailed Calculator
+        </a>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#f8fafc" fill-opacity="1" d="M0,128L60,138.7C120,149,240,171,360,170.7C480,171,600,149,720,149.3C840,149,960,171,1080,176C1200,181,1320,171,1380,165.3L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+      </svg>
+    </div>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3><i class="fas fa-home"></i> About HorizonHomes</h3>
+        <p>Your trusted partner in finding the perfect property. We've been connecting people with their dream homes since 2015.</p>
+        <p>At HorizonHomes, we believe that finding the right property is about more than just square footage—it's about finding a place where memories will be made.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-section links">
+        <h3><i class="fas fa-link"></i> Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section contact">
+        <h3><i class="fas fa-paper-plane"></i> Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, Cityville, USA</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 HorizonHomes. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+
+  <!-- Modal for property details -->
+  <div id="property-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modal-property-details"></div>
+    </div>
+  </div>
+
+  <!-- Add auth.js before main.js to ensure auth is loaded first -->
+  <script src="js/auth.js"></script>
+  <script src="js/mortgage-preview.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

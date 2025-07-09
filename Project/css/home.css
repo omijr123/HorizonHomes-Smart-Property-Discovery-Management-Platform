@@ -1,0 +1,455 @@
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.preloader.fade-out {
+  opacity: 0;
+}
+
+.preloader-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #0077b6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced homepage styling */
+.property-image-container {
+  height: 180px !important; /* Smaller fixed height for images */
+}
+
+.property-card {
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+  animation-delay: calc(var(--card-index) * 0.1s);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.property-gallery {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+  gap: 20px !important;
+}
+
+#properties-list {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+  gap: 20px !important;
+}
+
+/* Adding enhanced sections */
+.section-divider {
+  margin: 4rem 0;
+  position: relative;
+  text-align: center;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 68, 102, 0.2), transparent);
+}
+
+.section-divider span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f8fafc;
+  padding: 0 20px;
+  font-weight: 500;
+  color: #004466;
+}
+
+/* Enhanced stats section */
+.stats-section {
+  padding: 4rem 5%;
+  background: linear-gradient(135deg, #f8fafc, #f0f7ff);
+  margin: 3rem 0;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+}
+
+.stat-item {
+  padding: 1.5rem;
+  margin: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  width: 200px;
+  transition: all 0.3s;
+}
+
+.stat-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item i {
+  font-size: 2.5rem;
+  color: #0077b6;
+  margin-bottom: 1rem;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #004466;
+}
+
+.stat-label {
+  margin-top: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Fix filters section */
+#filters {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+/* Enhanced available properties section */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  margin: 0;
+  position: relative;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #ffcc00, #ffd700);
+  border-radius: 2px;
+}
+
+.view-all-link {
+  display: inline-flex;
+  align-items: center;
+  color: #0077b6;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.view-all-link i {
+  margin-left: 5px;
+  transition: transform 0.3s;
+}
+
+.view-all-link:hover i {
+  transform: translateX(3px);
+}
+
+/* Enhanced newsletter section */
+.newsletter {
+  background: linear-gradient(135deg, #004466, #006699);
+  color: white;
+  text-align: center;
+  padding: 3rem 5%;
+  border-radius: 15px;
+  margin: 4rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/pattern-bg.png');
+  background-size: cover;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.newsletter h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: white;
+  position: relative;
+}
+
+.newsletter h2 i {
+  margin-right: 10px;
+  color: #ffcc00;
+}
+
+.newsletter p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#newsletter-form {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#newsletter-form input[type="email"] {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+#newsletter-form button {
+  background: #ffcc00;
+  color: #004466;
+  border: none;
+  padding: 0 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#newsletter-form button:hover {
+  background: #ffd700;
+}
+
+@media (max-width: 768px) {
+  .newsletter h2 {
+    font-size: 1.8rem;
+  }
+  
+  .newsletter p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  #newsletter-form {
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  
+  #newsletter-form input[type="email"] {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  #newsletter-form button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+/* Safe neighborhoods CTA */
+.safe-neighborhoods-cta {
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../images/family-neighborhood.jpg') center/cover no-repeat fixed;
+  color: white;
+  padding: 6rem 5%;
+  margin: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.cta-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.safe-neighborhoods-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.safe-neighborhoods-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Quick mortgage calculator */
+.quick-mortgage-calculator {
+  padding: 4rem 5%;
+  background: linear-gradient(135deg, #f0f7ff, #e6f3ff);
+  margin: 4rem 0;
+  position: relative;
+  border-radius: 15px;
+}
+
+.calculator-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.calc-inputs {
+  flex: 2;
+  padding: 2rem;
+  min-width: 350px;
+}
+
+.calc-input-group {
+  margin-bottom: 2rem;
+}
+
+.calc-input-group label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #004466;
+}
+
+.calc-input-group input[type="range"] {
+  width: 100%;
+  margin: 15px 0;
+}
+
+.calc-input-group span {
+  font-weight: bold;
+  color: #004466;
+  font-size: 1.2rem;
+  display: block;
+  margin-top: 10px;
+}
+
+.calc-input-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.calc-results {
+  flex: 1;
+  padding: 2rem;
+  background: linear-gradient(135deg, #004466, #006699);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+.monthly-estimate {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.monthly-estimate span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.calc-details-btn {
+  background: #ffcc00;
+  color: #004466;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calc-details-btn:hover {
+  background: #ffd700;
+  transform: translateY(-3px);
+}
+
+/* Responsive adaptations for home page */
+@media (max-width: 768px) {
+  .stats-section {
+    padding: 3rem 2%;
+  }
+  
+  .stat-item {
+    width: calc(50% - 2rem);
+  }
+  
+  .calculator-preview {
+    flex-direction: column;
+  }
+  
+  .calc-results {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .stat-item {
+    width: 100%;
+  }
+  
+  .safe-neighborhoods-cta h2 {
+    font-size: 1.8rem;
+  }
+  
+  .safe-neighborhoods-cta p {
+    font-size: 1rem;
+  }
+}

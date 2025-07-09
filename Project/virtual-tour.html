@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Property Tours - HorizonHomes</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Virtual Tour Specific Styling */
+    .virtual-tour-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/virtual-tour-hero.jpg') center/cover no-repeat;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-bottom: 3rem;
+    }
+    
+    .virtual-tour-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .virtual-tour-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    
+    .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 4rem;
+    }
+    
+    .tour-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .tour-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .tour-image {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .tour-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .tour-card:hover .tour-image img {
+      transform: scale(1.05);
+    }
+    
+    .tour-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .tour-badge i {
+      margin-right: 5px;
+    }
+    
+    .tour-details {
+      padding: 20px;
+    }
+    
+    .tour-details h3 {
+      margin: 0 0 10px 0;
+      color: #004466;
+      font-size: 1.5rem;
+    }
+    
+    .tour-address {
+      color: #666;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .tour-address i {
+      color: #0077b6;
+      margin-right: 5px;
+    }
+    
+    .tour-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 15px 0;
+      color: #666;
+    }
+    
+    .tour-spec {
+      display: flex;
+      align-items: center;
+    }
+    
+    .tour-spec i {
+      margin-right: 5px;
+      color: #0077b6;
+    }
+    
+    .tour-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #004466;
+      margin: 10px 0;
+    }
+    
+    .tour-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #0077b6;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: all 0.3s;
+      margin-top: 10px;
+    }
+    
+    .tour-btn:hover {
+      background: #005b8c;
+    }
+    
+    /* 360 Tour Viewer */
+    .tour-viewer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.9);
+    }
+    
+    .tour-viewer.active {
+      display: block;
+    }
+    
+    .tour-viewer-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .close-viewer {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    /* Virtual Tour Benefits Section */
+    .benefits-section {
+      padding: 5rem 0;
+      background: #f8f9fa;
+      margin-bottom: 4rem;
+    }
+    
+    .benefits-section h2 {
+      text-align: center;
+      color: #004466;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .benefit-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      background: #e6f3ff;
+      color: #0077b6;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+    }
+    
+    .benefit-card h3 {
+      color: #004466;
+      margin-bottom: 15px;
+    }
+    
+    .benefit-card p {
+      color: #666;
+    }
+    
+    /* Virtual Tour Instructions */
+    .instructions-section {
+      padding: 4rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .instructions-section h2 {
+      text-align: center;
+      color: #004466;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+    
+    .instruction-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .instruction-step {
+      text-align: center;
+    }
+    
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: #0077b6;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 20px;
+    }
+    
+    .instruction-step h3 {
+      color: #004466;
+      margin-bottom: 15px;
+    }
+    
+    .instruction-step p {
+      color: #666;
+    }
+    
+    /* CTA Section */
+    .tour-cta-section {
+      background: linear-gradient(135deg, #004466, #0077b6);
+      color: white;
+      text-align: center;
+      padding: 5rem 5%;
+      margin: 4rem 0;
+    }
+    
+    .tour-cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tour-cta-section p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.2rem;
+    }
+    
+    .tour-cta-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #ffcc00;
+      color: #004466;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+    }
+    
+    .tour-cta-btn:hover {
+      background: #ffd700;
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .virtual-tour-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .tour-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+      
+      .benefit-card {
+        padding: 20px;
+      }
+      
+      .tour-cta-section h2 {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .virtual-tour-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .tour-cta-section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .tour-cta-section p {
+        font-size: 1rem;
+      }
+    }
+
+    /* Tour Modal Styles */
+    .tour-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      display: none;
+    }
+    
+    .tour-modal-content {
+      position: relative;
+      width: 90%;
+      height: 90%;
+      margin: 2% auto;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .close-tour {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.5);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    
+    .close-tour:hover {
+      background: rgba(0, 0, 0, 0.8);
+      transform: scale(1.1);
+    }
+    
+    .tour-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .vr-testimonials {
+      margin: 5rem 0;
+    }
+    
+    .vr-testimonials h2 {
+      text-align: center;
+      color: #004466;
+      margin-bottom: 3rem;
+      font-size: 2.2rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .vr-testimonials h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #0077b6, #00b4d8);
+      border-radius: 2px;
+    }
+    
+    .testimonial-slider {
+      overflow: hidden;
+      padding: 1rem 0 3rem;
+      position: relative;
+    }
+    
+    .testimonial-cards {
+      display: flex;
+      gap: 30px;
+      transition: transform 0.5s ease;
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      min-width: 350px;
+      flex: 1;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      font-size: 1rem;
+      position: relative;
+    }
+    
+    .testimonial-text::before {
+      content: """;
+      font-size: 5rem;
+      color: #f0f7ff;
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+      z-index: -1;
+    }
+    
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: white;
+      color: #0077b6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      z-index: 10;
+    }
+    
+    .slider-prev {
+      left: 10px;
+    }
+    
+    .slider-next {
+      right: 10px;
+    }
+    
+    .slider-nav:hover {
+      background: #0077b6;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3);
+    }
+    
+    /* Footer Styling */
+    .footer-special {
+      background: linear-gradient(135deg, #00334d, #004466);
+      color: white;
+      padding-top: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer-special::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../images/footer-bg-pattern.png');
+      background-size: cover;
+      opacity: 0.03;
+      pointer-events: none;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 2.5rem;
+      padding-right: 2.5rem;
+      animation: fadeInUp 0.8s ease-out;
+      animation-fill-mode: both;
+    }
+    
+    .footer-section.about {
+      animation-delay: 0.1s;
+    }
+    
+    .footer-section.links {
+      animation-delay: 0.3s;
+    }
+    
+    .footer-section.contact {
+      animation-delay: 0.5s;
+    }
+    
+    .footer-section h3 {
+      margin-bottom: 1.5rem;
+      color: #ffcc00;
+      font-weight: 600;
+      font-size: 1.4rem;
+      position: relative;
+      padding-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    
+    .footer-section h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #ffcc00;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    
+    .footer-section:hover h3::after {
+      width: 70px;
+    }
+    
+    .footer-section.about p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-icons a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+    
+    .social-icons a:hover {
+      color: #ffcc00;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .footer-section.links ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-section.links a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 12px;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 20px;
+      letter-spacing: 0.3px;
+    }
+    
+    .footer-section.links a::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: #ffcc00;
+      font-size: 1.2rem;
+      line-height: 1;
+      transition: transform 0.3s;
+    }
+    
+    .footer-section.links a:hover {
+      color: #ffcc00;
+      padding-left: 25px;
+    }
+    
+    .footer-section.links a:hover::before {
+      transform: translateX(5px);
+    }
+    
+    .footer-section.contact p {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      transition: transform 0.3s;
+    }
+    
+    .footer-section.contact p:hover {
+      transform: translateX(5px);
+      color: rgba(255, 255, 255, 1);
+    }
+    
+    .footer-section.contact i {
+      margin-right: 15px;
+      color: #ffcc00;
+      width: 18px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+      z-index: 1;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .tour-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .virtual-tour-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .tour-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonial-card {
+        min-width: 280px;
+      }
+      
+      .steps-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .step {
+        max-width: 100%;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .virtual-tour-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .virtual-tour-hero p {
+        font-size: 1rem;
+      }
+      
+      .tour-content {
+        padding: 1.5rem;
+      }
+      
+      .tour-modal-content {
+        width: 95%;
+        height: 95%;
+        margin: 2.5% auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/horizonhomes-logo.png" alt="HorizonHomes Logo" class="main-logo">
+      <h1>HorizonHomes</h1>
+    </div>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+      <a href="agents.html"><i class="fas fa-users"></i> Agents</a>
+      <a href="virtual-tour.html" class="active"><i class="fas fa-vr-cardboard"></i> Virtual Tours</a>
+      <a href="#" id="favorites-link"><i class="fas fa-heart"></i> Favorites (<span id="fav-count">0</span>)</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+    </nav>
+  </header>
+
+  <div class="virtual-tour-hero">
+    <div class="hero-content">
+      <h1>Virtual Property Tours</h1>
+      <p>Experience our properties from the comfort of your home with immersive 3D tours</p>
+    </div>
+  </div>
+
+  <div>
+      <h2>Explore Properties Virtually</h2>
+      <p>Take a virtual walkthrough of our featured properties. Navigate through each room, zoom in on details, and get a real feel for the space before scheduling an in-person visit. Our immersive 3D tours allow you to explore properties at your own pace, anytime and anywhere.</p>
+    </div>
+
+    <div class="tour-grid">
+      <!-- Virtual Tour Card 1 -->
+      <div class="tour-card">
+        <div class="tour-image">
+          <img src="images/modernfamilyhouse.jpg" alt="Modern Family House Virtual Tour">
+          <div class="tour-badge"><i class="fas fa-vr-cardboard"></i> 3D Tour</div>
+          <div class="vr-icon"><i class="fas fa-vr-cardboard"></i></div>
+        </div>
+        <div class="tour-content">
+          <h3>Modern Family House</h3>
+          <div class="tour-info">
+            <span><i class="fas fa-map-marker-alt"></i> New York</span>
+            <span><i class="fas fa-ruler-combined"></i> 2800 sq ft</span>
+            <span><i class="fas fa-bed"></i> 4 beds</span>
+          </div>
+          <div class="tour-details">
+            Explore this stunning modern family house with spacious garden and pool through our immersive virtual tour.
+          </div>
+          <a href="#" class="tour-btn start-tour" data-tour-id="1"><i class="fas fa-play-circle"></i> Start Virtual Tour</a>
+        </div>
+      </div>
+
+      <!-- Virtual Tour Card 2 -->
+      <div class="tour-card">
+        <div class="tour-image">
+          <img src="images/Downtown Apartment.jpg" alt="Downtown Apartment Virtual Tour">
+          <div class="tour-badge"><i class="fas fa-vr-cardboard"></i> 3D Tour</div>
+          <div class="vr-icon"><i class="fas fa-vr-cardboard"></i></div>
+        </div>
+        <div class="tour-content">
+          <h3>Downtown Apartment</h3>
+          <div class="tour-info">
+            <span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
+            <span><i class="fas fa-ruler-combined"></i> 1200 sq ft</span>
+            <span><i class="fas fa-bed"></i> 2 beds</span>
+          </div>
+          <div class="tour-details">
+            Take a virtual tour of this modern downtown apartment with spectacular city views, perfect for professionals.
+          </div>
+          <a href="#" class="tour-btn start-tour" data-tour-id="2"><i class="fas fa-play-circle"></i> Start Virtual Tour</a>
+        </div>
+      </div>
+
+      <!-- Virtual Tour Card 3 -->
+      <div class="tour-card">
+        <div class="tour-image">
+          <img src="images/Elegant Brick House.jpg" alt="Elegant Brick House Virtual Tour">
+          <div class="tour-badge"><i class="fas fa-vr-cardboard"></i> 3D Tour</div>
+          <div class="vr-icon"><i class="fas fa-vr-cardboard"></i></div>
+        </div>
+        <div class="tour-content">
+          <h3>Elegant Brick House</h3>
+          <div class="tour-info">
+            <span><i class="fas fa-map-marker-alt"></i> Boston, MA</span>
+            <span><i class="fas fa-ruler-combined"></i> 1950 sq ft</span>
+            <span><i class="fas fa-bed"></i> 3 beds</span>
+          </div>
+          <div class="tour-details">
+            Experience the charm of this classic brick house with modern amenities in a historic neighborhood.
+          </div>
+          <a href="#" class="tour-btn start-tour" data-tour-id="3"><i class="fas fa-play-circle"></i> Start Virtual Tour</a>
+        </div>
+      </div>
+
+      <!-- Virtual Tour Card 4 -->
+      <div class="tour-card">
+        <div class="tour-image">
+          <img src="images/Luxury Penthouse.jpg" alt="Luxury Penthouse Virtual Tour">
+          <div class="tour-badge"><i class="fas fa-vr-cardboard"></i> 3D Tour</div>
+          <div class="vr-icon"><i class="fas fa-vr-cardboard"></i></div>
+        </div>
+        <div class="tour-content">
+          <h3>Luxury Penthouse</h3>
+          <div class="tour-info">
+            <span><i class="fas fa-map-marker-alt"></i> Miami, FL</span>
+            <span><i class="fas fa-ruler-combined"></i> 1800 sq ft</span>
+            <span><i class="fas fa-bed"></i> 3 beds</span>
+          </div>
+          <div class="tour-details">
+            Tour this stunning penthouse with ocean views and see the luxurious features and breathtaking perspectives.
+          </div>
+          <a href="#" class="tour-btn start-tour" data-tour-id="4"><i class="fas fa-play-circle"></i> Start Virtual Tour</a>
+        </div>
+      </div>
+
+      <!-- Virtual Tour Card 5 -->
+      <div class="tour-card">
+        <div class="tour-image">
+          <img src="images/Suburban Family Home.jpg" alt="Suburban Family Home Virtual Tour">
+          <div class="tour-badge"><i class="fas fa-vr-cardboard"></i> 3D Tour</div>
+          <div class="vr-icon"><i class="fas fa-vr-cardboard"></i></div>
+        </div>
+        <div class="tour-content">
+          <h3>Suburban Family Home</h3>
+          <div class="tour-info">
+            <span><i class="fas fa-map-marker-alt"></i> Austin, TX</span>
+            <span><i class="fas fa-ruler-combined"></i> 2200 sq ft</span>
+            <span><i class="fas fa-bed"></i> 4 beds</span>
+          </div>
+          <div class="tour-details">
+            Virtually walk through this spacious two-story suburban family home with backyard and double garage.
+          </div>
+          <a href="#" class="tour-btn start-tour" data-tour-id="5"><i class="fas fa-play-circle"></i> Start Virtual Tour</a>
+        </div>
+      </div>
+
+      <!-- Virtual Tour Card 6 -->
+      <div class="tour-card">
+        <div class="tour-image">
+          <img src="images/Cozy Studio Apartment.jpg" alt="Cozy Studio Apartment Virtual Tour">
+          <div class="tour-badge"><i class="fas fa-vr-cardboard"></i> 3D Tour</div>
+          <div class="vr-icon"><i class="fas fa-vr-cardboard"></i></div>
+        </div>
+        <div class="tour-content">
+          <h3>Cozy Studio Apartment</h3>
+          <div class="tour-info">
+            <span><i class="fas fa-map-marker-alt"></i> Chicago, IL</span>
+            <span><i class="fas fa-ruler-combined"></i> 550 sq ft</span>
+            <span><i class="fas fa-building"></i> Studio</span>
+          </div>
+          <div class="tour-details">
+            Take a virtual tour of this modern studio apartment in downtown, perfect for professionals or students.
+          </div>
+          <a href="#" class="tour-btn start-tour" data-tour-id="6"><i class="fas fa-play-circle"></i> Start Virtual Tour</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- How it Works Section -->
+    <section class="how-it-works">
+      <h2>How Virtual Tours Work</h2>
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-icon"><i class="fas fa-mouse-pointer"></i></div>
+          <h3>Select a Property</h3>
+          <p>Browse our collection of virtual tour enabled properties and click on the one you're interested in exploring.</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-icon"><i class="fas fa-vr-cardboard"></i></div>
+          <h3>Start the Tour</h3>
+          <p>Click "Start Virtual Tour" to launch the 3D interactive experience in your browser - no special software needed.</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-icon"><i class="fas fa-street-view"></i></div>
+          <h3>Navigate the Space</h3>
+          <p>Use your mouse or touch screen to move through rooms, rotate your view, and zoom in on features that interest you.</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-icon"><i class="fas fa-calendar-check"></i></div>
+          <h3>Schedule a Visit</h3>
+          <p>If you like what you see, schedule an in-person viewing or contact our agents for more information about the property.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section class="vr-testimonials">
+      <h2>What Clients Say About Our Virtual Tours</h2>
+      
+      <div class="testimonial-slider">
+        <div class="slider-nav slider-prev"><i class="fas fa-chevron-left"></i></div>
+        <div class="slider-nav slider-next"><i class="fas fa-chevron-right"></i></div>
+        
+        <div class="testimonial-cards">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "The virtual tour feature saved me so much time during my home search. I was able to narrow down my options before scheduling in-person visits. The 3D experience was incredibly realistic!"
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="images/client1.jpg" alt="Rachel M.">
+              </div>
+              <div class="author-info">
+                <h4>Rachel M.</h4>
+                <p>First-time Homebuyer</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "As someone relocating from another state, the virtual tours were invaluable. I was able to confidently make an offer on my new home without having to fly in for multiple viewings."
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="images/client2.jpg" alt="Michael P.">
+              </div>
+              <div class="author-info">
+                <h4>Michael P.</h4>
+                <p>Out-of-State Buyer</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "The level of detail in these virtual tours is impressive. I could check every corner of the house and even measure spaces to make sure my furniture would fit. It made the buying process much more efficient."
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="images/client3.jpg" alt="Sarah K.">
+              </div>
+              <div class="author-info">
+                <h4>Sarah K.</h4>
+                <p>Property Investor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Virtual Tour Modal -->
+  <div id="tour-modal" class="tour-modal">
+    <div class="tour-modal-content">
+      <span class="close-tour"><i class="fas fa-times"></i></span>
+      <iframe id="tour-iframe" class="tour-iframe" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer-special">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3><i class="fas fa-home"></i> About HorizonHomes</h3>
+        <p>Your trusted partner in finding the perfect property. We've been connecting people with their dream homes since 2015.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section links">
+        <h3><i class="fas fa-link"></i> Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section contact">
+        <h3><i class="fas fa-paper-plane"></i> Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, Cityville, USA</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 HorizonHomes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Virtual Tour Modal Functionality
+      const tourModal = document.getElementById('tour-modal');
+      const tourIframe = document.getElementById('tour-iframe');
+      const closeTour = document.querySelector('.close-tour');
+      const startTourBtns = document.querySelectorAll('.start-tour');
+      
+      // Virtual Tour URLs (in a real application, these would be actual 3D tour URLs)
+      const tourURLs = {
+        '1': 'https://my.matterport.com/show/?m=RpP9d8NQC7G',
+        '2': 'https://my.matterport.com/show/?m=ZRvQRAgGgCV',
+        '3': 'https://my.matterport.com/show/?m=CoPaqg84uQv',
+        '4': 'https://my.matterport.com/show/?m=Zh14WDX1t6y',
+        '5': 'https://my.matterport.com/show/?m=SxQL3iGyoDo',
+        '6': 'https://my.matterport.com/show/?m=SxQL3iGyoDo'
+      };
+      
+      // Open tour modal when clicking "Start Tour"
+      startTourBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const tourId = this.getAttribute('data-tour-id');
+          const tourURL = tourURLs[tourId] || 'https://my.matterport.com/show/?m=RpP9d8NQC7G';
+          
+          tourIframe.src = tourURL;
+          tourModal.style.display = 'block';
+          document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+      });
+      
+      // Close tour modal
+      closeTour.addEventListener('click', function() {
+        tourModal.style.display = 'none';
+        tourIframe.src = ''; // Stop the tour
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+      });
+      
+      // Close modal on outside click
+      window.addEventListener('click', function(e) {
+        if (e.target === tourModal) {
+          tourModal.style.display = 'none';
+          tourIframe.src = ''; // Stop the tour
+          document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+      });
+      
+      // Testimonial Slider Functionality
+      const testimonialCards = document.querySelector('.testimonial-cards');
+      const prevBtn = document.querySelector('.slider-prev');
+      const nextBtn = document.querySelector('.slider-next');
+      let currentSlide = 0;
+      const totalSlides = document.querySelectorAll('.testimonial-card').length;
+      
+      // Set up the slider
+      function updateSlider() {
+        const cardWidth = document.querySelector('.testimonial-card').offsetWidth + 30; // 30px is the gap
+        testimonialCards.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+      }
+      
+      // Navigate to next slide
+      nextBtn.addEventListener('click', function() {
+        if (currentSlide < totalSlides - 1) {
+          currentSlide++;
+          updateSlider();
+        }
+      });
+      
+      // Navigate to previous slide
+      prevBtn.addEventListener('click', function() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          updateSlider();
+        }
+      });
+      
+      // Update slider on window resize
+      window.addEventListener('resize', updateSlider);
+      
+      // Initialize slider
+      updateSlider();
+    });
+  </script>
+</body>
+</html>

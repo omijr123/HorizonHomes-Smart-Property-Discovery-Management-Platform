@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - HorizonHomes</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo-icon.png" type="image/png">
+  <style>
+    .contact-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/contact-hero.jpg') center/cover no-repeat;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .contact-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .contact-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .contact-info {
+      background: white;
+      border-radius: 15px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-info h2 {
+      color: #004466;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 15px;
+      font-size: 1.8rem;
+    }
+    
+    .contact-info h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #0077b6, #00b4d8);
+      border-radius: 2px;
+    }
+    
+    .contact-method {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: #f0f7ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 1.3rem;
+      color: #0077b6;
+      flex-shrink: 0;
+    }
+    
+    .contact-details h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+    
+    .contact-details p,
+    .contact-details a {
+      margin: 0;
+      color: #666;
+      line-height: 1.6;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .contact-details a:hover {
+      color: #0077b6;
+    }
+    
+    .office-hours {
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid #eee;
+    }
+    
+    .office-hours h3 {
+      color: #004466;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    
+    .day {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .contact-form-container {
+      background: white;
+      border-radius: 15px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-form-container h2 {
+      color: #004466;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 15px;
+      font-size: 1.8rem;
+    }
+    
+    .contact-form-container h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #0077b6, #00b4d8);
+      border-radius: 2px;
+    }
+    
+    .contact-form .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #0077b6;
+      box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+    }
+    
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .contact-form button {
+      padding: 12px 25px;
+      background: linear-gradient(90deg, #0077b6, #00b4d8);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .contact-form button i {
+      font-size: 1.1rem;
+    }
+    
+    .contact-form button:hover {
+      background: linear-gradient(90deg, #006096, #00a0c2);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 119, 182, 0.25);
+    }
+    
+    .error-message {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .form-group.error input,
+    .form-group.error select,
+    .form-group.error textarea {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    }
+    
+    .form-group.error .error-message {
+      display: block;
+    }
+    
+    /* Map Section */
+    .map-section {
+      margin: 5rem auto;
+      max-width: 1200px;
+      padding: 0 5%;
+    }
+    
+    .map-section h2 {
+      text-align: center;
+      color: #004466;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    
+    .map-container {
+      height: 450px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+    
+    /* FAQ Section */
+    .faq-section {
+      max-width: 900px;
+      margin: 5rem auto;
+      padding: 0 5%;
+    }
+    
+    .faq-section h2 {
+      text-align: center;
+      color: #004466;
+      margin-bottom: 3rem;
+      font-size: 2rem;
+    }
+    
+    .faq-item {
+      margin-bottom: 1.5rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .faq-question {
+      padding: 1.2rem;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #004466;
+      transition: background 0.3s;
+    }
+    
+    .faq-question:hover {
+      background: #f8fafc;
+    }
+    
+    .faq-question i {
+      transition: transform 0.3s;
+    }
+    
+    .faq-answer {
+      padding: 0 1.2rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      opacity: 0;
+    }
+    
+    .faq-answer p {
+      margin: 0;
+      padding: 0 0 1.2rem 0;
+      color: #666;
+      line-height: 1.8;
+    }
+    
+    .faq-item.active .faq-question {
+      background: #f0f7ff;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      opacity: 1;
+    }
+    
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.5s;
+    }
+    
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .toast i {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/horizonhomes-logo.png" alt="HorizonHomes Logo" class="main-logo">
+      <h1>HorizonHomes</h1>
+    </div>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+      <a href="agents.html"><i class="fas fa-users"></i> Agents</a>
+      <a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="#" id="favorites-link"><i class="fas fa-heart"></i> Favorites (<span id="fav-count">0</span>)</a>
+      <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+      <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+    </nav>
+  </header>
+
+  <div class="contact-hero">
+    <div>
+      <h1>Contact Us</h1>
+      <p>Get in touch with our team for any inquiries or assistance</p>
+    </div>
+  </div>
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <h2>Get In Touch</h2>
+      
+      <div class="contact-method">
+        <div class="contact-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="contact-details">
+          <h3>Visit Us</h3>
+          <p>123 Real Estate Avenue<br>Cityville, State 12345<br>United States</p>
+        </div>
+      </div>
+      
+      <div class="contact-method">
+        <div class="contact-icon">
+          <i class="fas fa-phone-alt"></i>
+        </div>
+        <div class="contact-details">
+          <h3>Call Us</h3>
+          <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+          <p><a href="tel:+15559876543">+1 (555) 987-6543</a> (Sales)</p>
+        </div>
+      </div>
+      
+      <div class="contact-method">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="contact-details">
+          <h3>Email Us</h3>
+          <p><a href="mailto:info@horizonhomes.com">info@horizonhomes.com</a></p>
+          <p><a href="mailto:support@horizonhomes.com">support@horizonhomes.com</a></p>
+        </div>
+      </div>
+      
+      <div class="office-hours">
+        <h3>Office Hours</h3>
+        <div class="hours-grid">
+          <div class="day">Monday - Friday:</div>
+          <div>9:00 AM - 5:00 PM</div>
+          <div class="day">Saturday:</div>
+          <div>10:00 AM - 3:00 PM</div>
+          <div class="day">Sunday:</div>
+          <div>Closed</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-form-container">
+      <h2>Send Us a Message</h2>
+      <form id="contact-form" class="contact-form">
+        <div class="form-group">
+          <label for="name">Full Name*</label>
+          <input type="text" id="name" name="name" required>
+          <span class="error-message">Please enter your name</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address*</label>
+          <input type="email" id="email" name="email" required>
+          <span class="error-message">Please enter a valid email address</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number (optional)</label>
+          <input type="tel" id="phone" name="phone">
+          <span class="error-message">Please enter a valid phone number</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">Subject*</label>
+          <select id="subject" name="subject" required>
+            <option value="">Select a subject</option>
+            <option value="property-inquiry">Property Inquiry</option>
+            <option value="showing-request">Showing Request</option>
+            <option value="agent-contact">Contact an Agent</option>
+            <option value="general">General Information</option>
+            <option value="feedback">Feedback</option>
+          </select>
+          <span class="error-message">Please select a subject</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message*</label>
+          <textarea id="message" name="message" required></textarea>
+          <span class="error-message">Please enter your message</span>
+        </div>
+        
+        <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="map-section">
+    <h2>Find Us</h2>
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        How can I schedule a property viewing? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>You can schedule a property viewing by calling our office during business hours, using the contact form above, or directly reaching out to the listing agent through our property details page. We typically require at least 24 hours' notice to arrange viewings.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        What documents do I need when purchasing a property? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>When purchasing a property, you'll typically need identification (such as a valid driver's license or passport), proof of income (pay stubs, tax returns), bank statements, proof of funds for down payment, and employment verification. Additional documents may be required depending on your specific situation and the property type.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        How long does the home buying process take? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>The home buying process typically takes 30-45 days from offer acceptance to closing, but this can vary depending on factors such as financing requirements, inspection findings, appraisals, and the complexity of the transaction. Our agents will guide you through each step and provide realistic timelines based on your specific situation.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        Do you help with financing options? <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Yes, we partner with several trusted mortgage brokers and financial institutions who can provide financing options tailored to your needs. Our team can connect you with these partners to explore the best rates and terms available for your situation. We also offer a mortgage calculator tool on our website to help you estimate monthly payments.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">
+    <i class="fas fa-check-circle"></i> <span id="toast-message"></span>
+  </div>
+
+  <footer>
+    <div class="footer-wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#f8fafc" fill-opacity="1" d="M0,128L60,138.7C120,149,240,171,360,170.7C480,171,600,149,720,149.3C840,149,960,171,1080,176C1200,181,1320,171,1380,165.3L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+      </svg>
+    </div>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3><i class="fas fa-home"></i> About HorizonHomes</h3>
+        <p>Your trusted partner in finding the perfect property. We've been connecting people with their dream homes since 2015.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section links">
+        <h3><i class="fas fa-link"></i> Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section contact">
+        <h3><i class="fas fa-paper-plane"></i> Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, Cityville, USA</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+        <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 HorizonHomes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Google Maps API Script -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+  
+  <script>
+    // Initialize Google Map
+    function initMap() {
+      // Replace with your office coordinates
+      const officeLocation = {lat: 40.7128, lng: -74.0060};
+      
+      const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: officeLocation,
+        styles: [
+          {
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [{"color": "#e9e9e9"},{"lightness": 17}]
+          },
+          {
+            "featureType": "landscape",
+            "elementType": "geometry",
+            "stylers": [{"color": "#f5f5f5"},{"lightness": 20}]
+          },
+          {
+            "featureType": "road.highway",
+            "elementType": "geometry.fill",
+            "stylers": [{"color": "#ffffff"},{"lightness": 17}]
+          },
+          {
+            "featureType": "road.highway",
+            "elementType": "geometry.stroke",
+            "stylers": [{"color": "#ffffff"},{"lightness": 29},{"weight": 0.2}]
+          },
+          {
+            "featureType": "road.arterial",
+            "elementType": "geometry",
+            "stylers": [{"color": "#ffffff"},{"lightness": 18}]
+          },
+          {
+            "featureType": "road.local",
+            "elementType": "geometry",
+            "stylers": [{"color": "#ffffff"},{"lightness": 16}]
+          },
+          {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [{"color": "#f5f5f5"},{"lightness": 21}]
+          }
+        ]
+      });
+      
+      // Create marker for office location
+      const marker = new google.maps.Marker({
+        position: officeLocation,
+        map: map,
+        title: 'HorizonHomes Office',
+        animation: google.maps.Animation.DROP,
+        icon: {
+          url: 'images/map-marker.png',
+          scaledSize: new google.maps.Size(40, 40)
+        }
+      });
+      
+      // Add info window
+      const infoWindow = new google.maps.InfoWindow({
+        content: `
+          <div style="padding: 10px; max-width: 250px;">
+            <h3 style="margin: 0 0 10px; color: #004466;">HorizonHomes</h3>
+            <p style="margin: 0 0 5px;">123 Real Estate Avenue<br>Cityville, State 12345</p>
+            <p style="margin: 0;"><a href="tel:+15551234567" style="color: #0077b6; text-decoration: none;">+1 (555) 123-4567</a></p>
+          </div>
+        `
+      });
+      
+      marker.addListener('click', () => {
+        infoWindow.open(map, marker);
+      });
+    }
+
+    // Form validation and submission
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Reset previous error states
+      const formGroups = this.querySelectorAll('.form-group');
+      formGroups.forEach(group => group.classList.remove('error'));
+      
+      // Get form fields
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const phone = document.getElementById('phone');
+      const subject = document.getElementById('subject');
+      const message = document.getElementById('message');
+      
+      // Validate fields
+      let isValid = true;
+      
+      if (!name.value.trim()) {
+        document.querySelector('.form-group:has(#name)').classList.add('error');
+        isValid = false;
+      }
+      
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim() || !emailPattern.test(email.value.trim())) {
+        document.querySelector('.form-group:has(#email)').classList.add('error');
+        isValid = false;
+      }
+      
+      if (phone.value.trim() !== '') {
+        const phonePattern = /^[0-9\s\-\+\(\)]{10,20}$/;
+        if (!phonePattern.test(phone.value.trim())) {
+          document.querySelector('.form-group:has(#phone)').classList.add('error');
+          isValid = false;
+        }
+      }
+      
+      if (!subject.value) {
+        document.querySelector('.form-group:has(#subject)').classList.add('error');
+        isValid = false;
+      }
+      
+      if (!message.value.trim()) {
+        document.querySelector('.form-group:has(#message)').classList.add('error');
+        isValid = false;
+      }
+      
+      // If form is valid, process submission
+      if (isValid) {
+        // In a real application, you would send this data to a server
+        // For this example, we'll just show a success message
+        
+        // Show toast notification
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        
+        toastMessage.textContent = 'Your message has been sent successfully! We will contact you shortly.';
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 5000);
+        
+        // Reset form
+        this.reset();
+      }
+    });
+
+    // FAQ accordion functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all active FAQs first
+        document.querySelectorAll('.faq-item').forEach(faqItem => {
+          faqItem.classList.remove('active');
+        });
+        
+        // Open the clicked one if it wasn't already active
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+  
+  <script src="js/favorites-common.js"></script>
+</body>
+</html>

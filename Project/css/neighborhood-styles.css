@@ -1,0 +1,197 @@
+/* Mobile responsive enhancements for the neighborhood guides page */
+
+@media (max-width: 1200px) {
+  .properties-in-neighborhood {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .neighborhood-card-highlights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .neighborhood-hero h1 {
+    font-size: 2.8rem;
+  }
+  
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .neighborhood-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
+  }
+  
+  .tab-btn {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .neighborhood-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .neighborhood-hero p {
+    font-size: 1rem;
+  }
+  
+  .neighborhood-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .neighborhood-image {
+    height: 250px;
+  }
+  
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .neighborhood-overview {
+    flex-direction: column;
+  }
+  
+  .safety-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .properties-in-neighborhood {
+    grid-template-columns: 1fr;
+  }
+  
+  .neighborhoods-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+    border-radius: 8px;
+    max-width: 100%;
+  }
+  
+  .newsletter-form input {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .newsletter-form button {
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .crime-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .neighborhood-hero .hero-content {
+    padding: 20px;
+  }
+  
+  .neighborhood-hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .selector-container {
+    flex-direction: column;
+  }
+  
+  .search-neighborhood, 
+  .state-selector select,
+  .search-btn {
+    width: 100%;
+  }
+  
+  .search-btn {
+    margin-top: 10px;
+  }
+  
+  .neighborhood-name {
+    font-size: 1.8rem;
+  }
+  
+  .tabs-container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .tab-btn {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+  
+  .gallery-thumbnails {
+    display: none;
+  }
+  
+  .neighborhood-card-highlights {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+/* Print styles for neighborhood guides */
+@media print {
+  header, footer, .neighborhood-selector, .similar-neighborhoods, 
+  .neighborhood-newsletter, .tab-btn:not(.active) {
+    display: none !important;
+  }
+  
+  .neighborhood-hero {
+    height: auto;
+    color: black;
+    background: none !important;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .neighborhood-hero::after {
+    display: none;
+  }
+  
+  .neighborhood-hero .hero-content {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  .neighborhood-hero h1 {
+    color: #000;
+    font-size: 24pt;
+    text-shadow: none;
+  }
+  
+  .neighborhood-hero p {
+    color: #333;
+    font-size: 12pt;
+  }
+  
+  .neighborhood-details {
+    display: block !important;
+  }
+  
+  .tab-content {
+    display: block !important;
+    page-break-inside: avoid;
+  }
+  
+  .neighborhood-gallery, .crime-chart {
+    height: 250px !important;
+  }
+  
+  .gallery-thumbnails {
+    display: none;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 80%;
+  }
+}

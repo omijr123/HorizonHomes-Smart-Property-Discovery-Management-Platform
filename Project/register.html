@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register - HorizonHomes</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo-icon.png" type="image/png">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f0f7ff, #e6f3ff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .auth-container {
+      max-width: 1400px;
+      margin: 3rem auto;
+      padding: 0 5%;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 1000px;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      margin: 2rem 0;
+    }
+
+    .auth-image {
+      flex: 1;
+      background: url('../images/register-bg.jpg') center/cover no-repeat;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .auth-image::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 68, 102, 0.8), rgba(0, 119, 182, 0.7));
+      z-index: 1;
+    }
+
+    .auth-image-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .auth-image-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .auth-image-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .auth-form {
+      flex: 1;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .auth-form h2 {
+      font-size: 2rem;
+      color: #004466;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .auth-form h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #0077b6, #00b4d8);
+      border-radius: 2px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+      flex: 1;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .input-with-icon {
+      position: relative;
+    }
+
+    .input-with-icon input,
+    .input-with-icon select {
+      width: 100%;
+      padding: 12px 15px 12px 45px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .input-with-icon i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #0077b6;
+      font-size: 1.1rem;
+    }
+
+    .input-with-icon input:focus,
+    .input-with-icon select:focus {
+      border-color: #0077b6;
+      box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+      outline: none;
+    }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-check input {
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+
+    .form-check label {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    .form-check a {
+      color: #0077b6;
+      text-decoration: none;
+    }
+
+    .form-check a:hover {
+      text-decoration: underline;
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, #0077b6, #00b4d8);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 1.5rem;
+    }
+
+    .auth-btn:hover {
+      background: linear-gradient(90deg, #00629b, #0099cc);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+    }
+
+    .auth-separator {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
+
+    .auth-separator hr {
+      flex: 1;
+      border: 0;
+      height: 1px;
+      background: #eee;
+    }
+
+    .auth-separator span {
+      padding: 0 15px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .social-login {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      color: #555;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .social-btn i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .social-btn.google i {
+      color: #DB4437;
+    }
+
+    .social-btn.facebook i {
+      color: #4267B2;
+    }
+
+    .social-btn:hover {
+      background: #f9f9f9;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .auth-footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .auth-footer a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 5px;
+    }
+
+    .auth-footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .benefits {
+      margin-top: 2rem;
+    }
+    
+    .benefits-title {
+      font-weight: 600;
+      color: #004466;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .benefits-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .benefits-list li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .benefits-list i {
+      color: #4CAF50;
+      margin-top: 3px;
+    }
+    
+    .error-message {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .form-group.error input,
+    .form-group.error select {
+      border-color: #dc3545;
+    }
+    
+    .form-group.error .error-message {
+      display: block;
+    }
+
+    .password-requirements {
+      display: none;
+      margin-top: 8px;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 5px;
+      border-left: 3px solid #0077b6;
+    }
+
+    .password-requirements.show {
+      display: block;
+    }
+
+    .requirement {
+      font-size: 0.85rem;
+      color: #666;
+      margin: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .requirement i {
+      font-size: 0.8rem;
+    }
+
+    .requirement.valid {
+      color: #28a745;
+    }
+
+    .requirement.valid i {
+      color: #28a745;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      background: #28a745;
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast i {
+      font-size: 1.2rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+      .auth-card {
+        flex-direction: column;
+        max-width: 500px;
+      }
+
+      .auth-image {
+        min-height: 200px;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      .auth-image-content h2 {
+        font-size: 1.8rem;
+      }
+      
+      .auth-image-content p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .auth-form {
+        padding: 2rem 1.5rem;
+      }
+      
+      .social-login {
+        flex-direction: column;
+      }
+      
+      .auth-form h2 {
+        font-size: 1.7rem;
+      }
+    }
+
+    /* Enhanced footer styles */
+    footer {
+      background: linear-gradient(135deg, #004466, #006699);
+      color: white;
+      position: relative;
+      padding: 3rem 0 0 0;
+      margin-top: 3rem;
+    }
+    
+    footer::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: linear-gradient(135deg, transparent 33%, #004466 33%, #004466 66%, transparent 66%);
+      background-size: 30px 15px;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 2rem;
+      padding-right: 2rem;
+      animation: fadeInUp 0.5s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .footer-section.about {
+      animation-delay: 0.1s;
+    }
+    
+    .footer-section.links {
+      animation-delay: 0.3s;
+    }
+    
+    .footer-section.contact {
+      animation-delay: 0.5s;
+    }
+    
+    .footer-section h3 {
+      margin-bottom: 1.2rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+    
+    .footer-section h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #ffcc00;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    
+    .footer-section:hover h3::after {
+      width: 100%;
+    }
+    
+    .footer-section h3 i {
+      margin-right: 8px;
+      color: #ffcc00;
+    }
+    
+    .footer-section p {
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-section ul li {
+      margin-bottom: 12px;
+      transition: transform 0.3s ease;
+    }
+    
+    .footer-section ul li:hover {
+      transform: translateX(8px);
+    }
+    
+    .footer-section ul li a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: color 0.3s;
+    }
+    
+    .footer-section ul li a::before {
+      content: "›";
+      margin-right: 8px;
+      color: #ffcc00;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    
+    .footer-section ul li a:hover {
+      color: #ffcc00;
+    }
+    
+    .footer-section.contact p {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    
+    .footer-section.contact p:hover {
+      transform: translateX(8px);
+    }
+    
+    .footer-section.contact i {
+      margin-right: 12px;
+      color: #ffcc00;
+      width: 18px;
+      text-align: center;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 1.5rem;
+    }
+    
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    
+    .social-icons a:hover {
+      background: #ffcc00;
+      color: #004466;
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding: 1.5rem 0;
+      background: rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+    
+    .footer-bottom p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+      }
+      
+      .footer-section {
+        padding-right: 0;
+        margin-bottom: 2.5rem;
+      }
+      
+      .footer-section:last-child {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/horizonhomes-logo.png" alt="HorizonHomes Logo" class="main-logo">
+      <h1>HorizonHomes</h1>
+    </div>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="agents.html"><i class="fas fa-users"></i> Agents</a>
+      <a href="#" id="favorites-link"><i class="fas fa-heart"></i> Favorites (<span id="fav-count">0</span>)</a>
+      <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a href="register.html" class="active"><i class="fas fa-user-plus"></i> Register</a>
+    </nav>
+  </header>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-image">
+        <div class="auth-image-content">
+          <h2>Join HorizonHomes</h2>
+          <p>Create your account to save favorite properties, get personalized recommendations, and receive notifications about new listings.</p>
+          <img src="images/horizonhomes-logo.png" alt="HorizonHomes Logo" height="60">
+        </div>
+      </div>
+      <div class="auth-form">
+        <h2>Create an Account</h2>
+        <form id="register-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstname">First Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user"></i>
+                <input type="text" id="firstname" name="firstname" required>
+              </div>
+              <div class="error-message">Please enter your first name</div>
+            </div>
+            
+            <div class="form-group">
+              <label for="lastname">Last Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user"></i>
+                <input type="text" id="lastname" name="lastname" required>
+              </div>
+              <div class="error-message">Please enter your last name</div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-with-icon">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="error-message">Please enter a valid email address</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <div class="input-with-icon">
+              <i class="fas fa-phone"></i>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="error-message">Please enter a valid phone number</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="user-type">I am a</label>
+            <div class="input-with-icon">
+              <i class="fas fa-users"></i>
+              <select id="user-type" name="user-type" required>
+                <option value="">Select</option>
+                <option value="buyer">Home Buyer</option>
+                <option value="seller">Property Seller</option>
+                <option value="investor">Real Estate Investor</option>
+                <option value="agent">Real Estate Agent</option>
+              </select>
+            </div>
+            <div class="error-message">Please select user type</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-with-icon">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="password" name="password" required>
+            </div>
+            <div class="error-message">Please enter a valid password</div>
+            <div class="password-requirements">
+              <div class="requirement" data-requirement="length">
+                <i class="far fa-circle"></i> Minimum 8 characters
+              </div>
+              <div class="requirement" data-requirement="uppercase">
+                <i class="far fa-circle"></i> At least one uppercase letter
+              </div>
+              <div class="requirement" data-requirement="lowercase">
+                <i class="far fa-circle"></i> At least one lowercase letter
+              </div>
+              <div class="requirement" data-requirement="number">
+                <i class="far fa-circle"></i> At least one number
+              </div>
+              <div class="requirement" data-requirement="special">
+                <i class="far fa-circle"></i> At least one special character
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <div class="input-with-icon">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <div class="error-message">Passwords do not match</div>
+          </div>
+          
+          <div class="form-check">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">
+              I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>, and I consent to receiving email updates from HorizonHomes.
+            </label>
+          </div>
+          
+          <button type="submit" class="auth-btn">Create Account</button>
+        </form>
+        
+        <div class="auth-separator">
+          <hr>
+          <span>OR</span>
+          <hr>
+        </div>
+        
+        <div class="social-login">
+          <a href="#" class="social-btn google">
+            <i class="fab fa-google"></i> Register with Google
+          </a>
+          <a href="#" class="social-btn facebook">
+            <i class="fab fa-facebook-f"></i> Register with Facebook
+          </a>
+        </div>
+        
+        <p class="auth-footer">
+          Already have an account?<a href="login.html">Login</a>
+        </p>
+        
+        <div class="benefits">
+          <p class="benefits-title">Benefits of creating an account:</p>
+          <ul class="benefits-list">
+            <li><i class="fas fa-check-circle"></i> Save your favorite properties</li>
+            <li><i class="fas fa-check-circle"></i> Get personalized property recommendations</li>
+            <li><i class="fas fa-check-circle"></i> Receive price drop alerts and new listing notifications</li>
+            <li><i class="fas fa-check-circle"></i> Connect directly with our real estate agents</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-message"></span>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3><i class="fas fa-home"></i> About HorizonHomes</h3>
+        <p>Your trusted partner in finding the perfect property. We've been connecting people with their dream homes since 2015.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section links">
+        <h3><i class="fas fa-link"></i> Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section contact">
+        <h3><i class="fas fa-paper-plane"></i> Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Real Estate Ave, Cityville, USA</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> info@horizonhomes.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 HorizonHomes. All rights reserved.</p>
+    </div>
+    <style>
+      /* Enhanced footer styles */
+      footer {
+        background: linear-gradient(135deg, #004466, #006699);
+        color: white;
+        position: relative;
+        padding: 3rem 0 0 0;
+        margin-top: 3rem;
+      }
+      
+      footer::before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        background: linear-gradient(135deg, transparent 33%, #004466 33%, #004466 66%, transparent 66%);
+        background-size: 30px 15px;
+      }
+      
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 5%;
+      }
+      
+      .footer-section {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 2rem;
+        padding-right: 2rem;
+        animation: fadeInUp 0.5s ease-out;
+      }
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .footer-section.about {
+        animation-delay: 0.1s;
+      }
+      
+      .footer-section.links {
+        animation-delay: 0.3s;
+      }
+      
+      .footer-section.contact {
+        animation-delay: 0.5s;
+      }
+      
+      .footer-section h3 {
+        margin-bottom: 1.2rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 10px;
+        display: inline-block;
+      }
+      
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: #ffcc00;
+        border-radius: 2px;
+        transition: width 0.3s ease;
+      }
+      
+      .footer-section:hover h3::after {
+        width: 100%;
+      }
+      
+      .footer-section h3 i {
+        margin-right: 8px;
+        color: #ffcc00;
+      }
+      
+      .footer-section p {
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .footer-section ul li {
+        margin-bottom: 12px;
+        transition: transform 0.3s ease;
+      }
+      
+      .footer-section ul li:hover {
+        transform: translateX(8px);
+      }
+      
+      .footer-section ul li a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s;
+      }
+      
+      .footer-section ul li a::before {
+        content: "›";
+        margin-right: 8px;
+        color: #ffcc00;
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+      
+      .footer-section ul li a:hover {
+        color: #ffcc00;
+      }
+      
+      .footer-section.contact p {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+      }
+      
+      .footer-section.contact p:hover {
+        transform: translateX(8px);
+      }
+      
+      .footer-section.contact i {
+        margin-right: 12px;
+        color: #ffcc00;
+        width: 18px;
+        text-align: center;
+      }
+      
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 1.5rem;
+      }
+      
+      .social-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        transition: all 0.3s;
+        text-decoration: none;
+      }
+      
+      .social-icons a:hover {
+        background: #ffcc00;
+        color: #004466;
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      
+      .footer-bottom {
+        text-align: center;
+        padding: 1.5rem 0;
+        background: rgba(0, 0, 0, 0.15);
+        position: relative;
+      }
+      
+      .footer-bottom p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      
+      @media (max-width: 768px) {
+        .footer-content {
+          flex-direction: column;
+        }
+        
+        .footer-section {
+          padding-right: 0;
+          margin-bottom: 2.5rem;
+        }
+        
+        .footer-section:last-child {
+          margin-bottom: 1rem;
+        }
+      }
+    </style>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const registerForm = document.getElementById('register-form');
+      const passwordField = document.getElementById('password');
+      const confirmPasswordField = document.getElementById('confirm-password');
+      const passwordRequirements = document.querySelector('.password-requirements');
+      const requirements = {
+        length: { regex: /.{8,}/ },
+        lowercase: { regex: /[a-z]/ },
+        uppercase: { regex: /[A-Z]/ },
+        number: { regex: /[0-9]/ },
+        special: { regex: /[^A-Za-z0-9]/ }
+      };
+      
+      // Show password requirements on focus
+      passwordField.addEventListener('focus', function() {
+        passwordRequirements.classList.add('show');
+      });
+      
+      // Check password requirements as user types
+      passwordField.addEventListener('input', function() {
+        const password = this.value;
+        
+        // Check each requirement
+        Object.keys(requirements).forEach(req => {
+          const requirementEl = document.querySelector(`.requirement[data-requirement="${req}"]`);
+          const isValid = requirements[req].regex.test(password);
+          
+          requirementEl.classList.toggle('valid', isValid);
+          
+          if (isValid) {
+            requirementEl.querySelector('i').className = 'fas fa-check-circle';
+          } else {
+            requirementEl.querySelector('i').className = 'far fa-circle';
+          }
+        });
+      });
+      
+      // Hide password requirements when focus is lost
+      passwordField.addEventListener('blur', function() {
+        if (this.value.trim() === '') {
+          passwordRequirements.classList.remove('show');
+        }
+      });
+      
+      // Form submission handler
+      registerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Reset previous error states
+        const formGroups = document.querySelectorAll('.form-group');
+        formGroups.forEach(group => group.classList.remove('error'));
+        
+        // Get form fields
+        const firstname = document.getElementById('firstname');
+        const lastname = document.getElementById('lastname');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const userType = document.getElementById('user-type');
+        const password = passwordField;
+        const confirmPassword = confirmPasswordField;
+        const terms = document.getElementById('terms');
+        
+        // Simple validation
+        let isValid = true;
+        
+        if (!firstname.value.trim()) {
+          document.querySelector('.form-group:has(#firstname)').classList.add('error');
+          isValid = false;
+        }
+        
+        if (!lastname.value.trim()) {
+          document.querySelector('.form-group:has(#lastname)').classList.add('error');
+          isValid = false;
+        }
+        
+        if (!email.value.trim() || !email.value.includes('@')) {
+          document.querySelector('.form-group:has(#email)').classList.add('error');
+          isValid = false;
+        }
+        
+        if (!phone.value.trim()) {
+          document.querySelector('.form-group:has(#phone)').classList.add('error');
+          isValid = false;
+        }
+        
+        if (!userType.value) {
+          document.querySelector('.form-group:has(#user-type)').classList.add('error');
+          isValid = false;
+        }
+        
+        // Check all password requirements
+        const passwordValid = Object.keys(requirements).every(req => 
+          requirements[req].regex.test(password.value)
+        );
+        
+        if (!passwordValid) {
+          document.querySelector('.form-group:has(#password)').classList.add('error');
+          isValid = false;
+        }
+        
+        if (password.value !== confirmPassword.value) {
+          document.querySelector('.form-group:has(#confirm-password)').classList.add('error');
+          isValid = false;
+        }
+        
+        if (!terms.checked) {
+          // Visual feedback for terms checkbox
+          terms.classList.add('is-invalid');
+          isValid = false;
+        } else {
+          terms.classList.remove('is-invalid');
+        }
+        
+        if (isValid) {
+          // Here you would normally register the user with a server
+          // For demo purposes, just show success
+          showToast('Registration successful! Redirecting to login...');
+          
+          // Simulate loading
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 2000);
+        }
+      });
+      
+      function showToast(message) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        
+        toastMessage.textContent = message;
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 5000);
+      }
+    });
+  </script>
+  <script src="js/favorites-common.js"></script>
+</body>
+</html>
