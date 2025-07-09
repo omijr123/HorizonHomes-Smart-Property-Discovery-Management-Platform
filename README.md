@@ -1,6 +1,6 @@
 # 🌇 Horizon Homes: Smart Property Discovery & Management Platform
 
-![Horizon Homes Banner](https://via.placeholder.com/1200x400/1e3a8a/ffffff?text=Horizon+Homes+%E2%80%93+Where+Dream+Homes+Come+True)
+![Horizon Homes Banner](https://i.postimg.cc/GmqqLkkp/Screenshot-2025-07-08-111527.png)
 
 **Horizon Homes** is a cutting-edge MERN stack real estate platform revolutionizing property search, listing, and reservation. Designed for both property seekers and professionals, it offers a seamless, secure, and feature-rich experience for all real estate needs.
 
