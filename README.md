@@ -135,15 +135,9 @@ npm run dev
 7. **Access the application**:
 Open your browser and visit `http://localhost:3000`
 
-## Screenshots 📸
-Home Page
-(https://i.postimg.cc/GmqqLkkp/Screenshot-2025-07-08-111527.png)
-Property Listing
-https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Property+Listing
-Admin Dashboard
-https://via.placeholder.com/400x250/10b981/ffffff?text=Admin+Dashboard	Mortgage Calculator
-https://via.placeholder.com/400x250/ef4444/ffffff?text=Mortgage+Calculator
-</div>
+## 📸 Screenshots
+
+![pic1](https://i.postimg.cc/GmqqLkkp/Screenshot-2025-07-08-111527.png)
 
 ## 💻 Code Snippets
 
