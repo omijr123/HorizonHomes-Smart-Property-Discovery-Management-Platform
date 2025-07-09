@@ -169,21 +169,29 @@ Open your browser and visit `http://localhost:3000`
 
 ![pic7](https://i.postimg.cc/D04wZdJ3/Screenshot-2025-07-08-113503.png)
 
+-- Agent Page
+
+![pic8](https://i.postimg.cc/wTtwqtw5/Screenshot-2025-07-08-115733.png)
+
+-- Review & FeeBack
+
+![pic9](https://i.postimg.cc/CKvvMjpN/Screenshot-2025-07-08-122304.png)
+
 -- User Pannel
 
-![pic8](https://i.postimg.cc/T2nPZQ6n/Screenshot-2025-07-08-124108.png)
+![pic10](https://i.postimg.cc/T2nPZQ6n/Screenshot-2025-07-08-124108.png)
 
 -- Databases (Users)
 
-![pic9](https://i.postimg.cc/mr0bn1pd/Screenshot-2025-07-08-124931.png)
+![pic11](https://i.postimg.cc/mr0bn1pd/Screenshot-2025-07-08-124931.png)
 
 -- Databases (Properties)
 
-![pic10](https://i.postimg.cc/8kd1y5RH/Screenshot-2025-07-08-125002.png)
+![pic12](https://i.postimg.cc/8kd1y5RH/Screenshot-2025-07-08-125002.png)
 
 -- Databases (Bookings)
 
-![pic11](https://i.postimg.cc/P5JTrQB3/Screenshot-2025-07-08-125027.png)
+![pic13](https://i.postimg.cc/P5JTrQB3/Screenshot-2025-07-08-125027.png)
 
 
 ## 💻 Code Snippets
