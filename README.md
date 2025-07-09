@@ -137,9 +137,54 @@ Open your browser and visit `http://localhost:3000`
 
 ## 📸 Screenshots
 
-Home page
+-- Home page
 
 ![pic1](https://i.postimg.cc/GmqqLkkp/Screenshot-2025-07-08-111527.png)
+
+-- Property+Listing
+
+![pic2](https://i.postimg.cc/y8bphmWb/Screenshot-2025-07-08-112223.png)
+
+-- Admin Dashboard
+
+![pic3](https://i.postimg.cc/k5jSRs42/Screenshot-2025-07-08-124441.png)
+
+-- Mortgage+Calculator
+
+![pic4](https://i.postimg.cc/2SGbgGn0/Screenshot-2025-07-08-121419.png)
+
+-- Virtual Tour
+
+![pic5](https://i.postimg.cc/FHr1bSw3/Screenshot-2025-07-08-115001.png)
+
+-- Property Comparison
+
+![pic6](https://i.postimg.cc/c48v4Zwt/Screenshot-2025-07-08-121128.png)
+
+-- LogIn
+
+![pic6](https://i.postimg.cc/nLnrkD5q/Screenshot-2025-07-08-113553.png)
+
+-- Register
+
+![pic7](https://i.postimg.cc/D04wZdJ3/Screenshot-2025-07-08-113503.png)
+
+-- User Pannel
+
+![pic8](https://i.postimg.cc/T2nPZQ6n/Screenshot-2025-07-08-124108.png)
+
+-- Databases (Users)
+
+![pic9](https://i.postimg.cc/mr0bn1pd/Screenshot-2025-07-08-124931.png)
+
+-- Databases (Properties)
+
+![pic10](https://i.postimg.cc/8kd1y5RH/Screenshot-2025-07-08-125002.png)
+
+-- Databases (Bookings)
+
+![pic11](https://i.postimg.cc/P5JTrQB3/Screenshot-2025-07-08-125027.png)
+
 
 ## 💻 Code Snippets
 
