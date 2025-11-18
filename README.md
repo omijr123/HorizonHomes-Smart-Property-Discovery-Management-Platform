@@ -51,7 +51,7 @@
 
 ## 📂 Project Structure
 
-```
+
 real-estate/
 ├── backend/               # Backend server
 │   ├── config/           # Configuration files
@@ -80,7 +80,7 @@ real-estate/
 ├── .gitignore
 ├── LICENSE
 └── README.md
-```
+
 
 ## 🚀 Getting Started
 
@@ -98,33 +98,33 @@ cd horizon-homes
 ```
 
 2. **Install backend dependencies**:
-```bash
+
 cd backend
 npm install
-```
+
 
 3. **Install frontend dependencies**:
-```bash
+
 cd ../client
 npm install
-```
+
 
 4. **Set up environment variables**:
-Create a `.env` file in the `backend` directory with:
-```env
+Create a .env file in the  backend directory with:
+
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 PORT=5000
-```
+
 
 5. **Seed the database (optional)**:
-```bash
+
 cd backend
 npm run seed
-```
+
 
 6. **Start the development servers**:
-```bash
+
 # Start backend server
 cd backend
 npm run dev
@@ -132,7 +132,7 @@ npm run dev
 # Start frontend server
 cd ../client
 npm run dev
-```
+
 
 7. **Access the application**:
 Open your browser and visit `http://localhost:3000`
@@ -203,7 +203,7 @@ Open your browser and visit `http://localhost:3000`
 ## 💻 Code Snippets
 
 ### Backend: Property Model
-```javascript
+javascript
 // backend/models/Property.js
 const mongoose = require('mongoose');
 
@@ -228,10 +228,10 @@ const propertySchema = new mongoose.Schema({
 }, { timestamps: true });
 
 module.exports = mongoose.model('Property', propertySchema);
-```
+
 
 ### Frontend: Mortgage Calculator
-```jsx
+jsx
 // client/src/components/MortgageCalculator.jsx
 import React, { useState } from 'react';
 
@@ -265,11 +265,11 @@ const MortgageCalculator = () => {
     </div>
   );
 };
-```
+
 
 ## 🏗️ Architecture Overview
 
-```mermaid
+mermaid
 graph TD
     A[Client - React] -->|API Requests| B[Server - Express.js]
     B --> C[Database - MongoDB]
@@ -280,7 +280,6 @@ graph TD
     G --> H[Google Maps]
     G --> I[Payment Gateway]
     G --> J[Cloud Storage]
-```
 
 ## 🔧 Challenges & Solutions
 
@@ -294,8 +293,8 @@ graph TD
 | **Responsive Design** | Mobile-first approach with Tailwind CSS |
 
 ## 📊 Database Schema
+mermaid
 
-```mermaid
 erDiagram
     USERS ||--o{ PROPERTIES : owns
     USERS ||--o{ BOOKINGS : makes
@@ -307,7 +306,7 @@ erDiagram
         string password
         string role
         date createdAt
-    }
+    } 
     
     PROPERTIES {
         string title
@@ -326,16 +325,15 @@ erDiagram
         string status
         date createdAt
     }
-```
 
 ## 🤝 Contributing
 
 We welcome contributions! Please follow these steps:
 
 1. Fork the repository
-2. Create a new branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin feature/your-feature`)
+2. Create a new branch (git checkout -b feature/your-feature`)
+3. Commit your changes (git commit -am 'Add some feature'`)
+4. Push to the branch (git push origin feature/your-feature`)
 5. Open a pull request
 
 ## 📜 License
@@ -347,6 +345,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Jablay Noor Rahman (Omi)](https://github.com/omijr123)
 - [Md Nazmus Sajjad Naiem]
 
----
+
 
 
