@@ -786,49 +786,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👥 Contributors
 
 ### Core Team
-- **[Jablay Noor Rahman (Omi)](https://github.com/omijr123)** - Full Stack Developer & Project Lead
-- **[Md Nazmus Sajjad Naiem](https://github.com/naiem-dev)** - Frontend Specialist & UI/UX Designer
+- **[Jablay Noor Rahman (Omi)](https://github.com/omijr123)** - Project Lead
+- **[Md Nazmus Sajjad Naiem]** - Frontend Specialist & UI/UX Designer
 
-### Acknowledgments
-- Icons by [Lucide React](https://lucide.dev/)
-- Design inspiration from modern real estate platforms
-- Community contributors and testers
-
-## 🔮 Roadmap
-
-### Phase 1: Core Features (Completed)
-- ✓ User authentication system
-- ✓ Property listing and management
-- ✓ Basic search functionality
-- ✓ Mortgage calculator
-
-### Phase 2: Enhanced Features (In Progress)
-- Advanced analytics dashboard
-- AI-powered property recommendations
-- Mobile application development
-- Multi-language support
-
-### Phase 3: Future Plans
-- Blockchain-based property verification
-- AR/VR property viewing
-- Smart contract integration for rentals
-- Community features and forums
-
-## 📞 Support
-
-For support, questions, or feedback:
-- 📧 Email: support@horizonhomes.com
-- 🐛 Issues: [GitHub Issues](https://github.com/your-username/horizon-homes/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/your-username/horizon-homes/discussions)
-
----
-
-<div align="center">
-  
-**Made with ❤️ by the Horizon Homes Team**
-
-[![GitHub stars](https://img.shields.io/github/stars/your-username/horizon-homes?style=social)](https://github.com/your-username/horizon-homes/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/your-username/horizon-homes?style=social)](https://github.com/your-username/horizon-homes/network/members)
 
 *If you find this project useful, please consider giving it a star ⭐*
 
