@@ -2,7 +2,7 @@
 
 ![Horizon Homes Banner](https://i.postimg.cc/x1xhxrpg/horizonhomes-logo.png)
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-horizonhomesrealestate.tiiny.site/)](https://horizonhomesrealestate.tiiny.site/)
+
 
 **Horizon Homes** is a cutting-edge MERN stack real estate platform revolutionizing property search, listing, and reservation. Designed for both property seekers and professionals, it offers a seamless, secure, and feature-rich experience for all real estate needs.
 
